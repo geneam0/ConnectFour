@@ -8,6 +8,8 @@
    DFS <br/>
    tree class <br/>
    search/decision making algorithm (for AI ?) <br/>
+   ^^ for each member of the group, make one <br/>
+   
    # User turn (select a column to input a piece) <br/>
           inputing piece <br/>
           bool to check if column is full <br/>
