@@ -12,5 +12,6 @@ class treeNode{
     getChild //get all children
     setChild //ith children to a different state
     addChild //
+    generateChildren //
 };
 #endif
