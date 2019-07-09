@@ -12,4 +12,5 @@
           inputing piece <br/>
           bool to check if column is full <br/>
 # Computer turn      <br/>
-         AI (easy, medium, hard)
+         AI <br/>
+         dont use STL queue, use an array to stimulate the queue so you can search and look up individual items 
