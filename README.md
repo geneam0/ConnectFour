@@ -1,5 +1,5 @@
 # ConnectFour
-# Functions we need:
+# Things we need:
    print board function <br/>
    check win <br/>
    user turn <br/>
