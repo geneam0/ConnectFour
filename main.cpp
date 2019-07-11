@@ -9,7 +9,11 @@ int main(){
 	size_t playerInput;
 	while(!init.hasWinner()){
 		cin>>playerInput;
+		init.updateBoard(playerInput);
 		cout<<init;
 	}
 	return 0;
 }
+
+// write hasWinner function
+//write updateBoard function
