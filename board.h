@@ -31,7 +31,17 @@ class Board{
 				}
 			}
 		}
+		ostream& operator<<(ostream &os) {
+			for(size_t i=0; i<target.rows; i++){
+				for(size_t j=0; j<target.columns; j++){
+					os << target[i][j]<< "\t";
+				}
+				os<<"\n";
+			}
+    		return os;
+		}
 };
+/* Unnecessary bc of ostream
 void printBoard(const Board target) const {
 	for(size_t i=0; i<target.rows; i++){
 		for(size_t j=0; j<target.columns; j++){
@@ -40,5 +50,5 @@ void printBoard(const Board target) const {
 		cout<<"\n";
 	}
 }
-
+*/
 #endif
