@@ -16,11 +16,11 @@ class Board{
 		Board();
 		char getUser() { return user; }
 		char getComp() { return comp; }
-		void addPiece(char entry, size_t col);
 		bool boardFull();
 		bool hasWinner();
 		bool spaceEmpty();
 		bool fullColumn(size_t col);
+		void addPiece(char entry, size_t col);
 };
 friend ostream& operator<<(ostream &os);
 
