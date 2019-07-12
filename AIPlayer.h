@@ -4,7 +4,7 @@
 #include "Board.h"
 #include "Node.h"
 
-template <class Item>
+typedef Item=Node;
 class AIPlayer{
   private:
     Item data;
