@@ -8,8 +8,8 @@ class Board{
 		size_t rows=7;
 		size_t columns=6;
 		char arr[rows][columns];
-		char user = "O";
-		char comp = "X";
+		char user = "X";
+		char comp = "O";
 	public:
 		// constructors
 		Board(){
