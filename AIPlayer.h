@@ -10,6 +10,7 @@ class AIPlayer{
     AIPlayer<Item>** children;
     size_t numChildren;
     size_t capChildren;
+    size_t depth=4;
   public:
     //get ith children
     Item getChild(size_t i){ return children[i]; }
