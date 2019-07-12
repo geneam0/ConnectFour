@@ -1,5 +1,6 @@
 #ifndef AIPLAYER_H
 #define AIPLAYER_H
+#include <treeNode>
 template <class Item>
 class AIPlayer{
   private:
@@ -9,17 +10,15 @@ class AIPlayer{
     size_t numChildren;
     size_t capChildren;
   public:
-    getChild(size_t i); //get ith children
-    getChild(); //get all children
-    setChild(size_t i); //ith children to a different state
-    addChild(); //
-    generateChildren //
+    //get ith children
+    Item getChild(size_t i){ return children[i]; }
+    //get all children
+    Item* getChild(){ return *children; }
+    //ith children to a different state
+    void setChild(size_t i); 
+    void addChild(); //
+    Item* generateChildren();
     // main method for the AI to determine which column to place in
-    size_t move(const Board b){
-      // return BFS(b);
-      // return DFS(b);
-      // return MiniMax(b);
-      // return IterativeDeepening(b);
-    }
+    size_t move(const Board b);
 };
 #endif
