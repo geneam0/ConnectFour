@@ -11,7 +11,7 @@ int main(){
 	// playerInput is the column the player chooses to put a chip into
 	size_t playerInput;
 	
-	while(!init.hasWinner() && ){
+	while(!init.hasWinner() && init.){
 		cin>>playerInput;
 		init.updateBoard(playerInput);
 		cout<<init;
