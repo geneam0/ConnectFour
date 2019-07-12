@@ -5,9 +5,9 @@
 
 
 
-bool Board::fullColumn(size_t column) {
+bool Board::fullColumn(size_t col) {
   for(int i = 0; i < rows; i++) {
-    if(arr[i][column] == "-") {
+    if(arr[i][col] == "-") {
       return false;
     } 
   }
@@ -25,19 +25,19 @@ bool Board::boardFull() {
   return true;
 }
 
-bool Board::spaceEmpty(size_t row, size_t column) {
-  if(arr[row][column] == "-") {
+bool Board::spaceEmpty(size_t row, size_t col) {
+  if(arr[row][col] == "-") {
      return false;
   } else {
     return true;
   }    
 }
 
-void Board::addPiece(char entry, size_t column) {
+void Board::addPiece(char entry, size_t col) {
   if(fullColumn) { /* invalid message and reprompt */ return; }
   if(boardFull) { return; }
-  while(!spaceEmpty(i, column)) {
+  while(!spaceEmpty(i, col)) {
     i++;
   }
-  arr[i][column] = entry;
+  arr[i][col] = entry;
 }
