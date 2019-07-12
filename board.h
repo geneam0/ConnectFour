@@ -13,13 +13,7 @@ class Board{
 		char comp = "O";
 	public:
 		// constructors
-		Board(){
-			for(size_t i=0; i<rows; i++){
-				for(size_t j=0; j<columns; j++){
-					arr[i][j]="-";
-				}
-			}
-		}
+		Board();
 		char getUser() { return user; }
 		char getComp() { return comp; }
 		void addPiece(char entry, size_t col);
@@ -27,15 +21,7 @@ class Board{
 		bool hasWinner();
 		bool spaceEmpty();
 		bool fullColumn(size_t col);
-		ostream& operator<<(ostream &os) {
-			for(size_t i=0; i<target.rows; i++){
-				for(size_t j=0; j<target.columns; j++){
-					os << target[i][j]<< "\t";
-				}
-				os<<"\n";
-			}
-    		return os;
-		}
 };
+friend ostream& operator<<(ostream &os);
 
 #endif
