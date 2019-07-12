@@ -3,15 +3,21 @@
 
 #include "board.h"
 
+Board::Board(){
+	for(size_t i=0; i<rows; i++){
+		for(size_t j=0; j<columns; j++){
+			arr[i][j]="-";
+		}
+	}
+}
 
-
-bool Board::fullColumn(size_t col) {
-  for(int i = 0; i < rows; i++) {
-    if(arr[i][col] == "-") {
-      return false;
-    } 
+void Board::addPiece(char entry, size_t col) {
+  if(fullColumn) { /* invalid message and reprompt */ return; }
+  if(boardFull) { return; }
+  while(!spaceEmpty(i, col)) {
+    i++;
   }
-  return true;
+  arr[i][col] = entry;
 }
 
 bool Board::boardFull() {
@@ -23,23 +29,6 @@ bool Board::boardFull() {
     }
   }
   return true;
-}
-
-bool Board::spaceEmpty(size_t row, size_t col) {
-  if(arr[row][col] == "-") {
-     return false;
-  } else {
-    return true;
-  }    
-}
-
-void Board::addPiece(char entry, size_t col) {
-  if(fullColumn) { /* invalid message and reprompt */ return; }
-  if(boardFull) { return; }
-  while(!spaceEmpty(i, col)) {
-    i++;
-  }
-  arr[i][col] = entry;
 }
 
 bool Board::hasWinner(){
@@ -69,4 +58,32 @@ bool Board::hasWinner(){
 	}
 	return false;
 }
+
+bool Board::spaceEmpty(size_t row, size_t col) {
+  if(arr[row][col] == "-") {
+     return false;
+  } else {
+    return true;
+  }    
+}
+
+bool Board::fullColumn(size_t col) {
+  for(int i = 0; i < rows; i++) {
+    if(arr[i][col] == "-") {
+      return false;
+    } 
+  }
+  return true;
+}
+
+friend ostream& operator<<(ostream &os) {
+	for(size_t i=0; i<target.rows; i++){
+		for(size_t j=0; j<target.columns; j++){
+			os << target[i][j]<< "\t";
+		}	
+		os<<"\n";
+	}
+    	return os;
+}
+
 #endif
