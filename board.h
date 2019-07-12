@@ -1,5 +1,6 @@
 #ifndef BOARD_H
 #define BOARD_H
+
 #include <iostream>
 using namespace std::cout;
 
@@ -19,20 +20,13 @@ class Board{
 				}
 			}
 		}
-		Board(Board target){
-			for(size_t i=0; i<target.rows; i++){
-				for(size_t j=0; j<target.columns; j++){
-					arr[i][j]=target.arr[i][j];
-				}
-			}
-		}
-		Board(char* a){
-			for(size_t i=0; i<r; i++){
-				for(size_t j=0; j<c; j++){
-					arr[i][j]=a[i][j];
-				}
-			}
-		}
+		char getUser() { return user; }
+		char getComp() { return comp; }
+		void addPiece(char entry, size_t col);
+		bool boardFull();
+		bool hasWinner();
+		bool spaceEmpty();
+		bool fullColumn(size_t col);
 		ostream& operator<<(ostream &os) {
 			for(size_t i=0; i<target.rows; i++){
 				for(size_t j=0; j<target.columns; j++){
@@ -42,24 +36,6 @@ class Board{
 			}
     		return os;
 		}
-		void addPiece(char entry, size_t col);
-		bool fullColumn(size_t col);
-		bool boardFull();
-		bool spaceEmpty();
-		bool hasWinner();
-		char getUser() { return user; }
-		char getComp() { return comp; }
 };
-/* Unnecessary bc of ostream
-void printBoard(const Board target) const {
-	for(size_t i=0; i<target.rows; i++){
-		for(size_t j=0; j<target.columns; j++){
-			cout<<target[i][j]<<"\t";
-		}
-		cout<<"\n";
-	}
-}
-*/
-
 
 #endif
