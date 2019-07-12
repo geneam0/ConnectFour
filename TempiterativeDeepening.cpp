@@ -1,4 +1,4 @@
 #include "priorityQueue.cpp"
-#include "AIplayer.cpp"
+#include "AIplayer.h"
 
 
