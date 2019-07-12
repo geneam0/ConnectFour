@@ -9,6 +9,9 @@ Node::Node() {
   possibleBoard = init;
 }
 Node::~Node() {
+  delete column;
+  delete cost;
+  delete possibleBoard;
 }
 
 void Node::CostDFS() {
