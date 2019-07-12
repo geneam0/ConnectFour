@@ -8,10 +8,10 @@ class AIPlayer{
     size_t numChildren;
     size_t capChildren;
   public:
-    getChild //get ith children
-    getChild //get all children
-    setChild //ith children to a different state
-    addChild //
+    getChild(size_t i); //get ith children
+    getChild(); //get all children
+    setChild(size_t i); //ith children to a different state
+    addChild(); //
     generateChildren //
 };
 #endif
