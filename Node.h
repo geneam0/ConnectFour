@@ -10,7 +10,7 @@ private:
   Board possibleBoard;
   
 public:
-  void calculateCost();
-  
+  void CostDFS();
+  void CostBFS();  
 
 };
