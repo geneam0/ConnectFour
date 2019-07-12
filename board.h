@@ -18,7 +18,7 @@ class Board{
 		char getComp() { return comp; }
 		bool boardFull();
 		bool hasWinner();
-		bool spaceEmpty();
+		bool spaceEmpty(size_t row, size_t col);
 		bool fullColumn(size_t col);
 		void addPiece(char entry, size_t col);
 };
