@@ -10,6 +10,8 @@ private:
   Board possibleBoard;
   
 public:
+  Node(size_t col, size_t calcCost, Board posBoard);
+  ~Node();
   void CostDFS();
   void CostBFS();  
   size_t getColumn() { return column; }
