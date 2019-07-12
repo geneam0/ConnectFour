@@ -11,15 +11,6 @@ Board::Board(){
 	}
 }
 
-void Board::addPiece(char entry, size_t col) {
-  if(fullColumn) { /* invalid message and reprompt */ return; }
-  if(boardFull) { return; }
-  while(!spaceEmpty(i, col)) {
-    i++;
-  }
-  arr[i][col] = entry;
-}
-
 bool Board::boardFull() {
   for(int i = 0; i < rows; i++) {
     for(int j = 0; j < columns; j++) {
@@ -74,6 +65,15 @@ bool Board::fullColumn(size_t col) {
     } 
   }
   return true;
+}
+
+void Board::addPiece(char entry, size_t col) {
+  if(fullColumn) { /* invalid message and reprompt */ return; }
+  if(boardFull) { return; }
+  while(!spaceEmpty(i, col)) {
+    i++;
+  }
+  arr[i][col] = entry;
 }
 
 friend ostream& operator<<(ostream &os) {
