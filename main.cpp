@@ -11,7 +11,7 @@ void makeMove(char Player, Board b){
 		b.addPiece(Player,playerInput);
 	} 
 	else{
-		size_t AI_Input= ai.move();
+		size_t AI_Input=ai.move();
 		b.addPiece(Player,AI_Input);
 	}
 	cout<<init;
