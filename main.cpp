@@ -5,7 +5,7 @@ using namespace std::cin;
 using namespace std::cout;
 
 void makeMove(char Player, Board b){
-	if(Player==user){
+	if(Player==init.getUser()){
 		size_t playerInput;
 		cin>>playerInput;
 		b.addPiece(Player,playerInput);
@@ -24,12 +24,12 @@ int main(){
 	
 	// playerInput is the column the player chooses to put a chip into
 	while(!init.hasWinner() && !init.boardFull()){
-		makeMove(user,init);
+		makeMove(init.getUser(),init);
 		if(init.hasWinner()){
 			cout<<"You won!";
 			return;
 		}
-		makeMove(comp,init);
+		makeMove(init.getComp(),init);
 		if(init.hasWinner()){
 			cout<<"You lost!";
 			return;
