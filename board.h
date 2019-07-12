@@ -40,10 +40,10 @@ class Board{
 			}
     		return os;
 		}
-	void addPiece(char entry, size_t column);
-	bool fullColumn(size_t column);
-	bool boardFull();
-	bool spaceEmpty();
+		void addPiece(char entry, size_t column);
+		bool fullColumn(size_t column);
+		bool boardFull();
+		bool spaceEmpty();
 };
 /* Unnecessary bc of ostream
 void printBoard(const Board target) const {
