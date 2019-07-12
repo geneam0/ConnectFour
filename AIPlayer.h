@@ -1,6 +1,6 @@
 #ifndef AIPLAYER_H
 #define AIPLAYER_H
-template class<Item>
+template <class Item>
 class AIPlayer{
   private:
     Item data;
