@@ -47,6 +47,8 @@ class Board{
 		bool boardFull();
 		bool spaceEmpty();
 		bool hasWinner();
+		char getUser() { return user; }
+		char getComp() { return comp; }
 };
 /* Unnecessary bc of ostream
 void printBoard(const Board target) const {
