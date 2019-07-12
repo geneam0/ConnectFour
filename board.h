@@ -46,7 +46,7 @@ class Board{
 		bool fullColumn(size_t col);
 		bool boardFull();
 		bool spaceEmpty();
-		char hasWinner();
+		bool hasWinner();
 };
 /* Unnecessary bc of ostream
 void printBoard(const Board target) const {
