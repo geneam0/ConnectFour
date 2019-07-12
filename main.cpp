@@ -4,14 +4,14 @@
 using namespace std::cin;
 using namespace std::cout;
 
-void makeMove(char Player, Board b){
+void makeMove(char Player, Board& b){
 	if(Player==init.getUser()){
 		size_t playerInput;
 		cin>>playerInput;
 		b.addPiece(Player,playerInput);
 	} 
 	else{
-		size_t AI_Input=ai.move();
+		size_t AI_Input=ai.move(b);
 		b.addPiece(Player,AI_Input);
 	}
 	cout<<init;
