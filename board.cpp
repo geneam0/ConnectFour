@@ -39,5 +39,5 @@ void Board::addPiece(char entry, size_t column) {
   while(!spaceEmpty(i, column)) {
     i++;
   }
-  board[i][column] = entry;
+  arr[i][column] = entry;
 }
