@@ -120,7 +120,7 @@ size_t PriorityQueue<Item>::prevIndex(size_t i) const {
 
 template <class Item>
 void PriorityQueue<Item>::resize(PriorityQueue<Item> queue, size_t newSize) {
-	queue.capacity = newSize;
+
 }	
 
 #endif
