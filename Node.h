@@ -12,5 +12,12 @@ private:
 public:
   void CostDFS();
   void CostBFS();  
+  size_t getColumn() { return column; }
+  size_t getCost() { return cost; }
+  void setBoard();
+  void setColumn();
+  void setCost();
+  
 
 };
+#endif
