@@ -1,5 +1,5 @@
-#ifndef _BOARD_H_
-#define _BOARD_H_
+#ifndef BOARD_H
+#define BOARD_H
 #include <iostream>
 using namespace std::cout;
 
@@ -46,32 +46,7 @@ class Board{
 		bool fullColumn(size_t col);
 		bool boardFull();
 		bool spaceEmpty();
-		char hasWinner(){
-			// check by column
-			for(size_t i=0; i<rows-3; i++){
-				for(size_t j=0; j<columns; j++){
-					if(arr[i][j]==arr[i+1][j]==arr[i+2][j]==arr[i+3][j]){
-						return arr[i][j];
-					}
-				}
-			}
-			// check by row
-			for(size_t i=0; i<rows; i++){
-				for(size_t j=0; j<columns-3; j++){
-					if(arr[i][j]==arr[i][j+1]==arr[i+2][j+2]==arr[i][j+3]){
-						return arr[i][j];
-					}
-				}
-			}
-			// check diagonals
-			for(size_t i=0; i<rows-3; i++){
-				for(size_t j=0; j<columns-3;j++){
-					if(arr[i][j]==arr[i+1][j+1]==arr[i+2][j+2]==arr[i+3][j+3]){
-						return arr[i][j];
-					}
-				}
-			}
-		}
+		char hasWinner();
 };
 /* Unnecessary bc of ostream
 void printBoard(const Board target) const {
