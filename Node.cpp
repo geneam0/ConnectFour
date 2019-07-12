@@ -4,6 +4,9 @@
 #include "node.h"
 
 Node::Node() {
+  column = 0;
+  cost = 0;
+  possibleBoard = init;
 }
 Node::~Node() {
 }
