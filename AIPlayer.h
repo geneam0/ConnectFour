@@ -1,6 +1,6 @@
-#ifndef __TREENODE__
-#define __TREENODE__
-class treeNode{
+#ifndef AIPLAYER_H
+#define AIPLAYER_H
+class AIPlayer{
   private:
     Item data;
     treeNode* parent;
