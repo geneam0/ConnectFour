@@ -40,10 +40,22 @@ class Board{
 			}
     		return os;
 		}
-		void addPiece(char entry, size_t column);
-		bool fullColumn(size_t column);
+		void addPiece(char entry, size_t col);
+		bool fullColumn(size_t col);
 		bool boardFull();
 		bool spaceEmpty();
+		char hasWinner(){
+			// check by column
+			for(size_t i=0; i<rows-3; i++){
+				for(size_t j=0; j<columns; j++){
+					if(arr[i][j]==arr[i+1][j]==arr[i+2][j]==arr[i+3][j]){
+						return arr[i][j];
+					}
+				}
+			}
+			// check by row
+			// check diagonals
+		}
 };
 /* Unnecessary bc of ostream
 void printBoard(const Board target) const {
