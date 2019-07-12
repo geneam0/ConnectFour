@@ -5,8 +5,8 @@ template <class Item>
 class AIPlayer{
   private:
     Item data;
-    treeNode* parent;
-    treeNode** children;
+    AIPlayer<Item>* parent;
+    AIPlayer<Item>** children;
     size_t numChildren;
     size_t capChildren;
   public:
