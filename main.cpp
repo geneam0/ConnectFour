@@ -23,7 +23,7 @@ int main(){
 	AIPlayer ai=new AIPlayer();
 	
 	// playerInput is the column the player chooses to put a chip into
-	while(!init.hasWinner() && !init.boardFull){
+	while(!init.hasWinner() && !init.boardFull()){
 		makeMove(user,init);
 		if(init.hasWinner()){
 			cout<<"You won!";
