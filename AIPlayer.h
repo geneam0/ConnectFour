@@ -1,6 +1,7 @@
 #ifndef AIPLAYER_H
 #define AIPLAYER_H
-#include <treeNode>
+#include "PriorityQueue.h"
+
 template <class Item>
 class AIPlayer{
   private:
