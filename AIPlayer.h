@@ -18,6 +18,10 @@ class AIPlayer{
     void setChild(size_t i); 
     void addChild(); //
     Item* generateChildren();
+    size_t BFS(const Board b);
+    size_t DFS(const Board b);
+    size_t MiniMax(const Board b);
+    size_t IterativeDeepening(const Board b);
     // main method for the AI to determine which column to place in
     size_t move(const Board b);
 };
