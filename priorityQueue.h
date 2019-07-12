@@ -23,7 +23,7 @@ class PriorityQueue {
         size_t size() const;
         bool empty() const;
         Item front() const;
-        void resize(size_t newSize);
+        void resize(PriorityQueue<Item>, size_t newSize);
 
     private:
         Item* data;
