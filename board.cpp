@@ -11,10 +11,10 @@ Board::Board(){
 	}
 }
 
-bool Board::boardFull() {
+bool Board::boardFull() const {
   for(int i = 0; i < rows; i++) {
     for(int j = 0; j < columns; j++) {
-      if (ar[i][j] == "-") {
+      if (arr[i][j] == "-") {
         return false;
       }
     }
@@ -22,7 +22,7 @@ bool Board::boardFull() {
   return true;
 }
 
-bool Board::hasWinner(){
+bool Board::hasWinner() const{
   // check by column
 	for(size_t i=0; i<rows-3; i++){
 		for(size_t j=0; j<columns; j++){
@@ -50,15 +50,11 @@ bool Board::hasWinner(){
 	return false;
 }
 
-bool Board::spaceEmpty(size_t row, size_t col) {
-  if(arr[row][col] == "-") {
-     return false;
-  } else {
-    return true;
-  }    
+bool Board::spaceEmpty(size_t row, size_t col) const {
+  return arr[row][col] == "-";
 }
 
-bool Board::fullColumn(size_t col) {
+bool Board::fullColumn(size_t col) const {
   for(int i = 0; i < rows; i++) {
     if(arr[i][col] == "-") {
       return false;
@@ -68,8 +64,9 @@ bool Board::fullColumn(size_t col) {
 }
 
 void Board::addPiece(char entry, size_t col) {
-  if(fullColumn) { /* invalid message and reprompt */ return; }
-  if(boardFull) { return; }
+  if(fullColumn(col)) { /* invalid message and reprompt */ return; }
+  if(boardFull()) { return; }
+  size_t i=0;
   while(!spaceEmpty(i, col)) {
     i++;
   }
