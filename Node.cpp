@@ -3,31 +3,5 @@
 
 #include "node.h"
 
-Node::Node() {
-  column = 0;
-  cost = 0;
-  possibleBoard = init;
-}
-Node::~Node() {
-  delete column;
-  delete cost;
-  delete possibleBoard;
-}
-
-void Node::CostDFS() {
-}
-
-void Node::CostBFS() {
-}
-
-void Node::setBoard() {
-}
-
-void Node::setColumn() {
-}
-
-void Node::setCost() {
-}
-
 
 #endif
