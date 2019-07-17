@@ -19,8 +19,8 @@ void makeMove(char Player, Board& b){
 
 int main(){
 	// initialize the board and AI
-	Board init=new Board(); 
-	AIPlayer ai=new AIPlayer();
+	Board init = Board(); 
+	AIPlayer ai = AIPlayer();
 	
 	// playerInput is the column the player chooses to put a chip into
 	while(!init.hasWinner() && !init.boardFull()){
