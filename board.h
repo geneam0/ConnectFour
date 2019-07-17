@@ -14,12 +14,12 @@ class Board{
 	public:
 		// constructors
 		Board();
-		char getUser() { return user; }
-		char getComp() { return comp; }
-		bool boardFull();
-		bool hasWinner();
-		bool spaceEmpty(size_t row, size_t col);
-		bool fullColumn(size_t col);
+		char getUser() const { return user; }
+		char getComp() const { return comp; }
+		bool boardFull() const;
+		bool hasWinner() const;
+		bool spaceEmpty(size_t row, size_t col) const;
+		bool fullColumn(size_t col) const;
 		void addPiece(char entry, size_t col);
 };
 friend ostream& operator<<(ostream &os);
