@@ -80,7 +80,7 @@ friend ostream& operator<<(ostream &os) {
 		}	
 		os<<"\n";
 	}
-    	return os;
+    return os;
 }
 
 #endif

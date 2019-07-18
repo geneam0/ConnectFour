@@ -1,7 +1,7 @@
 #ifndef AIPLAYER_H
 #define AIPLAYER_H
-#include "PriorityQueue.h"
-#include "Board.h"
+#include "priorityQueue.h"
+#include "board.h"
 #include "Node.h"
 
 typedef Item=Node;
