@@ -1,6 +1,5 @@
 #ifndef AIPLAYER_H
 #define AIPLAYER_H
-#include "priorityQueue.h"
 #include "board.h"
 #include "Node.h"
 
@@ -12,7 +11,6 @@ class AIPlayer{
     AIPlayer<Item>** children;
     size_t numChildren;
     size_t capChildren;
-    size_t depth=4;
   public:
     //get ith children
     Item getChild(size_t i){ return children[i]; }
