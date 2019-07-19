@@ -23,12 +23,14 @@ private:
   treeNode*& children;
   size_t numChildren;
   size_t capChildren;
+  Stack<Board> parentStack;
+  Stack<Board> childrenStack;
 };
 
 
 // SEARCH ALGORITHMS
 // returning node that contains board and can trace back to parent
-treeNode DFS();
+Board DFS(const Board b);
 treeNode BFS();
 treeNode ID();
 treeNode Minimax(); 
