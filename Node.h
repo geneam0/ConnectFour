@@ -1,7 +1,8 @@
 #ifndef __NODE_H__
 #define __NODE_H__
 
-#include "board.cpp"
+#include "board.h"
+#include "Stack.h"
 
 class treeNode {
 public:
