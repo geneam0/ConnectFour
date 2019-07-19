@@ -1,3 +1,4 @@
+/*
 #ifndef AIPLAYER_H
 #define AIPLAYER_H
 #include "board.h"
@@ -28,3 +29,4 @@ class AIPlayer{
     size_t move(const Board b);
 };
 #endif
+*/
