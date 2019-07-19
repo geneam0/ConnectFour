@@ -1,3 +1,4 @@
+/*
 #include "AIPlayer.h"
 
 //ith children to a different state
@@ -20,3 +21,4 @@ size_t AIPlayer::move(const Board b){
   // return MiniMax(b);
   // return IterativeDeepening(b);
 }
+*/
