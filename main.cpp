@@ -23,7 +23,7 @@ void makeMove(char Player, Board& b){
 int main(){
 	// initialize the board and AI
 	Board init = new Board(); 
-	Node AI = new Node();
+	treeNode AI = new treeNode();
 	// test DFS
 	init.addPiece('X',0); init.addPiece('O',0);
 	init.addPiece('X',0); init.addPiece('O',0);
