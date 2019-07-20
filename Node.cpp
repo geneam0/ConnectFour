@@ -21,8 +21,9 @@ Board Node::DFS(const Board b){
   DFS(onTop);
 }
 
-Board Node::Minimax(const Board b){
-
+Board Node::Minimax(const Board b, size_t level){
+  if(level>4) return;
+  
 }
 
 #endif
