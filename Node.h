@@ -36,7 +36,7 @@ class treeNode {
     treeNode operator=(treeNode source);
 
     // search algorithms
-    void DFS(const Board b, char turn);
+    void DFS(const treeNode* b, char turn);
     void Minimax(const Board b); 
     void BFS();
     void ID();
