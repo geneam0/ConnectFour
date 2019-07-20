@@ -93,12 +93,13 @@ Board treeNode::Minimax(const Board b, size_t level){
 
 // meriselle search algorithms 
 void treeNode::BFS(turn) {
+  char first, second;
   if(turn == user) {
-    char first = user;
-    char second = comp;
+    first = user;
+    second = comp;
   } else {
-    char first = comp;
-    char second = user;
+    first = comp;
+    second = user;
   treeNode currentNode;
   currentNode // SET CURRENTNODE TO THE NODE THAT IS CALLING THIS FUNCTION (necessary for simpler while loop)
   while(!getBoard().hasWinner()) {
@@ -139,12 +140,13 @@ void treeNode::BFS(turn) {
 }
   
 void IT(turn) {
-   if(turn == user) {
-    char first = user;
-    char second = comp;
+    char first, second;
+  if(turn == user) {
+    first = user;
+    second = comp;
   } else {
-    char first = comp;
-    char second = user;
+    first = comp;
+    second = user;
   } 
   treeNode currentNode;
   currentNode // SET CURRENTNODE TO THE NODE THAT IS CALLING THIS FUNCTION (necessary for simpler while loop)
