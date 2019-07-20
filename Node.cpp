@@ -53,7 +53,7 @@ void treeNode::generateChildren(char turn) {
 }
 
 
-Board Node::DFS(const Board b){
+Board Node::DFS(const Board b, char turn){
   // Base Case: returns the winning board or tied board if no other solution possible
   if(b.hasWinner()||(b.boardFull()&&childrenStack.empty())) return b;
   /*
@@ -64,11 +64,16 @@ Board Node::DFS(const Board b){
   else if(!b.boardFull()){
     parentStack.push(b);
     //!!!! IMPLEMENT GENERATE CHILDREN
-    childrenStack.push(generateChildren(b));
+    b.generateChildren(turn)
+    for(size_t i=0; i<7;i++){
+     childrenStack.push(b->getChild(i));
+    }
   } 
   Board onTop=childrenStack.top();
   childrenStack.pop();
-  DFS(onTop);
+  if(turn=='X') turn='O';
+  else turn='X';
+  DFS(onTop,turn);
 }
 
 Board treeNode::Minimax(const Board b, size_t level){
