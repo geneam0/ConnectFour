@@ -10,7 +10,6 @@ public:
 
   // constructors
   treeNode();
-  treeNode(treeNode *&source);
   treeNode(size_t col);
 
   // get data
