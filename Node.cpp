@@ -21,10 +21,6 @@ treeNode::treeNode(size_t col) {        // initial user input board
     
 }
 
-// do we need a copy constructor since we're using assignment operator?
-treeNode::treeNode(treeNode *&source) {} 
-
-
 // ADD/SET DATA
 
 // addChild: fills designated slot in children array with pointer to new child
