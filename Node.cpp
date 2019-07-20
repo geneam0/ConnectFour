@@ -87,7 +87,7 @@ void Node::DFS(const treeNode* b, char turn){
     b->generateChildren(turn);
     for(size_t i=0; i<7;i++){
       if(children[i] == nullptr) { continue; }
-      childrenStack.push(b->getChild(i));
+      else { childrenStack.push(b->getChild(i)); }
     }
   } 
   treeNode onTop=childrenStack.top();
