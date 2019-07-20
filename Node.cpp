@@ -12,7 +12,7 @@ treeNode::treeNode() {
 }
 
 // root treeNode constructor
-treeNode::treeNode(size_t col) {        // initial user input board 
+treeNode::treeNode(size_t col, char user) {        // initial user input board 
     Board root;
     root.addPiece(i, user);
     possibleBoard = root;
