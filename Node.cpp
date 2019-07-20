@@ -161,13 +161,15 @@ void IT(turn) {
   currentNode // SET CURRENTNODE TO THE NODE THAT IS CALLING THIS FUNCTION (necessary for simpler while loop)
   currentNode.generateChildren();
   // add while loop here, just not right now for testing purposes
-  for(int i = 0; i < 7; i++) {
+  
+ /*  for(int i = 0; i < 7; i++) {
     if(children[i] == nullptr) { continue; } 
     else if(children[i]->getBoard().hasWinner()) {
       break;
     }
     gameTree.push(children[i]->getBoard());
-    
+  } 
+  */ 
     
       
   
