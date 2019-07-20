@@ -9,14 +9,16 @@ void MiniMax(const treeNode* b, size_t level, char turn){
     }
   }
   // Otherwise, the MiniMax function continues to generate child nodes
-  b->generateChildren(turn);
-  level--;
-  for(size_t i=0; i<7;i++){
-    if(children[i] == nullptr) { continue; }
-    else{
-      if(turn=='O') turn='X';
-      else turn='O';
-      MiniMax(b->getChild(i),level,turn);
+  else{
+    b->generateChildren(turn);
+    level--;
+    for(size_t i=0; i<7;i++){
+      if(children[i] == nullptr) { continue; }
+      else{
+        if(turn=='O') turn='X';
+        else turn='O';
+        MiniMax(b->getChild(i),level,turn);
+      }
     }
   }
 }
