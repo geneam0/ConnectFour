@@ -16,7 +16,7 @@ treeNode::treeNode(size_t col) {        // initial user input board
     Board root;
     root.addPiece(i, user);
     possibleBoard = root;
-    setParent = NULL;
+    setParent(NULL);
     new *Children[7];
     
 }
