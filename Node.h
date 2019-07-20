@@ -16,7 +16,7 @@ public:
   void setChild(); // set ith child to a diff state
   void addChild();
   void generateChildren(); // given a node, what are the next possible moves
-
+  Board DFS(const Board b);
 
 private: 
   size_t column; // still needed or no ?
@@ -32,7 +32,6 @@ private:
 
 // SEARCH ALGORITHMS
 // returning node that contains board and can trace back to parent
-Board DFS(const Board b);
 treeNode BFS();
 treeNode ID();
 treeNode Minimax(); 
