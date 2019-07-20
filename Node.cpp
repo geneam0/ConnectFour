@@ -34,7 +34,7 @@ treeNode treeNode::operator=(treeNode source) {
 /* generateChildren function:
 - preconditions: have a turn (user or comp) and an empty children array (the children is a list of pointers pointing from the parent to its 7 children)
 - generate children is a member function, so the only parameter it takes is which turn it is (user or comp)
-- when you call parent.generateChildren it will the array of pointers connected to each Node with pointers to all these children 
+- when you call parent.generateChildren it will fill the array of pointers connected to each Node with pointers to all these children 
 - each child will have a new piece, however, if the column is full, that slot in the list will point to NULL
 - postconditions: have the list of pointers (children array) pointing to 7 children with full columns pointing to NULL 
 */

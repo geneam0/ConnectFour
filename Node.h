@@ -27,8 +27,7 @@ public:
   // overloaded operators
   treeNode operator=(treeNode source);
 
-  // search algorithms
-  Board DFS(const Board b);
+  Board DFS(const Board b, char turn);
   Board Minimax(const Board b); 
 
 private: 

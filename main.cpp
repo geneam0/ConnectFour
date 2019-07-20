@@ -43,7 +43,7 @@ int main(){
 	O O O - - - -        O O O - - - -
 	X X X - - - -        X X X X - - - (wow, that glo' up)
 	*/
-	cout<<AI.DFS(init);
+	cout<<AI.DFS(init,'O');
 	delete init;
 	
 	// initialize the board again
