@@ -19,7 +19,7 @@ class treeNode {
     // constructors
     treeNode();
     treeNode(size_t col, char user);
-    treeNode(Board bo, char user);
+    treeNode(Board bo);
   
     // get data
     treeNode getChild(size_t i)                               { return children[i]; }
