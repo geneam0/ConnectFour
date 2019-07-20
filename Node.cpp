@@ -3,7 +3,7 @@
 
 #include "node.h"
 
-Board DFS(const Board b){
+Board Node::DFS(const Board b){
   // Base Case: returns the winning board or tied board if no other solution possible
   if(b.hasWinner()||(b.boardFull()&&childrenStack.empty())) return b;
   /*
