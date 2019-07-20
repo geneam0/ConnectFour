@@ -59,14 +59,16 @@ int main(){
 	init.addPiece('X',2); init.addPiece('X',3); init.addPiece('X',4);
 	init.addPiece('O',2); init.addPiece('O',3); init.addPiece('X',4);
 	/* Should look liek dis:
-	Before		     Mid		  Second Mid
-	- - - - - - -        - - - - - - -
-	- - - - - - -        - - - - - - - 
-	- - - - - - - _____\ - - - - - - - _____\
-	- - - O - - -      / - - X O - - -
-	- - O X X - -        - - O X X - -
-	- O X O X O -        - O X O X O -
+	Before		     Mid		  Second Mid		Final
+	- - - - - - -        - - - - - - -	  - - - - - - -        - - - - - - -
+	- - - - - - -        - - - - - - -        - - - - - - -        - - - - - - -
+	- - - - - - - _____\ - - - - - - - _____\ - - - - - - - _____\ - - - - - - -
+	- - - O - - -      / - - X O - - -      / - - X O O - -      / - - X O O - -
+	- - O X X - -        - - O X X - -        - - O X X - -        - - O X X X -
+	- O X O X O -        - O X O X O -        - O X O X O -        - O X O X O -
+	highkey not sure if this will work tho
 	*/
+	cout<<AI.Minimax(init,4,'X')
 	delete init;
 	
 	// initalize the board again
