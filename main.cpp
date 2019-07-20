@@ -35,13 +35,13 @@ int main(){
 	init.addPiece('X',2); init.addPiece('O',2);
 	init.addPiece('X',2); 
 	/* Should look like dis:
-	Before               After
-	O O - - - - -        O O O - - - -
-	X X X - - - -        X X X - - - -
-	O O O - - - - _____\ O O O - - - -
-	X X X - - - -      / X X X - - - -
-	O O O - - - -        O O O - - - -
-	X X X - - - -        X X X X - - - (wow, that glo' up)
+	Before               Mid		  After
+	O O - - - - -        O O O - - - -	  O O O - - - -
+	X X X - - - -        X X X - - - -	  X X X - - - -
+	O O O - - - - _____\ O O O - - - - _____\ O O O - - - -
+	X X X - - - -      / X X X - - - -      / X X X - - - -
+	O O O - - - -        O O O - - - -	  O O O - - - -
+	X X X - - - -        X X X - - - -	  X X X X - - - (wow, that glo' up tho)
 	*/
 	cout<<AI.DFS(init,'O');
 	delete init;
