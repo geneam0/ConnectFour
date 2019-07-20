@@ -6,23 +6,28 @@
 class treeNode {
 public:
   typedef Board nodeDatatype;
+  treeNode();
+  treeNode(nodeDatatype *&source);
   treeNode(size_t col,Board posBoard, treeNode* initLink)   { possibleBoard = posBoard; link = initLink; }
 
-  treeNode getChild(); // get ith child
-  treeNode getChild(); //get all children
+  treeNode getChild(size_t i); // get ith child
+  treeNode getChildren(); //get all children
 
-  void setChild(); // set ith child to a diff state
-  void addChild();
-  void generateChildren(); // given a node, what are the next possible moves
+  void addChild(treeNode* newChildPtr, size_t i);
+  void generateChildren(char turn); // given a node, what are the next possible moves
 
+  nodeDatatype getData() { return possibleBoard; }
+
+  void setData(nodeDatatype b) { possibleBoard = b; }
+
+  treeNode operator=(treeNode source);
 
 private: 
   size_t column; // still needed or no ?
   nodeDatatype possibleBoard; // data 
   treeNode* parent;
-  treeNode*& children;
   size_t numChildren;
-  size_t capChildren;
+  treeNode *children[7];
 };
 
 

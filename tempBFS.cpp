@@ -18,32 +18,13 @@ size_t BFS(init) {
   then shift over 
   and gradually fill priority queue, after four levels, top of priority queue is the column returned. 
 
-var breadthFirstIteration = function() {
-    if (queue.length > 0) {
-        var node = queue.shift();
-        if (node.parent != node) {
-            if (!node.parent.children) {
-                node.parent.children = [];
-            }
-            node.parent.children.push(node);
-        }
-        var moves = node.game.moves();
-        for (var i = 0; i < moves.length; i++) {
-            queue.push({
-                game: node.game.copy().move(i),
-                parent: node,
-                id: counter++
-            });
-        }
-        return node;
-    }
-};
+
 
 
   */
 
   
-  
+} 
 
    
    
