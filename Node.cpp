@@ -7,7 +7,7 @@
 
 // default constructor ->>> ??? what else for this
 treeNode::treeNode() {
-  setParent = NULL;
+  setParent(NULL);
   new *children[7];
 }
 
