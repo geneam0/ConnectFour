@@ -3,11 +3,16 @@
 
 #include "Node.h"
 
-treeNode::treeNode() {
 
-}
-
-treeNode::treeNode(nodeDatatype *&source) {
+ size_t column; // still needed or no ?
+  nodeDatatype possibleBoard; // data 
+  treeNode* parent;
+  size_t numChildren;
+  treeNode *children[7];
+  size_t capChildren;
+  Stack<Board> parentStack;
+  Stack<Board> childrenStack;
+  Queue<treeNode> queueTree;
 
 }
 treeNode treeNode::getChild(size_t i) {
@@ -66,7 +71,7 @@ Board Node::DFS(const Board b){
   DFS(onTop);
 }
 
-Board Node::Minimax(const Board b, size_t level){
+Board treeNode::Minimax(const Board b, size_t level){
   if(level>4) return;
   
 }
@@ -77,5 +82,12 @@ Board Node::Minimax(const Board b, size_t level){
 
 
 // meriselle search algorithms 
+
+Board treeNode::BFS(const board b) {
+  treeNode parent;
+  
+
+
+}
 
 #endif
