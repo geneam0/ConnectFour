@@ -7,7 +7,6 @@
 
 class treeNode {
 public:
-  typedef Board nodeDatatype;
 
   // constructors
   treeNode();
@@ -17,14 +16,14 @@ public:
   // get data
   treeNode getChild(size_t i)                               { return children[i]; }
   treeNode getChildren()                                    { return children; }
-  nodeDatatype getBoard()                                   { return possibleBoard; }
+  Board getBoard()                                   { return possibleBoard; }
   treeNode* getParent()                                     { return parent; }
   
 
   // add/set data
   void addChild(treeNode* newChildPtr, size_t i);   
   void generateChildren(char turn); // given a node, what are the next possible moves
-  void setBoard(nodeDatatype b)                             { possibleBoard = b; }
+  void setBoard(Board b)                             { possibleBoard = b; }
   void setParent(treeNode* p)                               { parent = p; }
 
   // overloaded operators
@@ -38,7 +37,7 @@ public:
 
 
 private: 
-  nodeDatatype possibleBoard;   // data part of node ("parent" board)
+  Board possibleBoard;   // data part of node ("parent" board)
   treeNode* parent;
   treeNode *children[7];        // link part of node (array of pointers) 
   Stack<Board> parentStack;
