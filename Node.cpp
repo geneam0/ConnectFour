@@ -50,6 +50,9 @@ void treeNode::generateChildren(char turn) {
       addChild(nullptr, i);         // later, when reading children, check whether its null pointer first because youll get an error accessing a null ptr
     }
   }
+  treeNode *parentPtr;             // this part creates the last slot in the children list of pointers, it is NOT a child, but a ptr pointing to the parent treeNode
+  parentPtr = this;
+  addChild(parentPtr, 7);
 }
 
 
