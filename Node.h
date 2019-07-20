@@ -12,7 +12,6 @@ public:
   // constructors
   treeNode();
   treeNode(treeNode *&source);
-  treeNode(Board posBoard, treeNode* initLink)   { possibleBoard = posBoard; link = initLink; }
 
   // get data
   treeNode getChild(size_t i)                               { return children[i]; }
