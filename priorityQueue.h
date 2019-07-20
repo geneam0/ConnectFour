@@ -10,7 +10,7 @@ using namespace std;
 template <class Item>
 class PriorityQueue {
     public:
-        const size_t DEF_CAP = 30;
+        const size_t DEF_CAP = 60;
 
         PriorityQueue();
         PriorityQueue(const PriorityQueue<Item>& source);

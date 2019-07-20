@@ -1,7 +1,7 @@
+/*
 #ifndef AIPLAYER_H
 #define AIPLAYER_H
-#include "PriorityQueue.h"
-#include "Board.h"
+#include "board.h"
 #include "Node.h"
 
 typedef Item=Node;
@@ -12,7 +12,6 @@ class AIPlayer{
     AIPlayer<Item>** children;
     size_t numChildren;
     size_t capChildren;
-    size_t depth=4;
   public:
     //get ith children
     Item getChild(size_t i){ return children[i]; }
@@ -30,3 +29,4 @@ class AIPlayer{
     size_t move(const Board b);
 };
 #endif
+*/

@@ -14,6 +14,7 @@ class Board{
 	public:
 		// constructors
 		Board();
+		~Board();
 		char getUser() const { return user; }
 		char getComp() const { return comp; }
 		bool boardFull() const;

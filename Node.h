@@ -1,7 +1,9 @@
 #ifndef __NODE_H__
 #define __NODE_H__
 
-#include "board.cpp"
+#include "board.h"
+#include "Stack.h"
+#include "PriorityQueue.h"
 
 class treeNode {
 public:
@@ -21,6 +23,8 @@ public:
   void setData(nodeDatatype b) { possibleBoard = b; }
 
   treeNode operator=(treeNode source);
+  Board DFS(const Board b);
+  Board Minimax(const Board b); 
 
 private: 
   size_t column; // still needed or no ?
@@ -28,14 +32,15 @@ private:
   treeNode* parent;
   size_t numChildren;
   treeNode *children[7];
+  size_t capChildren;
+  Stack<Board> parentStack;
+  Stack<Board> childrenStack;
 };
 
 
 // SEARCH ALGORITHMS
 // returning node that contains board and can trace back to parent
-treeNode DFS();
 treeNode BFS();
 treeNode ID();
-treeNode Minimax(); 
 
 #endif
