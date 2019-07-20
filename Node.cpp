@@ -125,7 +125,7 @@ Board treeNode::BFS(turn) {
     next.generateChildren(second);
     for(int i = 0; i < 7; i++) {
       gameTree.push(children[i]);
-      if(children[i]->getBoard().hasWinnter()) {
+      if(children[i]->getBoard().hasWinner()) {
         break;
       }
     }
