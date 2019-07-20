@@ -12,29 +12,30 @@ public:
   // constructors
   treeNode();
   treeNode(nodeDatatype *&source);
-  treeNode(size_t col,Board posBoard, treeNode* initLink)   { possibleBoard = posBoard; link = initLink; }
+  treeNode(Board posBoard, treeNode* initLink)   { possibleBoard = posBoard; link = initLink; }
 
   // get data
-  treeNode getChild(size_t i); // get ith child
-  treeNode getChildren(); //get all children
-  nodeDatatype getBoard() { return possibleBoard; }
+  treeNode getChild(size_t i)                               { return children[i]; }
+  treeNode getChildren();                                   { return children; }
+  nodeDatatype getBoard()                                   { return possibleBoard; }
 
   // add/set data
-  void addChild(treeNode* newChildPtr, size_t i);
+  void addChild(treeNode* newChildPtr, size_t i);   
   void generateChildren(char turn); // given a node, what are the next possible moves
-  void setBoard(nodeDatatype b) { possibleBoard = b; }
+  void setBoard(nodeDatatype b)                             { possibleBoard = b; }
 
   // overloaded operators
   treeNode operator=(treeNode source);
 
+  // search algorithms
   Board DFS(const Board b, char turn);
   Board Minimax(const Board b); 
 
 private: 
-  nodeDatatype possibleBoard; // data 
+  nodeDatatype possibleBoard;   // data part of node ("parent" board)
   treeNode* parent;
+  treeNode *children[7];        // link part of node (array of pointers)
   size_t numChildren;
-  treeNode *children[7];
   size_t capChildren;
   Stack<Board> parentStack;
   Stack<Board> childrenStack;
