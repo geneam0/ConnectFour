@@ -11,18 +11,21 @@ public:
 
   // constructors
   treeNode();
-  treeNode(nodeDatatype *&source);
+  treeNode(treeNode *&source);
   treeNode(Board posBoard, treeNode* initLink)   { possibleBoard = posBoard; link = initLink; }
 
   // get data
   treeNode getChild(size_t i)                               { return children[i]; }
-  treeNode getChildren();                                   { return children; }
+  treeNode getChildren()                                    { return children; }
   nodeDatatype getBoard()                                   { return possibleBoard; }
+  treeNode* getParent()                                     { return parent; }
+  
 
   // add/set data
   void addChild(treeNode* newChildPtr, size_t i);   
   void generateChildren(char turn); // given a node, what are the next possible moves
   void setBoard(nodeDatatype b)                             { possibleBoard = b; }
+  void setParent(treeNode* p)                               { parent = p; }
 
   // overloaded operators
   treeNode operator=(treeNode source);
@@ -34,7 +37,7 @@ public:
 private: 
   nodeDatatype possibleBoard;   // data part of node ("parent" board)
   treeNode* parent;
-  treeNode *children[8];        // link part of node (array of pointers) [8 slots because: 7 children and last slot will be a pointer to the parent treeNode]
+  treeNode *children[7];        // link part of node (array of pointers) 
   Stack<Board> parentStack;
   Stack<Board> childrenStack;
   Queue<treeNode> gameTree;
