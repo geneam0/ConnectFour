@@ -20,6 +20,11 @@ treeNode::treeNode(size_t col, char user) {        // initial user input board
     new *children[7]; 
 }
 
+treeNode::treeNode(Board bo){
+  possibleBoard=bo;
+  setParent(NULL);
+  new *children[7];
+}
 // ADD/SET DATA
 // addChild: fills designated slot in children array with pointer to new child
 // preconditions: pointer to new child and the column in which the new piece was added
