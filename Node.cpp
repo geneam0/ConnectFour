@@ -17,18 +17,15 @@ treeNode::treeNode(size_t col) {        // initial user input board
     root.addPiece(i, user);
     possibleBoard = root;
     setParent(NULL);
-    new *children[7];
-    
+    new *children[7]; 
 }
 
 // ADD/SET DATA
-
 // addChild: fills designated slot in children array with pointer to new child
 // preconditions: pointer to new child and the column in which the new piece was added
 void treeNode::addChild(treeNode* newChildPtr, size_t i) {
   children[i] = newChildPtr;
 }
-
 
 /* generateChildren function:
 - preconditions: have a turn (user or comp) and an empty children array (the children is a list of pointers pointing from the parent to its 7 children)
@@ -66,7 +63,6 @@ treeNode operator=(treeNode source) {
 }
 
 // SEARCH ALGORITHMS
-
 Board Node::DFS(const Board b, char turn){
   // Base Case: returns the winning board or tied board if no other solution possible
   if(b.hasWinner()||(b.boardFull()&&childrenStack.empty())) return b;
@@ -94,8 +90,6 @@ Board treeNode::Minimax(const Board b, size_t level){
   if(level>4) return;
   
 }
-
-
 
 // meriselle search algorithms 
 void treeNode::BFS(turn) {
@@ -143,8 +137,7 @@ void treeNode::BFS(turn) {
     cout << "->" << path;
     winningPath.pop();    
 }
-    
-    
+  
 void IT(turn) {
    if(turn == user) {
     char first = user;
@@ -165,13 +158,7 @@ void IT(turn) {
     }
     gameTree.push(children[i]->getBoard());
   } 
-  */ 
-    
-      
-  
-  
-  
-  
+  */  
 }
-
+    
 #endif
