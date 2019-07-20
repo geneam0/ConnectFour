@@ -55,7 +55,18 @@ int main(){
 	// initalize the board again
 	Board init = new Board();
 	// test MiniMax
-	
+	init.addPiece('O',1); init.addPiece('O',3); init.addPiece('O',5);
+	init.addPiece('X',2); init.addPiece('X',3); init.addPiece('X',4);
+	init.addPiece('O',2); init.addPiece('O',3); init.addPiece('X',4);
+	/* Should look liek dis:
+	Before		     Mid		  Second Mid
+	- - - - - - -        - - - - - - -
+	- - - - - - -        - - - - - - - 
+	- - - - - - - _____\ - - - - - - - _____\
+	- - - O - - -      / - - X O - - -
+	- - O X X - -        - - O X X - -
+	- O X O X O -        - O X O X O -
+	*/
 	delete init;
 	
 	// initalize the board again
