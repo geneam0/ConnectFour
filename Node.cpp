@@ -21,4 +21,8 @@ Board Node::DFS(const Board b){
   DFS(onTop);
 }
 
+Board Node::Minimax(const Board b){
+
+}
+
 #endif
