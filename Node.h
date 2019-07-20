@@ -38,7 +38,7 @@ class treeNode {
 
     // search algorithms
     void DFS(const treeNode* b, char turn);
-    void Minimax(const Board b); 
+    void Minimax(const Board b, size_t level, char turn); 
     void BFS();
     void ID();
 };
