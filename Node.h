@@ -34,9 +34,7 @@ public:
 private: 
   nodeDatatype possibleBoard;   // data part of node ("parent" board)
   treeNode* parent;
-  treeNode *children[7];        // link part of node (array of pointers)
-  size_t numChildren;
-  size_t capChildren;
+  treeNode *children[8];        // link part of node (array of pointers)
   Stack<Board> parentStack;
   Stack<Board> childrenStack;
   Queue<treeNode> gameTree;
