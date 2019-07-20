@@ -11,6 +11,13 @@ Board::Board(){
 	}
 }
 
+Board::~Board(){
+	for (size_t i = 0; i < rows; i++) {
+        	delete[] arr[i];
+    	}
+	delete[] arr;
+}
+
 bool Board::boardFull() const {
   for(int i = 0; i < rows; i++) {
     for(int j = 0; j < columns; j++) {
