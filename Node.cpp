@@ -148,6 +148,17 @@ void treeNode::BFS(turn) {
     
     
 void IT(turn) {
+   if(turn == user) {
+    char first = user;
+    char second = comp;
+  } else {
+    char first = comp;
+    char second = user;
+  } 
+  treeNode currentNode;
+  currentNode // SET CURRENTNODE TO THE NODE THAT IS CALLING THIS FUNCTION (necessary for simpler while loop)
+  
+  
   
   
 }
