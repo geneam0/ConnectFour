@@ -35,6 +35,7 @@ private:
   size_t capChildren;
   Stack<Board> parentStack;
   Stack<Board> childrenStack;
+  Queue<treeNode> gameTree;
 };
 
 

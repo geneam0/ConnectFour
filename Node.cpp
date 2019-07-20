@@ -1,7 +1,7 @@
 #ifndef __NODE_CPP__
 #define __NODE_CPP__
 
-#include "node.h";
+#include "Node.h"
 
 treeNode::treeNode() {
 
@@ -14,9 +14,10 @@ treeNode treeNode::getChild(size_t i) {
 } // get ith child
 
 treeNode treeNode::getChildren() {
-} //get all children
+} // get all children
 
-
+// addChild: fills designated slot in children array with pointer to new child
+// preconditions: pointer to new child and the column in which the new piece was added
 void treeNode::addChild(treeNode* newChildPtr, size_t i) {
   children[i] = newChildPtr;
 }
@@ -25,6 +26,13 @@ treeNode treeNode::operator=(treeNode source) {
 
 }
 
+/* generateChildren function:
+- preconditions: have a turn (user or comp) and an empty children array (the children is a list of pointers pointing from the parent to its 7 children)
+- generate children is a member function, so the only parameter it takes is which turn it is (user or comp)
+- when you call parent.generateChildren it will the array of pointers connected to each Node with pointers to all these children 
+- each child will have a new piece, however, if the column is full, that slot in the list will point to NULL
+- postconditions: have the list of pointers (children array) pointing to 7 children with full columns pointing to NULL 
+*/
 void treeNode::generateChildren(char turn) {
   for(int i = 0; i < 7; i++) {
     treeNode *childPtr;
@@ -34,7 +42,7 @@ void treeNode::generateChildren(char turn) {
       childPtr->getData().addPiece(turn, i);
       addChild(childPtr, i);
     } else {
-      addChild(nullptr, i);         // when reading children, have to check whether its null pointer first because youll get an error accessing a null ptr
+      addChild(nullptr, i);         // later, when reading children, check whether its null pointer first because youll get an error accessing a null ptr
     }
   }
 }
@@ -62,5 +70,12 @@ Board Node::Minimax(const Board b, size_t level){
   if(level>4) return;
   
 }
+
+
+
+
+
+
+// meriselle search algorithms 
 
 #endif
