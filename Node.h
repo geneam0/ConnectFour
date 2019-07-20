@@ -3,6 +3,7 @@
 
 #include "board.h"
 #include "Stack.h"
+#include "PriorityQueue.h"
 
 class treeNode {
 public:
