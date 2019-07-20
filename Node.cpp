@@ -3,16 +3,24 @@
 
 #include "Node.h"
 
-// CONSTRUCTORS
-  treeNode();
-  treeNode(treeNode *&source);
-  treeNode(Board posBoard, treeNode* initLink)   { possibleBoard = posBoard; link = initLink; }
+// CONSTRUCTORS 
 
 // default constructor ->>> ??? what else for this
 treeNode::treeNode() {
   setParent = NULL;
   new *Children[7];
 }
+
+// root treeNode constructor
+treeNode::treeNode(size_t col) {        // initial user input board 
+    Board root;
+    root.addPiece(i, user);
+    possibleBoard = root;
+    setParent = NULL;
+    new *Children[7];
+    
+}
+
 // do we need a copy constructor since we're using assignment operator?
 treeNode::treeNode(treeNode *&source) {} 
 
@@ -93,16 +101,48 @@ Board treeNode::Minimax(const Board b, size_t level){
 
 
 
-
-
-
 // meriselle search algorithms 
 
-Board treeNode::BFS(const board b) {
-  
-  
-
-
+Board treeNode::BFS(turn) {
+  if(turn == user) {
+    char first = user;
+    char second = comp;
+  } else {
+    char first = comp;
+    char second = user;
+  treeNode currentNode;
+  currentNode // SET CURRENTNODE TO THE NODE THAT IS CALLING THIS FUNCTION (necessary for simpler while loop)
+  while(!getBoard().hasWinner()) {
+    currentNode.generateChildren(first);
+    for(int i = 0; i < 7; i++) {
+      gameTree.push(children[i]);
+      if(children[i]->getBoard().hasWinner()) {
+        break;
+      }
+    }
+    treeNode next = gameTree.front();
+    gameTree.pop();
+    next.generateChildren(second);
+    for(int i = 0; i < 7; i++) {
+      gameTree.push(children[i]);
+      if(children[i]->getBoard().hasWinnter()) {
+        break;
+      }
+    }
+    next.BFS(first);
+  }
+  treeNode winner = gameTree.front();
+  cout << "Winning Board: " << winner.getBoard();
+  treeNode *rootParent;
+  rootParent = winner.getParent();
+  while(rootParent != NULL) {
+    winningPath.push(rootParent.Board);
+    rootParent = rootParent->getParent();
+  }
+  while(!winningPath.empty()) {
+    Board path = winningPath.top();
+    cout << "->" << path;
+    winningPath.pop();    
 }
 
 #endif
