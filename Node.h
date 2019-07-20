@@ -33,6 +33,9 @@ public:
   // search algorithms
   Board DFS(const Board b, char turn);
   Board Minimax(const Board b); 
+  void BFS();
+  void ID();
+
 
 private: 
   nodeDatatype possibleBoard;   // data part of node ("parent" board)
@@ -44,10 +47,5 @@ private:
   Stack<Board> winningPath;
 };
 
-
-// SEARCH ALGORITHMS
-// returning node that contains board and can trace back to parent
-treeNode BFS();
-treeNode ID();
 
 #endif
