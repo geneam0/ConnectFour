@@ -24,6 +24,7 @@ int main(){
 	// initialize the board and AI
 	Board init = new Board(); 
 	treeNode AI = new treeNode();
+	treeNode initDFS = new treeNode(init);
 	// test DFS
 	init.addPiece('X',0); init.addPiece('O',0);
 	init.addPiece('X',0); init.addPiece('O',0);
@@ -43,7 +44,7 @@ int main(){
 	O O O - - - -        O O O - - - -	  O O O - - - -
 	X X X - - - -        X X X - - - -	  X X X X - - - (wow, that glo' up tho)
 	*/
-	AI.DFS(init,'O');
+	AI.DFS(*initDFS,'O');
 	delete init;
 	
 	// initialize the board again
