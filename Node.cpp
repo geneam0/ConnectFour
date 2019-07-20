@@ -3,13 +3,21 @@
 
 #include "Node.h"
 
+// CONSTRUCTORS
+  treeNode();
+  treeNode(treeNode *&source);
+  treeNode(Board posBoard, treeNode* initLink)   { possibleBoard = posBoard; link = initLink; }
 
+// default constructor ->>> ??? what else for this
+treeNode::treeNode() {
+  setParent = NULL;
+  new *Children[7];
 }
-treeNode treeNode::getChild(size_t i) {
-} // get ith child
+// do we need a copy constructor since we're using assignment operator?
+treeNode::treeNode(treeNode *&source) {} 
 
-treeNode treeNode::getChildren() {
-} // get all children
+
+// ADD/SET DATA
 
 // addChild: fills designated slot in children array with pointer to new child
 // preconditions: pointer to new child and the column in which the new piece was added
@@ -17,9 +25,6 @@ void treeNode::addChild(treeNode* newChildPtr, size_t i) {
   children[i] = newChildPtr;
 }
 
-treeNode treeNode::operator=(treeNode source) {
-
-}
 
 /* generateChildren function:
 - preconditions: have a turn (user or comp) and an empty children array (the children is a list of pointers pointing from the parent to its 7 children)
@@ -32,19 +37,31 @@ void treeNode::generateChildren(char turn) {
   for(int i = 0; i < 7; i++) {
     treeNode *childPtr;
     childPtr = new treeNode;
-    childPtr->setData(possibleBoard);
-    if(!childPtr->getData().fullColumn(i)) {
-      childPtr->getData().addPiece(turn, i);
+    childPtr->setBoard(possibleBoard);
+    if(!childPtr->getBoard().fullColumn(i)) {
+      childPtr->getBoard().addPiece(turn, i);
       addChild(childPtr, i);
     } else {
       addChild(nullptr, i);         // later, when reading children, check whether its null pointer first because youll get an error accessing a null ptr
     }
+    childPtr->setParent(this);      // this is a special pointer function
   }
-  treeNode *parentPtr;             // this part creates the last slot in the children list of pointers, it is NOT a child, but a ptr pointing to the parent treeNode
-  parentPtr = this;
-  addChild(parentPtr, 7);
 }
 
+// OVERLOADED OPERATORS
+treeNode operator=(treeNode source) {
+  possibleBoard = source.possibleBoard;
+  parent = source.parent;
+  for(int i = 0; i < 7; i++) {
+    children[i]  = source.chilren[i];
+  }
+  // copy over parentStack
+  // copy over childrenStack
+  // copy over gameTree
+  // copy over winningPath
+}
+
+// SEARCH ALGORITHMS
 
 Board Node::DFS(const Board b, char turn){
   // Base Case: returns the winning board or tied board if no other solution possible
