@@ -23,7 +23,7 @@ public:
   void setData(nodeDatatype b) { possibleBoard = b; }
 
   treeNode operator=(treeNode source);
-  Board DFS(const Board b);
+  Board DFS(const Board b, char turn);
   Board Minimax(const Board b); 
 
 private: 
