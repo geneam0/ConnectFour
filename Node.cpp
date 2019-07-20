@@ -102,8 +102,7 @@ Board treeNode::Minimax(const Board b, size_t level){
 
 
 // meriselle search algorithms 
-
-Board treeNode::BFS(turn) {
+void treeNode::BFS(turn) {
   if(turn == user) {
     char first = user;
     char second = comp;
@@ -145,6 +144,12 @@ Board treeNode::BFS(turn) {
     Board path = winningPath.top();
     cout << "->" << path;
     winningPath.pop();    
+}
+    
+    
+void IT(turn) {
+  
+  
 }
 
 #endif
