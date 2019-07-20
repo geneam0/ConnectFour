@@ -43,7 +43,7 @@ int main(){
 	O O O - - - -        O O O - - - -	  O O O - - - -
 	X X X - - - -        X X X - - - -	  X X X X - - - (wow, that glo' up tho)
 	*/
-	cout<<AI.DFS(init,'O');
+	AI.DFS(init,'O');
 	delete init;
 	
 	// initialize the board again
@@ -68,7 +68,7 @@ int main(){
 	- O X O X O -        - O X O X O -        - O X O X O -        - O X O X O -
 	highkey not sure if this will work tho
 	*/
-	cout<<AI.Minimax(init,4,'X')
+	AI.Minimax(init,4,'X')
 	delete init;
 	
 	// initalize the board again
