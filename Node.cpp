@@ -117,6 +117,7 @@ Board treeNode::BFS(turn) {
     for(int i = 0; i < 7; i++) {
       gameTree.push(children[i]);
       if(children[i]->getBoard().hasWinner()) {
+        winningPath.push(children[i]->getBoard());
         break;
       }
     }
@@ -126,12 +127,13 @@ Board treeNode::BFS(turn) {
     for(int i = 0; i < 7; i++) {
       gameTree.push(children[i]);
       if(children[i]->getBoard().hasWinner()) {
+        
         break;
       }
     }
     next.BFS(first);
   }
-  treeNode winner = gameTree.front();
+  treeNode winner = winningPath.top();
   cout << "Winning Board: " << winner.getBoard();
   treeNode *rootParent;
   rootParent = winner.getParent();
