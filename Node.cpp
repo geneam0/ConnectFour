@@ -114,6 +114,7 @@ void treeNode::BFS(turn) {
   while(!getBoard().hasWinner()) {
     currentNode.generateChildren(first);
     for(int i = 0; i < 7; i++) {
+      if(children[i] == nullptr) { continue; }
       gameTree.push(children[i]);
       if(children[i]->getBoard().hasWinner()) {
         winningPath.push(children[i]->getBoard());
@@ -124,9 +125,10 @@ void treeNode::BFS(turn) {
     gameTree.pop();
     next.generateChildren(second);
     for(int i = 0; i < 7; i++) {
+      if(children[i] == nullptr) { continue; }
       gameTree.push(children[i]);
       if(children[i]->getBoard().hasWinner()) {
-        
+        winningPath.push(children[i]->getBoard());
         break;
       }
     }
@@ -157,6 +159,17 @@ void IT(turn) {
   } 
   treeNode currentNode;
   currentNode // SET CURRENTNODE TO THE NODE THAT IS CALLING THIS FUNCTION (necessary for simpler while loop)
+  currentNode.generateChildren();
+  // add while loop here, just not right now for testing purposes
+  for(int i = 0; i < 7; i++) {
+    if(children[i] == nullptr) { continue; } 
+    else if(children[i]->getBoard().hasWinner()) {
+      break;
+    }
+    gameTree.push(children[i]->getBoard());
+    
+    
+      
   
   
   
