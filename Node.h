@@ -41,6 +41,7 @@ private:
   Stack<Board> parentStack;
   Stack<Board> childrenStack;
   Queue<treeNode> gameTree;
+  Stack<Board> winningPath;
 };
 
 
