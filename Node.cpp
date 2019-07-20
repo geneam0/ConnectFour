@@ -62,24 +62,30 @@ treeNode operator=(treeNode source) {
   // copy over winningPath
 }
 
-// SEARCH ALGORITHMS
-Board Node::DFS(const Board b, char turn){
+// Searching Algorithms
+void Node::DFS(const treeNode* b, char turn){
   // Base Case: returns the winning board or tied board if no other solution possible
-  if(b.hasWinner()||(b.boardFull()&&childrenStack.empty())) return b;
+  if(b.possibleBoard.hasWinner()||(b.possibleBoard.boardFull()&&childrenStack.empty())){
+    cout<<b.possibleBoard;
+    while(b->getParent()!=NULL){
+      cout<<b->getParent().possibleBoard;
+      b=b->getParent();
+    }
+  }
   /*
    * If the board isn't full, DFS will push in the child nodes into the childrenStack and the parent nodes into the 
    * parentStack. Then it will perform DFS on the most leftest child node. If the board is full, it will use the 
    * childrenStack to find the next node to perform DFS on.
    */
-  else if(!b.boardFull()){
+  else if(!b.possibleBoard.boardFull()){
     parentStack.push(b);
-    //!!!! IMPLEMENT GENERATE CHILDREN
-    b.generateChildren(turn)
+    b->generateChildren(turn);
     for(size_t i=0; i<7;i++){
-     childrenStack.push(b->getChild(i));
+      if(children[i] == nullptr) { continue; }
+      childrenStack.push(b->getChild(i));
     }
   } 
-  Board onTop=childrenStack.top();
+  treeNode onTop=childrenStack.top();
   childrenStack.pop();
   if(turn=='X') turn='O';
   else turn='X';
