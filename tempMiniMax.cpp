@@ -58,8 +58,8 @@ void evaluateUp(treeNode* b, char turn){
 /*
  * Precondition: A root containing board b that can still be filled
  * Postcondition: A tree from that board b with 4 levels of possible board choices. Each node has 7 children.
- * 								When the program finishes, each leaf score is calculated with generateScore. At the end,  
- *								evaluateUp takes each leaf score and "miniMaxes" it upward.
+ * 		When the program finishes, each leaf score is calculated with generateScore. At the end,  
+ *		evaluateUp takes each leaf score and "miniMaxes" it upward.
  */
 void MiniMax(const treeNode* b, size_t level, char turn){
   // If the node is null, we generate the score for the parent and stop generating null children
