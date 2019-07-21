@@ -11,6 +11,7 @@ class Board{
 		char arr[rows][columns];
 		char user = "X";
 		char comp = "O";
+		int score;
 	public:
 		// constructors
 		Board();
