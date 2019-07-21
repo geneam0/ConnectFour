@@ -42,7 +42,7 @@ void MiniMax(const treeNode* b, size_t level, char turn){
   if(*b==nullptr){
     if(turn=='O') turn='X';
     else turn='O';
-    level++
+    level++;
     generateScore(b->getParent(),level, turn);
     return;
   }
