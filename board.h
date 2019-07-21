@@ -18,6 +18,7 @@ class Board{
 		~Board();
 		char getUser() const { return user; }
 		char getComp() const { return comp; }
+		char getPiece(size_t r, size_t c) { return arr[r][c]; }
 		int getScore() const { return score; }
 		void setScore(int targetScore) { score=targetScore; }
 		bool boardFull() const;
