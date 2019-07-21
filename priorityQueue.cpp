@@ -1,138 +1,74 @@
-#ifndef __PRIORITYQUEUE_CPP__
-#define __PRIORITYQUEUE_CPP__
+#ifndef __QUEUE_CPP__
+#define __QUEUE_CPP__
 
-#include "priorityQueue.h"
+#include "Queue.h"
 
-template <class Item> 
-PriorityQueue<Item>::PriorityQueue() {
+	template <class Item>
+Queue<Item>::Queue() {
+	capacity = 30;
+	used = 0;
 	first = 0;
 	last = -1;
-	used = 0;
-	capacity = 30;
 	data = new Item[capacity];
 }
-
-// copy constructor
-template <class Item> 
-PriorityQueue<Item>::PriorityQueue(const PriorityQueue<Item>& source) {
+template <class Item>
+Queue<Item>::Queue(const Queue<Item>& source) {
+	used = source.used;
 	first = source.first;
 	last = source.last;
-	used = source.used;
 	capacity = source.capacity;
 	data = new Item[capacity];
-	int i = 0;
-	size_t current = first;
-	while(i <= used) {
-		data[current] = source.data[current];
-		current = nextIndex(current);
-		i++;	
+	for (int i = first; i <= last; i++) {		
+		data[i] = source.data[i];
+	}
+}
+template <class Item>
+Queue<Item>::~Queue() {
+	delete[] data;
+}
+
+template <class Item>
+void Queue<Item>::push(const Item& entry) {
+	assert(used < capacity);
+	data[nextIndex(last)] = entry;
+	used++;
+	last = nextIndex(last);
+}
+
+template <class Item>
+void Queue<Item>::pop() {
+	if(empty()) { return; }
+	first = nextIndex(first);
+	used--;
+}	
+
+template <class Item>
+void Queue<Item>::operator=(const Queue<Item>& source) {
+	delete[] data;
+	used = source.used;
+	first = source.first;
+	last = source.last;
+	data = new Item[capacity];
+	for(int i = 0; i < used; i++) {
+		data[i] = source.data[i];
 	}
 }
 
 template <class Item>
-PriorityQueue<Item>::~PriorityQueue() {
-	delete[] data;
-}
-
-// member functions
-
-template <class Item> 
-void PriorityQueue<Item>::push(const Item& entry) {
-	if(used == 0) {
-		data[nextIndex(last)] = entry;
-		used++;
-		last = nextIndex(last);
-	} else {
-		if(entry < data[last]) {
-			size_t current = last;
-			int count = 0;
-			while(entry <= data[current]) {
-				if (current == first) {
-					count++;
-					break;
-				}
-				current = prevIndex(current);
-				count++;
-			}
-			Item tempData = data[current];
-			Item tempDataNext;
-			data[current] = entry;
-			for(int i = 0; i < count; i++) {
-				tempDataNext = data[nextIndex(current)];
-				data[nextIndex(current)] = tempData;
-				tempData = tempDataNext;
-				current = nextIndex(current);
-			}
-			last = nextIndex(last);		
-			used++;
-
-		} else { 
-		data[nextIndex(last)] = entry;
-		used++;
-		last = nextIndex(last);
-		} 
-	}		
-}
-
-template <class Item> 
-void PriorityQueue<Item>::pop() {
-	if(empty()) { return; }
-	first = nextIndex(first);
-	used--;
-}
-
-template <class Item> 
-void PriorityQueue<Item>::operator=(const PriorityQueue<Item>& source) {
-	delete[] data;
-	used = source.used;
-	first = source.first;
-	last = source.last;
-	data = new Item[capacity];
-	int i = 0;
-	size_t current = first;
-	while(i <= used) {
-		data[current] = source.data[current];
-		current = nextIndex(current);
-		i++;	
-	}
-}
-
-template <class Item> 
-size_t PriorityQueue<Item>::size() const {
+size_t Queue<Item>::size() const {
 	return used;
 }
 
 template <class Item>
-bool PriorityQueue<Item>::empty() const {
+bool Queue<Item>::empty() const {
 	return (size() == 0);
 }
 
 template <class Item>
-Item PriorityQueue<Item>::front() const {
+Item Queue<Item>::front() const {
 	assert(!empty());
-	return (data[first]);
+	return(data[first]);
 }
 
-template <class Item>
-size_t PriorityQueue<Item>::prevIndex(size_t i) const {
-	return (i - 1 + capacity)%capacity;
-}	
-
-template <class Item>
-void PriorityQueue<Item>::resize(PriorityQueue<Item> queue, size_t newSize) {
-	first = queue.first;
-	last = queue.last;
-	used = queue.used;
-	capacity = newSize;
-	delete[] data;
-	data = new Item[newSize];
-	int i = 0;
-	size_t current = first;
-	while(i <= used) {
-		data[current] = queue.data[current];
-		current = nextIndex(current);
-		i++;	
-	}
-}	
 
 #endif
