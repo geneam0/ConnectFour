@@ -1,4 +1,3 @@
-
 void MiniMax(const treeNode* b, size_t level, char turn){
   // When level reaches 0 or when neither player can make a move, we have to evaluate each child node
   if(level==0||b.possibleBoard.hasWinner()||(b.possibleBoard.boardFull()&&childrenStack.empty())){
