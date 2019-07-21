@@ -10,11 +10,11 @@
    (X) Stack and Queue <br/>
    
 # Debugging:
-   Syntax:
+   Syntax: <br/>
       (X) Stack and Queue <br/>
       ( ) Board <br/>
       ( ) Tree <br/>
-   Running:
+   Running: <br/>
       ( ) DFS <br/>
       ( ) BFS <br/>
       ( ) MiniMax <br/>
