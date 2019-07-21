@@ -1,5 +1,5 @@
-#ifndef __HW4Q1_H__
-#define __HW4Q1_H__
+#ifndef __Stack_H__
+#define __Stack_H__
 // Previous two lines are the start of the marco guard
 
 // CSc 21200 - Spring 2019
@@ -36,5 +36,5 @@ class Stack {
         size_t capacity;
 };
 
-#include "hw4q1.cpp"
+#include "Stack.cpp"
 #endif

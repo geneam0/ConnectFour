@@ -1,5 +1,5 @@
 #include "board.h"
-#include "Node.h"
+#include "treeNode.h"
 #include <iostream>
 using namespace std::cin;
 using namespace std::cout;

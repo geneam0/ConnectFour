@@ -3,7 +3,7 @@
 
 #include "Queue.h"
 
-	template <class Item>
+template <class Item>
 Queue<Item>::Queue() {
 	capacity = 30;
 	used = 0;

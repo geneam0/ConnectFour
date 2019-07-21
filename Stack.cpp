@@ -1,6 +1,6 @@
-#ifndef __HW4Q1_CPP__
-#define __HW4Q1_CPP__
-#include "hw4q1.h"
+#ifndef __Stack_CPP__
+#define __Stack_CPP__
+#include "Stack.h"
 
 template <class Item>
 Stack<Item>::Stack(){
