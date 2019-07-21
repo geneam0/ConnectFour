@@ -35,11 +35,35 @@ void generateScore(treeNode* b, size_t level, char turn){
   in.setScore(score);
 }
 
+void evaluateUp(treeNode* b, char turn){
+	while(b->getParent()!= NULL){
+		b=b->getParent(); 
+		if(b->getChild(0)!=NULL && b->getChild(1)!=NULL && b->getChild(2)!=NULL && b->getChild(3)!=NULL
+			 && b->getChild(4)!=NULL && b->getChild(5)!=NULL && b->getChild(6)!=NULL){
+			int minMax; 
+			if(turn=='O') { minMax=100000000; }	
+			else { minMax=-100000000; }
+			for(size_t i=0; i<7; i++){
+				int temp=b->getChild(i).possibleBoard->getScore();
+				if(turn=='O' && temp<minMax){ minMax=temp; } 
+				else if (temp>minMax) { minMax=temp; }
+			}
+			b->setScore(minMax);
+		}
+		else { return; }
+	}
+	
+}
 
-
+/*
+ * Precondition: A root containing board b that can still be filled
+ * Postcondition: A tree from that board b with 4 levels of possible board choices. Each node has 7 children.
+ * 								When the program finishes, each leaf score is calculated with generateScore. At the end,  
+ *								evaluateUp takes each leaf score and "miniMaxes" it upward.
+ */
 void MiniMax(const treeNode* b, size_t level, char turn){
   // If the node is null, we generate the score for the parent and stop generating null children
-  if(*b==nullptr){
+  if(*b==NULL){
     if(turn=='O') turn='X';
     else turn='O';
     level++;
@@ -47,13 +71,13 @@ void MiniMax(const treeNode* b, size_t level, char turn){
     return;
   }
   if(level==0){
-    evaluateUp(); //!!!!
+    evaluateUp(*b, turn); 
     return;
   }
   // Otherwise, the MiniMax function continues to generate child nodes
   b->generateChildren(turn);
   for(size_t i=0; i<7;i++){
-    if(children[i] == nullptr) { continue; }
+    if(b->getChild(i)!=NULL) { continue; }
     if(turn=='O') { turn='X'; }
     else { turn='O'; }
     // for each level, the minimax function will recursively call upon itself to create more children nodes
