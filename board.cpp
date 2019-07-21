@@ -9,6 +9,7 @@ Board::Board(){
 			arr[i][j]="-";
 		}
 	}
+	score=0;
 }
 
 Board::~Board(){
@@ -16,6 +17,7 @@ Board::~Board(){
         	delete[] arr[i];
     	}
 	delete[] arr;
+	delete score;
 }
 
 bool Board::boardFull() const {
