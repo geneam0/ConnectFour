@@ -33,7 +33,8 @@ void treeNode::addChild(treeNode* newChildPtr, size_t i) {
 }
 
 /* generateChildren function:
-- preconditions: have a turn (user or comp) and an empty children array (the children is a list of pointers pointing from the parent to its 7 children)
+- preconditions: have a turn (user or comp) and an empty children array (the children is a list of pointers pointing from the parent
+  to its 7 children)
 - generate children is a member function, so the only parameter it takes is which turn it is (user or comp)
 - when you call parent.generateChildren it will fill the array of pointers connected to each Node with pointers to all these children 
 - each child will have a new piece, however, if the column is full, that slot in the list will point to NULL
@@ -48,7 +49,7 @@ void treeNode::generateChildren(char turn) {
       childPtr->getBoard().addPiece(turn, i);
       addChild(childPtr, i);
     } else {
-      addChild(nullptr, i);         // later, when reading children, check whether its null pointer first because youll get an error accessing a null ptr
+      addChild(nullptr, i);         // later, when accessing children, check whether its null pointer first to avoid accessing error
     }
     childPtr->setParent(this);      // this is a special pointer function
   }
