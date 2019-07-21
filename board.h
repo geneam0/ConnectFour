@@ -18,6 +18,8 @@ class Board{
 		~Board();
 		char getUser() const { return user; }
 		char getComp() const { return comp; }
+		int getScore() const { return score; }
+		void setScore(int targetScore) { score=targetScore; }
 		bool boardFull() const;
 		bool hasWinner() const;
 		bool spaceEmpty(size_t row, size_t col) const;
