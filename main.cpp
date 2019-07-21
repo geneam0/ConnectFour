@@ -1,7 +1,6 @@
 #include "board.h"
 #include "treeNode.h"
 #include <iostream>
-using namespace std::cin;
 using namespace std::cout;
 
 // for when we want to make a Player vs AI Connect Four Game
@@ -22,19 +21,19 @@ void makeMove(char Player, Board& b){
 
 int main(){
 	// initialize the board and AI
-	Board init = new Board(); 
+	Board initDFS = new Board(); 
 	treeNode AI = new treeNode();
-	treeNode initDFS = new treeNode(init);
+	treeNode depth = new treeNode(init);
 	// test DFS
-	init.addPiece('X',0); init.addPiece('O',0);
-	init.addPiece('X',0); init.addPiece('O',0);
-	init.addPiece('X',0); init.addPiece('O',0);
-	init.addPiece('X',1); init.addPiece('O',1);
-	init.addPiece('X',1); init.addPiece('O',1);
-	init.addPiece('X',1); init.addPiece('O',1);
-	init.addPiece('X',2); init.addPiece('O',2);
-	init.addPiece('X',2); init.addPiece('O',2);
-	init.addPiece('X',2); 
+	initDFS.addPiece('X',0); initDFS.addPiece('O',0);
+	initDFS.addPiece('X',0); initDFS.addPiece('O',0);
+	initDFS.addPiece('X',0); initDFS.addPiece('O',0);
+	initDFS.addPiece('X',1); initDFS.addPiece('O',1);
+	initDFS.addPiece('X',1); initDFS.addPiece('O',1);
+	initDFS.addPiece('X',1); initDFS.addPiece('O',1);
+	initDFS.addPiece('X',2); initDFS.addPiece('O',2);
+	initDFS.addPiece('X',2); initDFS.addPiece('O',2);
+	initDFS.addPiece('X',2); 
 	/* Should look like dis:
 	Before               Mid		  After
 	O O - - - - -        O O O - - - -	  O O O - - - -
@@ -44,17 +43,17 @@ int main(){
 	O O O - - - -        O O O - - - -	  O O O - - - -
 	X X X - - - -        X X X - - - -	  X X X X - - - (wow, that glo' up tho)
 	*/
-	AI.DFS(*initDFS,'O');
-	delete init;
+	AI.DFS(depth,'O'); 
+	delete initDFS;
 	
 	// initialize the board again
-	Board init = new Board();
+	Board initBFS = new Board();
 	// test BFS
 	
-	delete init;
+	delete initBFS;
 	
 	// initalize the board again
-	Board init = new Board();
+	Board initMM = new Board();
 	// test MiniMax
 	init.addPiece('O',1); init.addPiece('O',3); init.addPiece('O',5);
 	init.addPiece('X',2); init.addPiece('X',3); init.addPiece('X',4);
@@ -69,14 +68,14 @@ int main(){
 	- O X O X O -        - O X O X O -        - O X O X O -        - O X O X O -
 	highkey not sure if this will work tho
 	*/
-	AI.Minimax(init,4,'X')
-	delete init;
+	AI.MiniMax(init,4,'X');
+	delete initMM;
 	
 	// initalize the board again
-	Board init = new Board();
+	Board initID = new Board();
 	// test Iterative Deepening
 	
-	delete init;
+	delete initID;
 	
 	// for when we want to make a Player vs AI Connect Four Game
 	/*
