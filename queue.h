@@ -1,5 +1,5 @@
-#ifndef __PRIORITYQUEUE_H__
-#define __PRIORITYQUEUE_H__
+#ifndef __QUEUE_H__
+#define __QUEUE_H__
 
 #include <iostream>
 #include <cstdlib>
@@ -8,22 +8,21 @@
 using namespace std;
 
 template <class Item>
-class PriorityQueue {
+class Queue {
     public:
-        const size_t DEF_CAP = 60;
+        const size_t DEF_CAP = 30;
 
-        PriorityQueue();
-        PriorityQueue(const PriorityQueue<Item>& source);
-        ~PriorityQueue();
+        Queue();
+        Queue(const Queue<Item>& source);
+        ~Queue();
 
         void push(const Item& entry);
         void pop();
-        void operator=(const PriorityQueue<Item>& source);
+        void operator=(const Queue<Item>& source);
 
         size_t size() const;
         bool empty() const;
         Item front() const;
-        void resize(PriorityQueue<Item>, size_t newSize);
 
     private:
         Item* data;
@@ -32,7 +31,6 @@ class PriorityQueue {
         size_t used;
         size_t capacity;
         size_t nextIndex(size_t i) const {return (i+1)%capacity;}
-        size_t prevIndex(size_t i) const;
 };
 
 
