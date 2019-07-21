@@ -4,6 +4,7 @@
 #include "board.h"
 #include "Stack.h"
 #include "PriorityQueue.h"
+#include <math.h>       /* pow */
 
 class treeNode {
   private: 
@@ -38,9 +39,11 @@ class treeNode {
 
     // search algorithms
     void DFS(const treeNode* b, char turn);
-    void Minimax(const Board b, size_t level, char turn); 
+    void MiniMax(const treeNode* b, size_t level, char turn);
     void BFS();
     void ID();
 };
-
+void generateScore(treeNode* b, size_t level, char turn);
+void evaluateUp(treeNode* b, char turn);
+  
 #endif
