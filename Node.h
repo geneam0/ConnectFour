@@ -10,10 +10,10 @@ class treeNode {
     Board possibleBoard;   // data part of node (board)
     treeNode* parent;
     treeNode *children[7];        // link part of node (array of pointers) 
-    Stack<Board> parentStack;
-    Stack<Board> childrenStack;
+   /* Stack<Board> parentStack;
+    Stack<Board> childrenStack;     not using these anymore as private functions
     Queue<treeNode> gameTree;
-    Stack<Board> winningPath;
+    Stack<Board> winningPath; */ 
   public:
 
     // constructors
