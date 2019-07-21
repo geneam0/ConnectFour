@@ -52,7 +52,15 @@ void evaluateUp(treeNode* b, char turn){
 		}
 		else { return; }
 	}
-	
+	while(b->getChildren()!=NULL){
+		for(size_t i=0; i<7;i++){
+    	if(b->getChild(i)==NULL) { continue; }
+			if(b->getChild(i)==minMax){
+				b=b->getChild(i);
+				cout<<b;
+			}
+		}
+	}
 }
 
 /*
@@ -77,7 +85,7 @@ void MiniMax(const treeNode* b, size_t level, char turn){
   // Otherwise, the MiniMax function continues to generate child nodes
   b->generateChildren(turn);
   for(size_t i=0; i<7;i++){
-    if(b->getChild(i)!=NULL) { continue; }
+    if(b->getChild(i)==NULL) { continue; }
     if(turn=='O') { turn='X'; }
     else { turn='O'; }
     // for each level, the minimax function will recursively call upon itself to create more children nodes
@@ -86,5 +94,3 @@ void MiniMax(const treeNode* b, size_t level, char turn){
     else { level--; generateScore(b->getChild(i),level,turn); }
   }
 }
-
-
