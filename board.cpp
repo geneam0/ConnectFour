@@ -33,7 +33,7 @@ bool Board::boardFull() const {
   }
   return true;
 }
-// 
+// returns true if the board has a winner by checking 4 cases
 bool Board::hasWinner() const{
   // check by column
 	for(size_t i=0; i<rows-3; i++){
