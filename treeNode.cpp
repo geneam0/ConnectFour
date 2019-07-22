@@ -7,7 +7,7 @@
 
 // default constructor ->>> ??? what else for this
 treeNode::treeNode() {
-    *parent = NULL;
+  *parent = NULL;
   new *children[7];
 }
 
@@ -16,7 +16,7 @@ treeNode::treeNode(size_t col, char user) {        // initial user input board
     Board root;
     root.addPiece(i, user);
     possibleBoard = root;
-	*parent = NULL;
+		*parent = NULL;
     new *children[7]; 
 }
 
