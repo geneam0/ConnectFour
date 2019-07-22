@@ -1,5 +1,5 @@
-#ifndef BOARD_H
-#define BOARD_H
+#ifndef __BOARD_H__
+#define __BOARD_H__
 
 #include <iostream>
 using std::cout;
