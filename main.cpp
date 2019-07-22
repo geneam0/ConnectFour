@@ -48,13 +48,13 @@ int main(){
 	treeNode depth(initDFS);
 	DFS(*depth,'O',s); 
 	delete initDFS;
-	
+	/*
 	// initialize the board again
 	Board initBFS = new Board();
 	// test BFS
 	
 	delete initBFS;
-	
+	*/
 	// initalize the board again
 	Board initMM = new Board();
 	// test MiniMax
@@ -74,13 +74,13 @@ int main(){
 	treeNode mini = new treeNode(initMM);
 	MiniMax(init,4,'X');
 	delete initMM;
-	
+	/*
 	// initalize the board again
 	Board initID = new Board();
 	// test Iterative Deepening
 	
 	delete initID;
-	
+	*/
 	// for when we want to make a Player vs AI Connect Four Game
 	/*
 	// playerInput is the column the player chooses to put a chip into
