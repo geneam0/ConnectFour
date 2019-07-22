@@ -1,4 +1,4 @@
-#include "board.h"
+//#include "board.h"
 //#include "treeNode.h"
 //#include "Stack.h"
 //#include <iostream>
@@ -91,11 +91,11 @@ int main(){
 	return 0;
 
 	*/
-	char user = 'X';
-	char comp = 'O';
+	//char user = 'X';
+	//char comp = 'O';
 
 	Board test=Board();
-	test.addPiece(user, 0);
+	test.addPiece('X', 0);
 	//treeNode bfsTest = treeNode(test);
 	//bfsTest.BFS(user);
 	return 0;
