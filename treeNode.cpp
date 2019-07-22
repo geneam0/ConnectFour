@@ -20,11 +20,13 @@ treeNode::treeNode(size_t col, char user) {        // initial user input board
     new *children[7]; 
 }
 
-
-
 treeNode::treeNode(Board bo){
-  possibleBoard=bo;
-  setParent(NULL);
+	for(size_t i=0; i<bo.getRows(); i++){
+		for(size_t j=0; i<bo.getCols(); j++){
+			possibleBoard.setPiece(i,j,bo.getPiece(i,j));
+		}
+	}
+  *parent = NULL;
   new *children[7];
 }
 // ADD/SET DATA
