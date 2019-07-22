@@ -269,20 +269,19 @@ bool treeNode::itdfs(char turn, treeNode* currentNode, Stack<treeNode*>& nodeSta
     cout << "->" << nextBoard;
     winningPath.pop();
 		return true;
-	}
-	nodeStack.push(currentNode);
-	
-	if(level < maxLevel) {
-		for (int i = 0; i < 7; i++) {
-			if (currentNode->getChild(i) != NULL) {                                         //ERRORS
-				if(itdfs(turn, currentNode->getChild(i), nodeStack, level + 1, maxLevel)) {
-					return true;
-				}
+    }
+    nodeStack.push(currentNode);
+    if(level < maxLevel) {
+	for (int i = 0; i < 7; i++) {
+		if (currentNode->getChild(i) != NULL) {                                         //ERRORS
+			if(itdfs(turn, currentNode->getChild(i), nodeStack, level + 1, maxLevel)) {
+				return true;
 			}
 		}
 	}
-	nodeStack.pop();
-	return false;
+      }
+    nodeStack.pop();
+    return false;
 }
 	  
 void treeNode::IT(char turn) { // USER PART
