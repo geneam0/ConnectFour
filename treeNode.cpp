@@ -241,6 +241,20 @@ void IT(turn) {
  // SET thisTurn
 	queue<treeNode *> gameTree;
 	gameTree.push(this);
+	stack<Board> winningPath;
+	bool isWinner = false;
+	generateChildren(thisTurn);
+	for(int i = 0; i < 7; i++) {
+		gameTree.push(children[i]);
+	}
+	int itChild = 0;
+	// while loop here?
+	while(!isWinner) {
+		for(int i = 0; i < 7; i++) {
+			children[itChild]->generateChildren(thisTurn);
+			
+		
+		
 	
 }
     
