@@ -1,5 +1,5 @@
-#ifndef __NODE_H__
-#define __NODE_H__
+#ifndef __TREENODE_H__
+#define __TREENODE_H__
 
 #include "board.h"
 #include "Stack.h"
@@ -11,10 +11,7 @@ class treeNode {
     Board possibleBoard;   // data part of node (board)
     treeNode* parent;
     treeNode *children[7];        // link part of node (array of pointers) 
-   /* Stack<Board> parentStack;
-    Stack<Board> childrenStack;     not using these anymore as private functions
-    Queue<treeNode> gameTree;
-    Stack<Board> winningPath; */ 
+ 
   public:
 
     // constructors
@@ -23,8 +20,8 @@ class treeNode {
     treeNode(Board bo);
   
     // get data
-    treeNode getChild(size_t i)                               { return children[i]; }
-    treeNode getChildren()                                    { return children; }
+    treeNode getChild(size_t i)                               { return *children[i]; }
+    treeNode getChildren()                                    { return **children; }
     Board getBoard()                                          { return possibleBoard; }
     treeNode* getParent()                                     { return parent; }
   

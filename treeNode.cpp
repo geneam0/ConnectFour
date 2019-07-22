@@ -1,7 +1,7 @@
-#ifndef __NODE_CPP__
-#define __NODE_CPP__
+#ifndef __TREENODE_CPP__
+#define __TREENODE_CPP__
 
-#include "Node.h"
+#include "treeNode.h"
 
 // CONSTRUCTORS 
 
