@@ -24,6 +24,8 @@ int main(){
 	// initialize the board and stack
 	Board initDFS; 
 	Stack<treeNode> s;
+	char user = 'O';
+	char comp = 'X';
 	// test DFS
 	initDFS.addPiece('X',0); initDFS.addPiece('O',0);
 	initDFS.addPiece('X',0); initDFS.addPiece('O',0);

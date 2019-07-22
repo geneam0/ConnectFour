@@ -36,8 +36,8 @@ treeNode::treeNode(Board bo){
   }
 }
 // ADD/SET DATA
-// addChild: fills designated slot in children array with pointer to new child
-// preconditions: pointer to new child and the column in which the new piece was added
+/*addChild: fills designated slot in children array with pointer to new child
+  preconditions: pointer to new child and the column in which the new piece was added */
 void treeNode::addChild(treeNode* newChildPtr, size_t i) {
   children[i] = newChildPtr;
 }
@@ -64,16 +64,12 @@ void treeNode::generateChildren(char turn) {
 }
 
 // OVERLOADED OPERATORS
-treeNode operator=(treeNode source) {
-  possibleBoard = source.possibleBoard;
-  parent = source.parent;
+treeNode::operator=(treeNode source) {
+  possibleBoard = source.getBoard();
+  parent = source.getParent();
   for(int i = 0; i < 7; i++) {
-    children[i]  = source.children[i];
+    children[i]  = source.getChild(i);
   }
-  // copy over parentStack
-  // copy over childrenStack
-  // copy over gameTree
-  // copy over winningPath
 }
 
 // Searching Algorithms
@@ -103,7 +99,7 @@ void DFS(treeNode* b, char turn, Stack<treeNode>& childrenStack){
   childrenStack.pop();
   if(turn=='X') turn='O';
   else turn='X';
-  DFS(onTop,turn,childrenStack);
+  DFS(onTop,turn,childrenStack);   // pointer error
 }
 
 // computerTurn = 'X; userTurn = 'O'
@@ -260,7 +256,16 @@ void treeNode::BFS(char turn) {
   
 bool treeNode::itdfs(char turn, treeNode* currentNode, Stack<treeNode*>& nodeStack,int level, int maxLevel) { // USER PART
 	if(currentNode->getBoard().boardFull() || currentNode->getBoard().hasWinner()) {
-		//print boards
+    Stack<Board> winningPath;
+    winningPath.push(currentNode->getBoard());
+    while(currentNode->getParent() != NULL) {
+      currentNode = currentNode->getParent();
+      winningPath.push(currentNode->getBoard());
+    }
+    Board nextBoard;
+    nextBoard = winningPath.top();
+    cout << "->" << nextBoard;
+    winningPath.pop();
 		return true;
 	}
 	nodeStack.push(currentNode);
