@@ -238,24 +238,39 @@ void treeNode::BFS(turn) {
 } 
   
 void IT(turn) {
- // SET thisTurn
-	queue<treeNode *> gameTree;
-	gameTree.push(this);
-	stack<Board> winningPath;
 	bool isWinner = false;
+	queue<treeNode *> gameTree;
+	stack<Board> winningPath;
+	gameTree.push(this);
+
 	generateChildren(thisTurn);
-	for(int i = 0; i < 7; i++) {
-		gameTree.push(children[i]);
-	}
 	int itChild = 0;
-	// while loop here?
-	while(!isWinner) {
+	while(//CONDITION) {
+		child[itChild]->generateChildren(thisTurn);
 		for(int i = 0; i < 7; i++) {
-			children[itChild]->generateChildren(thisTurn);
-			
-		
-		
-	
+			if(children[i] == nullptr) { continue; }
+			if(children[i]->getBoard().hasWinner()) {
+				winningPath.push(children[i]->getBoard());
+				isWinner = true;
+				break;
+			}
+		}
+		if(isWinner) { break; }
+		itChild++;
+	}
+	treeNode winner = winningPath.top();
+ 	cout << "Winning Board: " << winner.getBoard();		// PRINT BOARD FUNCTION OR COUT OVERLOADED
+        treeNode *rootParent;
+  	rootParent = winner.getParent();
+  	while(rootParent != NULL) {
+    		winningPath.push(rootParent.getBoard());
+    		rootParent = rootParent->getParent();
+  	}
+  	while(!winningPath.empty()) {
+    		Board path = winningPath.top();
+    		cout << "->" << path;
+    		winningPath.pop(); 
+	}
 }
     
 #endif
