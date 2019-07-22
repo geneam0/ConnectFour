@@ -235,7 +235,7 @@ void treeNode::BFS(turn) {
   while(!winningPath.empty()) {
     Board path = winningPath.top();
     cout << "->" << path;
-    winningPath.pop();    */
+    winningPath.pop();    
 } 
   
 void IT(turn) {
