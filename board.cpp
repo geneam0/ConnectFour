@@ -59,27 +59,27 @@ bool Board::hasWinner() const{
 	return false;
 }
 
-bool Board::spaceEmpty(size_t row, size_t col) const {
-  return arr[row][col] == '-';
+bool Board::spaceEmpty(size_t r, size_t c) const {
+  return arr[r][c] == '-';
 }
 
-bool Board::fullColumn(size_t col) const {
+bool Board::fullColumn(size_t c) const {
   for(int i = 0; i < rows; i++) {
-    if(arr[i][col] == '-') {
+    if(arr[i][c] == '-') {
       return false;
     } 
   }
   return true;
 }
 
-void Board::addPiece(char entry, size_t col) {
-  if(fullColumn(col)) { /* invalid message and reprompt */ return; }
+void Board::addPiece(char entry, size_t c) {
+  if(fullColumn(c)) { /* invalid message and reprompt */ return; }
   if(boardFull()) { return; }
   size_t i=0;
-  while(!spaceEmpty(i, col)) {
+  while(!spaceEmpty(i, c)) {
     i++;
   }
-  arr[i][col] = entry;
+  arr[i][c] = entry;
 }
 
 ostream& operator<<(ostream &os, const Board& source) {
