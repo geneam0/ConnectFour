@@ -2,15 +2,17 @@
 #define BOARD_H
 
 #include <iostream>
-using namespace std::cout;
+using std::cout;
+using std::cin;
+using std::ostream;
 
 class Board{
 	private:
-		size_t rows=7;
-		size_t columns=6;
+		static const size_t rows=7;
+		static const size_t columns=6;
+		static const char user = 'X';
+		static const char comp = 'O';
 		char arr[rows][columns];
-		char user = "X";
-		char comp = "O";
 		int score;
 	public:
 		// constructors
@@ -26,7 +28,8 @@ class Board{
 		bool spaceEmpty(size_t row, size_t col) const;
 		bool fullColumn(size_t col) const;
 		void addPiece(char entry, size_t col);
+
+		friend ostream& operator<<(ostream& os, const Board& source);
 };
-friend ostream& operator<<(ostream &os);
 
 #endif
