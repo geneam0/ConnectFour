@@ -38,11 +38,11 @@ class treeNode {
     treeNode operator=(treeNode source);
 
     // search algorithms
-    void DFS(const treeNode* b, char turn);
     void MiniMax(const treeNode* b, size_t level, char turn);
     void BFS();
     void ID();
 };
+void DFS(const treeNode* b, char turn);
 void generateScore(treeNode* b, size_t level, char turn);
 void evaluateUp(treeNode* b, char turn);
   
