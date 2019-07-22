@@ -145,14 +145,14 @@ void generateScore(treeNode* b, size_t level, char turn){
 }
 
 void evaluateUp(treeNode* b, char turn){
+	int minMax; 
+	if(turn=='O') { minMax=100000000; }	
+	else { minMax=-100000000; }
 	// while your current subtree isn't the root, you compare yourself to your siblings and based on the turn, you minimize or maximize
 	while(b->getParent()!= NULL){
 		b=b->getParent(); 
 		if(b->getChild(0)!=NULL && b->getChild(1)!=NULL && b->getChild(2)!=NULL && b->getChild(3)!=NULL
 			 && b->getChild(4)!=NULL && b->getChild(5)!=NULL && b->getChild(6)!=NULL){
-			int minMax; 
-			if(turn=='O') { minMax=100000000; }	
-			else { minMax=-100000000; }
 			for(size_t i=0; i<7; i++){
 				int temp=b->getChild(i)->getBoard()->getScore();
 				// if the current turn is the user, you try to minimize
