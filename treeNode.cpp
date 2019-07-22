@@ -199,7 +199,7 @@ void MiniMax(const treeNode* b, size_t level, char turn){
 // meriselle search algorithms 
 void treeNode::BFS(turn) {
   char first, second;
-  queue<*treeNode> gameTree;
+  queue<treeNode *> gameTree;
   stack<Board> winningPath;
   if(turn == user) {
     first = user;
