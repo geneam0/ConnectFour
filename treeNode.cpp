@@ -99,11 +99,6 @@ void Node::DFS(const treeNode* b, char turn, Stack<treeNode>& childrenStack){
   DFS(onTop,turn,childrenStack);
 }
 
-Board treeNode::Minimax(const Board b, size_t level){
-  if(level>4) return;
-  
-}
-
 // computerTurn = 'X; userTurn = 'O'
 void generateScore(treeNode* b, size_t level, char turn){
   // initalize the board and score
