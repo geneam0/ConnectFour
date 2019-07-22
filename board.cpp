@@ -1,5 +1,5 @@
-#ifndef BOARD_CPP
-#define BOARD_CPP
+#ifndef __BOARD_CPP__
+#define __BOARD_CPP__
 
 #include "board.h"
 
