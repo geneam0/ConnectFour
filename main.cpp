@@ -27,15 +27,7 @@ int main(){
 	char user = 'O';
 	char comp = 'X';
 	// test DFS
-	initDFS.addPiece('X',0); initDFS.addPiece('O',0);
-	initDFS.addPiece('X',0); initDFS.addPiece('O',0);
-	initDFS.addPiece('X',0); initDFS.addPiece('O',0);
-	initDFS.addPiece('X',1); initDFS.addPiece('O',1);
-	initDFS.addPiece('X',1); initDFS.addPiece('O',1);
-	initDFS.addPiece('X',1); initDFS.addPiece('O',1);
-	initDFS.addPiece('X',2); initDFS.addPiece('O',2);
-	initDFS.addPiece('X',2); initDFS.addPiece('O',2);
-	initDFS.addPiece('X',2); 
+	initDFS.addPiece(user,0); 
 	/* Should look like dis:
 	Before               Mid		  After
 	O O - - - - -        O O O - - - -	  O O O - - - -
@@ -47,7 +39,6 @@ int main(){
 	*/
 	treeNode depth(initDFS);
 	DFS(*depth,'O',s); 
-	delete initDFS;
 	/*
 	// initialize the board again
 	Board initBFS = new Board();
@@ -58,9 +49,7 @@ int main(){
 	// initalize the board again
 	Board initMM = new Board();
 	// test MiniMax
-	init.addPiece('O',1); init.addPiece('O',3); init.addPiece('O',5);
-	init.addPiece('X',2); init.addPiece('X',3); init.addPiece('X',4);
-	init.addPiece('O',2); init.addPiece('O',3); init.addPiece('X',4);
+	init.addPiece(user,1); 
 	/* Should look liek dis:
 	Before		     Mid		  Second Mid		Final
 	- - - - - - -        - - - - - - -	  - - - - - - -        - - - - - - -
@@ -73,7 +62,6 @@ int main(){
 	*/
 	treeNode mini = new treeNode(initMM);
 	MiniMax(init,4,'X');
-	delete initMM;
 	/*
 	// initalize the board again
 	Board initID = new Board();
