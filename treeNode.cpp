@@ -244,27 +244,10 @@ void treeNode::BFS(turn) {
 } 
   
 void IT(turn) {
-    char first, second;
-  if(turn == user) {
-    first = user;
-    second = comp;
-  } else {
-    first = comp;
-    second = user;
-  } 
-  treeNode currentNode;
-  currentNode // SET CURRENTNODE TO THE NODE THAT IS CALLING THIS FUNCTION (necessary for simpler while loop)
-  currentNode.generateChildren();
-  // add while loop here, just not right now for testing purposes
-  
- /*  for(int i = 0; i < 7; i++) {
-    if(children[i] == nullptr) { continue; } 
-    else if(children[i]->getBoard().hasWinner()) {
-      break;
-    }
-    gameTree.push(children[i]->getBoard());
-  } 
-  */  
+ // SET thisTurn
+	queue<treeNode *> gameTree;
+	gameTree.push(this);
+	
 }
     
 #endif
