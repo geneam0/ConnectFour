@@ -20,7 +20,8 @@ class treeNode {
     treeNode(Board bo);
   
     // get data
-    treeNode* getChild(size_t i)                               { return children[i]; }
+    treeNode* getChild(size_t i)                              { return children[i]; }
+    treeNode* getChildren()                                    { return **children; }
     Board getBoard()                                          { return possibleBoard; }
     treeNode* getParent()                                     { return parent; }
   
@@ -41,6 +42,6 @@ class treeNode {
 void DFS(treeNode* b, char turn, Stack<treeNode>& childrenStack);
 void generateScore(treeNode* b, size_t level, char turn);
 void evaluateUp(treeNode* b, char turn);
-void MiniMax(const treeNode* b, size_t level, char turn);
+void MiniMax(treeNode* b, size_t level, char turn);
   
 #endif

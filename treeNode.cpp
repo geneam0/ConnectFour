@@ -169,7 +169,7 @@ void evaluateUp(treeNode* b, char turn){
 	while(b->getChildren()!=NULL){
 		for(size_t i=0; i<7;i++){
     	if(b->getChild(i)==NULL) { continue; }
-			else if(b->getChild(i)==minMax){                          //***** define minMax again cus its outside of scope
+			else if(b->getChild(i)->getBoard()->getScore()==minMax){                          //***** define minMax again cus its outside of scope
 				b=b->getChild(i);
 				cout<<b->getBoard();
 			}
@@ -183,9 +183,9 @@ void evaluateUp(treeNode* b, char turn){
  * 		When the program finishes, each leaf score is calculated with generateScore. At the end,  
  *		evaluateUp takes each leaf score and "miniMaxes" it upward.
  */
-void MiniMax(const treeNode* b, size_t level, char turn){
+void MiniMax(treeNode* b, size_t level, char turn){
   // If the node is null, we generate the score for the parent and stop generating null children
-  if(*b==NULL){
+  if(b==NULL){
     if(turn=='O') turn='X';
     else turn='O';
     level++;
@@ -193,7 +193,7 @@ void MiniMax(const treeNode* b, size_t level, char turn){
     return;
   }
   if(level==0){
-    evaluateUp(*b, turn); 
+    evaluateUp(b, turn); 
     return;
   }
   // Otherwise, the MiniMax function continues to generate child nodes
