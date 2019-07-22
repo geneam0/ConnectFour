@@ -12,7 +12,7 @@
 # Debugging:
    Syntax: <br/>
       (X) Stack and Queue <br/>
-      ( ) Board <br/>
+      (X) Board <br/>
       ( ) Tree <br/>
    Running: <br/>
       ( ) DFS <br/>
