@@ -260,15 +260,15 @@ bool treeNode::itdfs(char turn, treeNode* currentNode, Stack<treeNode*>& nodeSta
     if(currentNode->getBoard().boardFull() || currentNode->getBoard().hasWinner()) {
 	Stack<Board> winningPath;
 	winningPath.push(currentNode->getBoard());
-    while(currentNode->getParent() != NULL) {
-      currentNode = currentNode->getParent();
-      winningPath.push(currentNode->getBoard());
-    }
-    Board nextBoard;
-    nextBoard = winningPath.top();
-    cout << "->" << nextBoard;
-    winningPath.pop();
-		return true;
+	while(currentNode->getParent() != NULL) {
+	      currentNode = currentNode->getParent();
+	      winningPath.push(currentNode->getBoard());
+	    }
+	Board nextBoard;
+	nextBoard = winningPath.top();
+	cout << "->" << nextBoard;
+	winningPath.pop();
+	return true;
     }
     nodeStack.push(currentNode);
     if(level < maxLevel) {
