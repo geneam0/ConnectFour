@@ -1,10 +1,21 @@
 # ConnectFour
 # Things we need:
-   tree class <br/>
-   BFS <br/>
-   DFS <br/>
-   Iterative Deepening <br/>
+   (X) Main <br/>
+   (X) Board Class <br/>
+   (X) Tree Structure <br/>
+   (X) DFS <br/>
+   (X) BFS <br/>
+   (X) MiniMax <br/>
+   ( ) Iterative Deepening <br/>
+   (X) Stack and Queue <br/>
    
-# Check:
-   Make sure it compiles
-   Make sure it returns the path
+# Debugging:
+   Syntax: <br/>
+      (X) Stack and Queue <br/>
+      ( ) Board <br/>
+      ( ) Tree <br/>
+   Running: <br/>
+      ( ) DFS <br/>
+      ( ) BFS <br/>
+      ( ) MiniMax <br/>
+      ( ) Iterative Deepening <br/>
