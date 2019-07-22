@@ -239,7 +239,7 @@ void treeNode::BFS(char turn) {
     winningPath.pop();    
 } 
   
-bool treeNode::itdfs(char turn, treeNode* currentNode, Stack<TreeNode*>& nodeStack,int level, int maxLevel) {
+bool treeNode::itdfs(char turn, treeNode* currentNode, Stack<TreeNode*>& nodeStack,int level, int maxLevel) { // USER PART
 	if(currentNode->getBoard().boardFull() || currentNode->getBoard().hasWinner()) {
 		//print boards
 		return true;
@@ -260,7 +260,7 @@ bool treeNode::itdfs(char turn, treeNode* currentNode, Stack<TreeNode*>& nodeSta
 	return false;
 }
 	  
-void treeNode::IT(char turn) {
+void treeNode::IT(char turn) { // USER PART
 	treeNode* currentNode;
 	currentNode = this;
 	for(int = 0; i < 10; i++) {
