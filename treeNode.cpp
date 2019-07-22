@@ -73,11 +73,12 @@ treeNode operator=(treeNode source) {
 // Searching Algorithms
 void Node::DFS(const treeNode* b, char turn, Stack<treeNode>& childrenStack){
   // Base Case: returns the winning board or tied board if no other solution possible
-  if(*b.possibleBoard.hasWinner()||(*b.possibleBoard.boardFull()&&childrenStack.empty())){
+  if(*b.possibleBoard.hasWinner()||(*b.possibleBoard.boardFull()&&childrenStack.empty())){ // onlytime you want to print is if board has winner or if full, childrenstack empty isnt necessary
     cout<<*b.possibleBoard;
     while(b->getParent()!=NULL){
       cout<<b->getParent().possibleBoard;
       b=b->getParent();
+	// return statement here maybeeeee
     }
   }
   /*
@@ -195,7 +196,7 @@ void MiniMax(const treeNode* b, size_t level, char turn){
 }
 
 // meriselle search algorithms 
-void treeNode::BFS(turn) {
+void treeNode::BFS(char turn) {
   bool isWinner = false;
   char thisTurn;
   if (turn == user) {
@@ -212,12 +213,12 @@ void treeNode::BFS(turn) {
 		thisTurn = user;
 	currentNode = gameTree.front();
 	gameTree.pop();
-	currentNode.generateChildren(thisTurn);
+	currentNode->generateChildren(thisTurn);
 	for(int i = 0; i < 7; i++) {
-		if(children[i] == nullptr) { continue; }
-		gameTree.push(children[i]);
-		if(children[i]->getBoard().hasWinner()) {
-			winningPath.push(children[i]->getBoard());
+		if(currentNode->getChild(i) == nullptr) { continue; }
+		gameTree.push(currentNode->getChild(i));
+		if(currentNode->getChild(i)->getBoard().hasWinner()) {
+			winningPath.push(currentNode->getChild(i)->getBoard());
 			isWinner = true;
 			break;
 		}
@@ -238,51 +239,42 @@ void treeNode::BFS(turn) {
     winningPath.pop();    
 } 
   
-void IT(turn) {
-	if( turn == user) {
-		thisTurn == comp;
-	} else { thisTurn == user; }
-	bool isWinner = false;
-	queue<treeNode *> gameTree;
-	stack<Board> winningPath;
-	gameTree.push(this);
-	treeNode* = currentNode;
-	int itChild = 0; // ......
-	while(!gameTree.empty() && isWinner == false) {
-		if (thisTurn == user) { thisTurn == comp; 
-	 	} else { thisTurn == user; }
-		currentNode = gameTree.front()
-		gameTree.pop();
-		currentNode.generateChildren(thisTurn);
-		for(int i = 0; i < 7; i++) {
-			gameTree.push(currentNode.getChildren[i]);
-			currentNode.getChildren[i]->generateChildren(thisTurn);
-			for(int j = 0; j < 7; j++) {
-				if(currentNode.getChildren[j] == nullptr) { continue; }
-				gameTree.push(currentNode.getChildren[j]);
-				if(children[j]->getBoard().hasWinner()) {
-					winningPath.push(currentNode.getChildren[j]->getBoard());
-					isWinner = true;
-					break;
-				}
-			}
-			if(isWinner) { break; }
+void treeNode::iterativeDFS(char turn, size_t initialLevel, size_t maxLevel, Stack<treeNode*> dfsStack) {	
+	treeNode* currentNode;
+	currentNode = this;
+	// baseCase:
+	if(currentNode->getBoard().hasWinner() || currentNode->getBoard().boardFull()) {
+		cout << "Winning Board: " << currentNode->getBoard();
+		Stack<Board> winningPath;
+		winningPath.push(currentNode->getBoard());
+		while(currentNode->getParent() != nullptr) {
+			winningPath.push(currentNode->getParent());
+			currentNode = currentNode->getParent();
 		}
-		if(isWinner) { break; }
+		Board nextBoard;
+		while(!winningPath.empty()) {
+			cout << "->" << winningPath.top();
+			winningPath.pop();
+		}
+	} currentNode->generateChildren(thisTurn);
+	for(int = 0; i < 7; i++) {
+		if(currentNode->getChild(i) == nullptr) { continue; }
+		else { dfsStack.push(currentNode->getChild(i)); }
 	}
-	treeNode winner = winningPath.top();
- 	cout << "Winning Board: " << winner.getBoard();		// PRINT BOARD FUNCTION OR COUT OVERLOADED
-        treeNode *rootParent;
-  	rootParent = winner.getParent();
-  	while(rootParent != NULL) {
-    		winningPath.push(rootParent.getBoard());
-    		rootParent = rootParent->getParent();
-  	}
-  	while(!winningPath.empty()) {
-    		Board path = winningPath.top();
-    		cout << "->" << path;
-    		winningPath.pop(); 
-	}
+	treeNode* nextNode;
+	nextNode = dfsStack.top();
+	dfsStack.pop();
+	if(thisTurn == 'X') { thisTurn == 'O'; }
+	else { thisTurn == 'X';
+	nextNode.iterativeDFS(thisTurn, initialLevel + 1, maxLevel, dfsStack); 
+}
+	
+	
+	
+	
+}
+	  
+void treeNode::IT(char turn) {
 }
     
 #endif
