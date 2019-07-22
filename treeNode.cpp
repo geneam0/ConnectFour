@@ -8,16 +8,20 @@
 // default constructor ->>> ??? what else for this
 treeNode::treeNode() {
   setParent(NULL);
-  new *children[7];
+  for(int i = 0; i < 7; i++) {
+    children[i] = NULL;
+  }
 }
 
 // root treeNode constructor
 treeNode::treeNode(size_t col, char user) {        // initial user input board 
-    Board root;
-    root.addPiece(col, user);
-    possibleBoard = root;
-    setParent(NULL);
-    new *children[7]; 
+  Board root;
+  root.addPiece(col, user);
+  possibleBoard = root;
+  setParent(NULL);
+  for(int i = 0; i < 7; i++) {
+    children[i] = NULL;
+  }
 }
 
 treeNode::treeNode(Board bo){
@@ -27,7 +31,9 @@ treeNode::treeNode(Board bo){
 		}
 	}
   setParent(NULL);
-  new *children[7];
+  for(int i = 0; i < 7; i++) {
+    children[i] = NULL;
+  }
 }
 // ADD/SET DATA
 // addChild: fills designated slot in children array with pointer to new child
@@ -275,9 +281,9 @@ bool treeNode::itdfs(char turn, treeNode* currentNode, Stack<treeNode*>& nodeSta
 void treeNode::IT(char turn) { // USER PART
 	treeNode* currentNode;
 	currentNode = this;
-	for(int = 0; i < 10; i++) {
+	for(int i= 0; i < 10; i++) {
 		Stack<treeNode*> nodeStack;
-		if(dfs(turn, currentNode, nodeStack, 0, i)) {
+		if(itdfs(turn, currentNode, nodeStack, 0, i)) {
 			break;
 		}
 	}
