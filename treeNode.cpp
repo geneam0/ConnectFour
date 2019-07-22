@@ -265,7 +265,9 @@ void treeNode::IT(char turn) { // USER PART
 	currentNode = this;
 	for(int = 0; i < 10; i++) {
 		Stack<treeNode*> nodeStack;
-		dfs(turn, currentNode, nodeStack, 0, i);
+		if(dfs(turn, currentNode, nodeStack, 0, i)) {
+			break;
+		}
 	}
 }
     
