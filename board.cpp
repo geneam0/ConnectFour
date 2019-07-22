@@ -13,7 +13,8 @@ Board::Board(){
 	}
 	score=0;
 }
-// deletes each column in the 2d array and the deletes the row array. sets score to 0.
+/*
+// deletes each column in the 2d array and the deletes the row array. sets score to 0./
 Board::~Board(){
 	for (size_t i = 0; i < rows; i++) {
         	delete[] arr[i];
@@ -21,7 +22,7 @@ Board::~Board(){
 	delete[] arr;
 	score=0;
 }
-
+*/
 // returns true if the board is full by seeing if there's an empty space anywhere on the board
 bool Board::boardFull() const {
   for(int i = 0; i < rows; i++) {
