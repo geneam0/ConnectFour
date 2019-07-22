@@ -47,7 +47,7 @@ int main(){
 	delete initBFS;
 	*/
 	// initalize the board again
-	Board initMM = new Board();
+	Board initMM;
 	// test MiniMax
 	initMM.addPiece(user,1); 
 	/* Should look liek dis:
