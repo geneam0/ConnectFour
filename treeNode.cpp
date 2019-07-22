@@ -7,16 +7,16 @@
 
 // default constructor ->>> ??? what else for this
 treeNode::treeNode() {
-  *parent = NULL;
+  setParent(NULL);
   new *children[7];
 }
 
 // root treeNode constructor
 treeNode::treeNode(size_t col, char user) {        // initial user input board 
     Board root;
-    root.addPiece(i, user);
+    root.addPiece(col, user);
     possibleBoard = root;
-		*parent = NULL;
+		setParent(NULL);
     new *children[7]; 
 }
 
@@ -26,7 +26,7 @@ treeNode::treeNode(Board bo){
 			possibleBoard.setPiece(i,j,bo.getPiece(i,j));
 		}
 	}
-  *parent = NULL;
+  setParent(NULL);
   new *children[7];
 }
 // ADD/SET DATA
@@ -71,12 +71,12 @@ treeNode operator=(treeNode source) {
 }
 
 // Searching Algorithms
-void Node::DFS(const treeNode* b, char turn, Stack<treeNode>& childrenStack){
+void DFS(treeNode* b, char turn, Stack<treeNode>& childrenStack){
   // Base Case: returns the winning board or tied board if no other solution possible
-  if(*b.possibleBoard.hasWinner()||(*b.possibleBoard.boardFull()&&childrenStack.empty())){ // onlytime you want to print is if board has winner or if full, childrenstack empty isnt necessary
-    cout<<*b.possibleBoard;
+  if(b->getBoard().hasWinner()||(b->getBoard().boardFull()&&childrenStack.empty())){ // onlytime you want to print is if board has winner or if full, childrenstack empty isnt necessary
+    cout<<b->getBoard();
     while(b->getParent()!=NULL){
-      cout<<b->getParent().possibleBoard;
+      cout<<b->getParent()->getBoard();
       b=b->getParent();
 	// return statement here maybeeeee
     }
@@ -86,7 +86,7 @@ void Node::DFS(const treeNode* b, char turn, Stack<treeNode>& childrenStack){
    * Then it will perform DFS on the most leftest child node. If the board is full, it will use the 
    * childrenStack to find the next node to perform DFS on.
    */
-  else if(!*b.possibleBoard.boardFull()){
+  else if(!b->getBoard().boardFull()){
     b->generateChildren(turn);
     for(size_t i=6; i>=0;i--){
       if(b->getChild(i) == NULL) { continue; }
@@ -103,38 +103,38 @@ void Node::DFS(const treeNode* b, char turn, Stack<treeNode>& childrenStack){
 // computerTurn = 'X; userTurn = 'O'
 void generateScore(treeNode* b, size_t level, char turn){
   // initalize the board and score
-  Board in=*b.possibleBoard;
+  Board in=b->getBoard();
   int score=0; level++; size_t consecutive=0; int tempScore=0;
   // adds score based on how many consecutives each board has
-	for(size_t i=0; i<rows-3; i++){
-		for(size_t j=0; j<columns; j++){
-		  if(turn==arr[i][j]==arr[i+1][j]==arr[i+2][j]==arr[i+3][j]){ consecutive=4; }
-      else if (turn==arr[i][j]==arr[i+1][j]==arr[i+2][j]){ consecutive=3; }
-      else if (turn==arr[i][j]==arr[i+1][j]){ consecutive=2; }
+	for(size_t i=0; i<3; i++){
+		for(size_t j=0; j<7; j++){
+		  if(turn==in.getPiece(i,j)==in.getPiece(i+1,j)==in.getPiece(i+2,j)==in.getPiece(i+3,j)){ consecutive=4; }
+      else if (turn==in.getPiece(i,j)==in.getPiece(i+1,j)==in.getPiece(i+2,j)){ consecutive=3; }
+      else if (turn==in.getPiece(i,j)){ consecutive=2; }
       score+=pow(level,consecutive);
 		}
 	}
-	for(size_t i=0; i<rows; i++){
-		for(size_t j=0; j<columns-3; j++){
-			if(turn==arr[i][j]==arr[i][j+1]==arr[i][j+2]==arr[i][j+3]){ consecutive=4; }
-      else if (turn==arr[i][j]==arr[i][j+1]==arr[i][j+2]){ consecutive=3; }
-      else if (turn==arr[i][j]==arr[i][j+1]){ consecutive=2; }
+	for(size_t i=0; i<3; i++){
+		for(size_t j=0; j<4; j++){
+			if(turn==in.getPiece(i,j)==in.getPiece(i,j+1)==in.getPiece(i,j+2)==in.getPiece(i,j+3)){ consecutive=4; }
+      else if (turn==in.getPiece(i,j)==in.getPiece(i,j+1)==in.getPiece(i,j+2)){ consecutive=3; }
+      else if (turn==in.getPiece(i,j)==in.getPiece(i,j+1)){ consecutive=2; }
       score+=pow(level,consecutive);
 		}
 	}
-	for(size_t i=3; i<rows; i++){
-		for(size_t j=0; j<columns-3;j++){
-      if(turn==arr[i][j]==arr[i+1][j+1]==arr[i+2][j+2]==arr[i+3][j+3]){ consecutive=4; }
-      else if (turn==arr[i][j]==arr[i+1][j+1]==arr[i+2][j+2]){ consecutive=3; }
-      else if (turn==arr[i][j]==arr[i+1][j+1]){ consecutive=2; }
+	for(size_t i=3; i<6; i++){
+		for(size_t j=0; j<4;j++){
+      if(turn==in.getPiece(i,j)==in.getPiece(i+1,j+1)==in.getPiece(i+2,j+2)==in.getPiece(i+3,j+3)){ consecutive=4; }
+      else if (turn==in.getPiece(i,j)==in.getPiece(i+1,j+1)==in.getPiece(i+2,j+2)){ consecutive=3; }
+      else if (turn==in.getPiece(i,j)==in.getPiece(i+1,j+1)){ consecutive=2; }
       score+=pow(level,consecutive);
 		}
 	}
-	for(size_t i=3; i<rows; i++){
-		for(size_t j=3; j<columns;j++){
-			if(turn==arr[i][j]==arr[i-1][j-1]==arr[i-2][j-2]==arr[i-3][j-3]){ consecutive=4; }
-    		  else if (turn==arr[i][j]==arr[i-1][j-1]==arr[i-2][j-2]){ consecutive=3; }
-      else if (turn==arr[i][j]==arr[i-1][j-1]){ consecutive=2; }
+	for(size_t i=3; i<6; i++){
+		for(size_t j=3; j<7;j++){
+			if(turn==in.getPiece(i,j)==in.getPiece(i-1,j-1)==in.getPiece(i-2,j-2)==in.getPiece(i-3,j-3)){ consecutive=4; }
+    		  else if (turn==in.getPiece(i,j)==in.getPiece(i-1,j-1)==in.getPiece(i-2,j-2)){ consecutive=3; }
+      else if (turn==in.getPiece(i,j)==in.getPiece(i-1,j-1)){ consecutive=2; }
       score+=pow(level,consecutive);
 		}
 	}
@@ -151,7 +151,7 @@ void evaluateUp(treeNode* b, char turn){
 			if(turn=='O') { minMax=100000000; }	
 			else { minMax=-100000000; }
 			for(size_t i=0; i<7; i++){
-				int temp=b->getChild(i).possibleBoard->getScore();
+				int temp=b->getChild(i)->getBoard()->getScore();
 				// if the current turn is the user, you try to minimize
 				if(turn=='O' && temp<minMax){ minMax=temp; } 
 				// otherwise, you're maximizing
@@ -168,7 +168,7 @@ void evaluateUp(treeNode* b, char turn){
     	if(b->getChild(i)==NULL) { continue; }
 			else if(b->getChild(i)==minMax){
 				b=b->getChild(i);
-				cout<<*b.possibleBoard;
+				cout<<b->getBoard();
 			}
 		}
 	}
@@ -210,26 +210,26 @@ void MiniMax(const treeNode* b, size_t level, char turn){
 void treeNode::BFS(char turn) {
   bool isWinner = false;
   char thisTurn;
-  if (turn == user) {
-	  thisTurn == comp;
-  } else { thisTurn == user; }
-  queue<treeNode *> gameTree;
-  stack<Board> winningPath;
+  if (turn == 'O') {
+	  thisTurn == 'X';
+  } else { thisTurn == 'O'; }
+  Queue<treeNode*> gameTree;
+  Stack<Board> winningPath;
   gameTree.push(this);			// queue is a queue of pointers, not boards sooo push this pointer 
   treeNode* currentNode;
   while(!gameTree.empty()) {	
-	if(thisTurn == user) {
-		thisTurn = comp;
+	if(thisTurn == 'O') {
+		thisTurn = 'X';
 	} else {
-		thisTurn = user;
+		thisTurn = 'O';
 	currentNode = gameTree.front();
 	gameTree.pop();
 	currentNode->generateChildren(thisTurn);
 	for(int i = 0; i < 7; i++) {
 		if(currentNode->getChild(i) == nullptr) { continue; }
 		gameTree.push(currentNode->getChild(i));
-		if(currentNode->getChild(i)->getBoard().hasWinner()) {
-			winningPath.push(currentNode->getChild(i)->getBoard());
+		if(currentNode->getChild(i).getBoard().hasWinner()) {
+			winningPath.push(currentNode->getChild(i).getBoard());
 			isWinner = true;
 			break;
 		}
@@ -241,7 +241,7 @@ void treeNode::BFS(char turn) {
   treeNode *rootParent;
   rootParent = winner.getParent();
   while(rootParent != NULL) {
-    winningPath.push(rootParent.getBoard());
+    winningPath.push(rootParent->getBoard());
     rootParent = rootParent->getParent();
   }
   while(!winningPath.empty()) {
@@ -250,7 +250,7 @@ void treeNode::BFS(char turn) {
     winningPath.pop();    
 } 
   
-bool treeNode::itdfs(char turn, treeNode* currentNode, Stack<TreeNode*>& nodeStack,int level, int maxLevel) { // USER PART
+bool treeNode::itdfs(char turn, treeNode* currentNode, Stack<treeNode*>& nodeStack,int level, int maxLevel) { // USER PART
 	if(currentNode->getBoard().boardFull() || currentNode->getBoard().hasWinner()) {
 		//print boards
 		return true;
