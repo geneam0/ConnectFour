@@ -71,25 +71,24 @@ treeNode operator=(treeNode source) {
 }
 
 // Searching Algorithms
-void Node::DFS(const treeNode* b, char turn){
+void Node::DFS(const treeNode* b, char turn, Stack<treeNode>& childrenStack){
   // Base Case: returns the winning board or tied board if no other solution possible
-  if(b.possibleBoard.hasWinner()||(b.possibleBoard.boardFull()&&childrenStack.empty())){
-    cout<<b.possibleBoard;
+  if(*b.possibleBoard.hasWinner()||(*b.possibleBoard.boardFull()&&childrenStack.empty())){
+    cout<<*b.possibleBoard;
     while(b->getParent()!=NULL){
       cout<<b->getParent().possibleBoard;
       b=b->getParent();
     }
   }
   /*
-   * If the board isn't full, DFS will push in the child nodes into the childrenStack and the parent nodes into the 
-   * parentStack. Then it will perform DFS on the most leftest child node. If the board is full, it will use the 
+   * If the board isn't full, DFS will push in the child nodes into the childrenStack.
+   * Then it will perform DFS on the most leftest child node. If the board is full, it will use the 
    * childrenStack to find the next node to perform DFS on.
    */
-  else if(!b.possibleBoard.boardFull()){
-    parentStack.push(b);
+  else if(!*b.possibleBoard.boardFull()){
     b->generateChildren(turn);
-    for(size_t i=0; i<7;i++){
-      if(children[i] == nullptr) { continue; }
+    for(size_t i=6; i>=0;i--){
+      if(b->getChild(i) == NULL) { continue; }
       else { childrenStack.push(b->getChild(i)); }
     }
   } 
@@ -97,7 +96,7 @@ void Node::DFS(const treeNode* b, char turn){
   childrenStack.pop();
   if(turn=='X') turn='O';
   else turn='X';
-  DFS(onTop,turn);
+  DFS(onTop,turn,childrenStack);
 }
 
 Board treeNode::Minimax(const Board b, size_t level){
@@ -245,39 +244,9 @@ void treeNode::BFS(turn) {
   
 void IT(turn) {
  // SET thisTurn
-	bool isWinner = false;
 	queue<treeNode *> gameTree;
-	stack<Board> winningPath;
 	gameTree.push(this);
-	generateChildren(thisTurn);
-	int itChild = 0;
-	while(//CONDITION) {
-		child[itChild]->generateChildren(thisTurn);
-		for(int i = 0; i < 7; i++) {
-			if(children[i] == nullptr) { continue; }
-			if(children[i]->getBoard().hasWinner()) {
-				winningPath.push(children[i]->getBoard());
-				isWinner = true;
-				break;
-			}
-		}
-		if(isWinner) { break; }
-		itChild++;
-	}
-	treeNode winner = winningPath.top();
- 	cout << "Winning Board: " << winner.getBoard();		// PRINT BOARD FUNCTION OR COUT OVERLOADED
-        treeNode *rootParent;
-  	rootParent = winner.getParent();
-  	while(rootParent != NULL) {
-    		winningPath.push(rootParent.getBoard());
-    		rootParent = rootParent->getParent();
-  	}
-  	while(!winningPath.empty()) {
-    		Board path = winningPath.top();
-    		cout << "->" << path;
-    		winningPath.pop(); 
-	}
+	
 }
-	  
     
 #endif
