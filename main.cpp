@@ -1,5 +1,6 @@
 #include "board.h"
 #include "treeNode.h"
+#include "Stack.h"
 #include <iostream>
 using namespace std::cout;
 
@@ -20,8 +21,9 @@ void makeMove(char Player, Board& b){
 */
 
 int main(){
-	// initialize the board and AI
+	// initialize the board and stack
 	Board initDFS = new Board(); 
+	Stack<treeNode> s;
 	// test DFS
 	initDFS.addPiece('X',0); initDFS.addPiece('O',0);
 	initDFS.addPiece('X',0); initDFS.addPiece('O',0);
@@ -42,7 +44,7 @@ int main(){
 	X X X - - - -        X X X - - - -	  X X X X - - - (wow, that glo' up tho)
 	*/
 	treeNode depth = new treeNode(initDFS);
-	DFS(*depth,'O'); 
+	DFS(*depth,'O',s); 
 	delete initDFS;
 	
 	// initialize the board again
