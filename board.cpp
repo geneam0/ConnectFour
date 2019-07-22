@@ -85,7 +85,7 @@ bool Board::fullColumn(size_t c) const {
 }
 // Precondition: the board column has a space to put the chip
 // Postcondition: the chip is "dropped" in the board column and placed where the next available row is
-void Board::addPiece(char entry, size_t col) {
+void Board::addPiece(char entry, size_t c) {
   if(fullColumn(c)) { /* invalid message and reprompt */ return; }
   size_t i=6;
   while(!spaceEmpty(i, c)) {
