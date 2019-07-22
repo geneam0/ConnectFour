@@ -96,7 +96,7 @@ void DFS(treeNode* b, char turn, Stack<treeNode>& childrenStack){
       else { childrenStack.push(b->getChild(i)); }
     }
   } 
-  treeNode onTop=childrenStack.top();
+  treeNode* onTop = &childrenStack.top();
   childrenStack.pop();
   if(turn=='X') turn='O';
   else turn='X';
@@ -231,8 +231,8 @@ void treeNode::BFS(char turn) {
       for(int i = 0; i < 7; i++) {
         if(currentNode->getChild(i) == NULL) { continue; }
         gameTree.push(currentNode->getChild(i));                  // const
-        if(currentNode->getChild(i).getBoard().hasWinner()) {
-          winningPath.push(currentNode->getChild(i).getBoard());
+        if(currentNode->getChild(i)->getBoard().hasWinner()) {
+          winningPath.push(currentNode->getChild(i)->getBoard());
           isWinner = true;
           break;
         }
