@@ -42,7 +42,7 @@ int main(){
 	X X X - - - -        X X X - - - -	  X X X X - - - (wow, that glo' up tho)
 	*/
 	treeNode depth = new treeNode(initDFS);
-	DFS(depth,'O'); 
+	DFS(*depth,'O'); 
 	delete initDFS;
 	
 	// initialize the board again
