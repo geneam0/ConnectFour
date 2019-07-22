@@ -21,6 +21,7 @@ void makeMove(char Player, Board& b){
 */
 
 int main(){
+	/* 
 	// initialize the board and stack
 	Board initDFS; 
 	Stack<treeNode> s;
@@ -28,7 +29,7 @@ int main(){
 	char comp = 'X';
 	// test DFS
 	initDFS.addPiece(user,0); 
-	/* Should look like dis:
+	// Should look like dis:
 	Before               Mid		  After
 	O O - - - - -        O O O - - - -	  O O O - - - -
 	X X X - - - -        X X X - - - -	  X X X - - - -
@@ -36,16 +37,16 @@ int main(){
 	X X X - - - -      / X X X - - - -      / X X X - - - -
 	O O O - - - -        O O O - - - -	  O O O - - - -
 	X X X - - - -        X X X - - - -	  X X X X - - - (wow, that glo' up tho)
-	*/
+	
 	treeNode depth(initDFS);
 	DFS(*depth,'O',s); 
-	/*
+	
 	// initialize the board again
 	Board initBFS = new Board();
 	// test BFS
 	
 	delete initBFS;
-	*/
+	
 	// initalize the board again
 	Board initMM = new Board();
 	// test MiniMax
@@ -59,7 +60,7 @@ int main(){
 	- - O X X - -        - - O X X - -        - - O X X - -        - - O X X X -
 	- O X O X O -        - O X O X O -        - O X O X O -        - O X O X O -
 	highkey not sure if this will work tho
-	*/
+	
 	treeNode mini = new treeNode(initMM);
 	MiniMax(initMM,4,comp);
 	/*
@@ -85,6 +86,16 @@ int main(){
 		}
 	}
 	cout<<"You tied!";
-	*/
+	
 	return 0;
+
+	*/
+	char user = 'X';
+	char comp = 'O';
+
+	Board test;
+	test.addPiece(user, 0);
+	treeNode bfsTest = treeNode(test);
+	bfsTest.BFS(user);
+
 }
