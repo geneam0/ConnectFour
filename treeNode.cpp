@@ -244,26 +244,26 @@ void IT(turn) {
 	stack<Board> winningPath;
 	gameTree.push(this);
 	treeNode* = currentNode;
-	int itChild = 0;
+	int itChild = 0; // ......
 	while(!gameTree.empty() && isWinner == false) {
 		currentNode = gameTree.front()
 		gameTree.pop();
 		currentNode.generateChildren(thisTurn);
 		for(int i = 0; i < 7; i++) {
-			gameTree.push(children[i]);
-		}
-		children[itChild]->generateChildren(thisTurn);
-		for(int i = 0; i < 7; i++) {
-			if(children[i] == nullptr) { continue; }
-			gameTree.push(children[i]);
-			if(children[i]->getBoard().hasWinner()) {
-				winningPath.push(children[i]->getBoard());
-				isWinner = true;
-				break;
+			gameTree.push(currentNode.getChildren[i]);
+			currentNode.getChildren[i]->generateChildren(thisTurn);
+			for(int j = 0; j < 7; j++) {
+				if(currentNode.getChildren[j] == nullptr) { continue; }
+				gameTree.push(currentNode.getChildren[j]);
+				if(children[j]->getBoard().hasWinner()) {
+					winningPath.push(currentNode.getChildren[j]->getBoard());
+					isWinner = true;
+					break;
+				}
 			}
+			if(isWinner) { break; }
 		}
 		if(isWinner) { break; }
-		itChild++;
 	}
 	treeNode winner = winningPath.top();
  	cout << "Winning Board: " << winner.getBoard();		// PRINT BOARD FUNCTION OR COUT OVERLOADED
