@@ -32,7 +32,7 @@ class Board{
 		// other helpful functions 
 		bool boardFull() const; // returns true if the board is completed
 		bool hasWinner() const; // returns true if there's a winner by checking by column, row, and diagonal
-		bool spaceEmpty(size_t row, size_t c) const; // same as getPiece(r,c)=='-'
+		bool spaceEmpty(size_t r, size_t c) const; // same as getPiece(r,c)=='-'
 		bool fullColumn(size_t c) const; // returns true a chip can't be placed in a column as it is full
 		void addPiece(char entry, size_t c); // adds the piece in a column at the next available row
 		// for printing the board
