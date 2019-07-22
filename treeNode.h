@@ -32,7 +32,7 @@ class treeNode {
     void setParent(treeNode* p)                               { parent = p; }
 
     // overloaded operators
-    operator=(treeNode source);
+    void operator=(treeNode source);
 
     // search algorithms
     void BFS(char turn);

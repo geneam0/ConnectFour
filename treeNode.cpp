@@ -65,14 +65,13 @@ void treeNode::generateChildren(char turn) {
 }
 
 // OVERLOADED OPERATORS                                            // FIXXXXXXXX
-treeNode::operator=(treeNode source) {
+void treeNode::operator=(treeNode source) {
   possibleBoard = source.getBoard();
   parent = source.getParent();
   for(int i = 0; i < 7; i++) {
-    *children[i] = source.getChild(i);
+    children[i] = source.getChild(i);
   }
 }
-
 // Searching Algorithms
 void DFS(treeNode* b, char turn, Stack<treeNode>& childrenStack){
   // Base Case: returns the winning board or tied board if no other solution possible
