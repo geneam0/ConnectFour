@@ -6,7 +6,7 @@
 Board::Board(){
 	for(size_t i=0; i<rows; i++){
 		for(size_t j=0; j<columns; j++){
-			arr[i][j]="-";
+			arr[i][j]='-';
 		}
 	}
 	score=0;
@@ -17,13 +17,13 @@ Board::~Board(){
         	delete[] arr[i];
     	}
 	delete[] arr;
-	delete score;
+	score=0;
 }
 
 bool Board::boardFull() const {
   for(int i = 0; i < rows; i++) {
     for(int j = 0; j < columns; j++) {
-      if (arr[i][j] == "-") {
+      if (arr[i][j] == '-') {
         return false;
       }
     }
@@ -60,12 +60,12 @@ bool Board::hasWinner() const{
 }
 
 bool Board::spaceEmpty(size_t row, size_t col) const {
-  return arr[row][col] == "-";
+  return arr[row][col] == '-';
 }
 
 bool Board::fullColumn(size_t col) const {
   for(int i = 0; i < rows; i++) {
-    if(arr[i][col] == "-") {
+    if(arr[i][col] == '-') {
       return false;
     } 
   }
@@ -82,10 +82,10 @@ void Board::addPiece(char entry, size_t col) {
   arr[i][col] = entry;
 }
 
-friend ostream& operator<<(ostream &os) {
-	for(size_t i=0; i<target.rows; i++){
-		for(size_t j=0; j<target.columns; j++){
-			os << target[i][j]<< "\t";
+ostream& operator<<(ostream &os, const Board& source) {
+	for(size_t i=0; i<source.rows; i++){
+		for(size_t j=0; j<source.columns; j++){
+			os << source.arr[i][j]<< " ";
 		}	
 		os<<"\n";
 	}
