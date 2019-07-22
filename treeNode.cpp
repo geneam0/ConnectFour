@@ -239,6 +239,9 @@ void treeNode::BFS(turn) {
 } 
   
 void IT(turn) {
+	if( turn == user) {
+		thisTurn == comp;
+	} else { thisTurn == user; }
 	bool isWinner = false;
 	queue<treeNode *> gameTree;
 	stack<Board> winningPath;
@@ -246,6 +249,8 @@ void IT(turn) {
 	treeNode* = currentNode;
 	int itChild = 0; // ......
 	while(!gameTree.empty() && isWinner == false) {
+		if (thisTurn == user) { thisTurn == comp; 
+	 	} else { thisTurn == user; }
 		currentNode = gameTree.front()
 		gameTree.pop();
 		currentNode.generateChildren(thisTurn);
