@@ -94,7 +94,7 @@ int main(){
 	char user = 'X';
 	char comp = 'O';
 
-	Board test=new Board();
+	Board test=Board();
 	test.addPiece(user, 0);
 	treeNode bfsTest = treeNode(test);
 	bfsTest.BFS(user);
