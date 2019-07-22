@@ -69,7 +69,7 @@ treeNode::operator=(treeNode source) {
   possibleBoard = source.getBoard();
   parent = source.getParent();
   for(int i = 0; i < 7; i++) {
-    children[i]  = source.getChild(i);
+    *children[i]  = source.getChild(i);
   }
 }
 
@@ -92,7 +92,7 @@ void DFS(treeNode* b, char turn, Stack<treeNode>& childrenStack){
   else if(!b->getBoard().boardFull()){
     b->generateChildren(turn);
     for(size_t i=6; i>=0;i--){
-      if(b->getChild(i) == NULL) { continue; }
+      if((b->getChild(i)) == NULL) { continue; }
       else { childrenStack.push(b->getChild(i)); }
     }
   } 

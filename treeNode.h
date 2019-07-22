@@ -20,8 +20,7 @@ class treeNode {
     treeNode(Board bo);
   
     // get data
-    treeNode getChild(size_t i)                               { return *children[i]; }
-    treeNode getChildren()                                    { return **children; }
+    treeNode* getChild(size_t i)                               { return children[i]; }
     Board getBoard()                                          { return possibleBoard; }
     treeNode* getParent()                                     { return parent; }
   
