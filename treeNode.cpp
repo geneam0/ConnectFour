@@ -20,6 +20,8 @@ treeNode::treeNode(size_t col, char user) {        // initial user input board
     new *children[7]; 
 }
 
+
+
 treeNode::treeNode(Board bo){
   possibleBoard=bo;
   setParent(NULL);
@@ -198,6 +200,7 @@ void MiniMax(const treeNode* b, size_t level, char turn){
 
 // meriselle search algorithms 
 void treeNode::BFS(turn) {
+  bool isWinner = false;
   char first, second;
   queue<treeNode *> gameTree;
   stack<Board> winningPath;
@@ -217,9 +220,11 @@ void treeNode::BFS(turn) {
 		gameTree.push(children[i]);
 		if(children[i]->getBoard().hasWinner()) {
 			winningPath.push(children[i]->getBoard());
+			isWinner = true;
 			break;
 		}
 	}
+	if(isWinner) { break; }
   }
   treeNode winner = winningPath.top();
   cout << "Winning Board: " << winner.getBoard();
