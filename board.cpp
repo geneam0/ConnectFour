@@ -46,15 +46,23 @@ bool Board::hasWinner() const{
 	// check by row
 	for(size_t i=0; i<rows; i++){
 		for(size_t j=0; j<columns-3; j++){
-			if(arr[i][j]==arr[i][j+1]==arr[i+2][j+2]==arr[i][j+3]){
+			if(arr[i][j]==arr[i][j+1]==arr[i][j+2]==arr[i][j+3]){
 				return true;
 			}
 		}
 	}
-	// check diagonals
-	for(size_t i=0; i<rows-3; i++){
+	// check up-right diagonals
+	for(size_t i=3; i<rows; i++){
 		for(size_t j=0; j<columns-3;j++){
 			if(arr[i][j]==arr[i+1][j+1]==arr[i+2][j+2]==arr[i+3][j+3]){
+				return true;
+			}
+		}
+	}
+	// check down-right diagonals
+	for(size_t i=3; i<rows; i++){
+		for(size_t j=3; j<columns;j++){
+			if(arr[i][j]==arr[i-1][j-1]==arr[i-2][j-2]==arr[i-3][j-3]){
 				return true;
 			}
 		}
