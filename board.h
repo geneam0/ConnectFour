@@ -10,8 +10,8 @@ class Board{
 	private:
 		static const size_t rows=7;
 		static const size_t columns=6;
-		static const char user = 'X';
-		static const char comp = 'O';
+		static const char user = 'O';
+		static const char comp = 'X';
 		char arr[rows][columns];
 		int score;
 	public:
