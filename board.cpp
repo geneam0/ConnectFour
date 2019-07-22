@@ -3,6 +3,8 @@
 
 #include "board.h"
 
+// constructors
+// fills the 2D array with - and sets score to 0
 Board::Board(){
 	for(size_t i=0; i<rows; i++){
 		for(size_t j=0; j<columns; j++){
@@ -11,7 +13,7 @@ Board::Board(){
 	}
 	score=0;
 }
-
+// deletes each column in the 2d array and the deletes the row array. sets score to 0.
 Board::~Board(){
 	for (size_t i = 0; i < rows; i++) {
         	delete[] arr[i];
@@ -20,6 +22,7 @@ Board::~Board(){
 	score=0;
 }
 
+// returns true if the board is full by seeing if there's an empty space anywhere on the board
 bool Board::boardFull() const {
   for(int i = 0; i < rows; i++) {
     for(int j = 0; j < columns; j++) {
@@ -30,7 +33,7 @@ bool Board::boardFull() const {
   }
   return true;
 }
-
+// 
 bool Board::hasWinner() const{
   // check by column
 	for(size_t i=0; i<rows-3; i++){
@@ -58,11 +61,11 @@ bool Board::hasWinner() const{
 	}
 	return false;
 }
-
+// returns true if the space is empty by checking the char at the position of arr[r][c]
 bool Board::spaceEmpty(size_t r, size_t c) const {
   return arr[r][c] == '-';
 }
-
+// returns true if the column is full by checking the char at each row of arr[i][c]
 bool Board::fullColumn(size_t c) const {
   for(int i = 0; i < rows; i++) {
     if(arr[i][c] == '-') {
@@ -71,17 +74,17 @@ bool Board::fullColumn(size_t c) const {
   }
   return true;
 }
-
+// Precondition: the board column has a space to put the chip
+// Postcondition: the chip is "dropped" in the board column and placed where the next available row is
 void Board::addPiece(char entry, size_t c) {
   if(fullColumn(c)) { /* invalid message and reprompt */ return; }
-  if(boardFull()) { return; }
   size_t i=6;
   while(!spaceEmpty(i, c)) {
     i--;
   }
   arr[i][c] = entry;
 }
-
+// prints the board
 ostream& operator<<(ostream &os, const Board& source) {
 	for(size_t i=0; i<source.rows; i++){
 		for(size_t j=0; j<source.columns; j++){
