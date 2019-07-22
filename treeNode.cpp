@@ -257,9 +257,9 @@ void treeNode::BFS(char turn) {
 } 
   
 bool treeNode::itdfs(char turn, treeNode* currentNode, Stack<treeNode*>& nodeStack,int level, int maxLevel) { // USER PART && CURRENTNODE
-	if(currentNode->getBoard().boardFull() || currentNode->getBoard().hasWinner()) {
-    Stack<Board> winningPath;
-    winningPath.push(currentNode->getBoard());
+    if(currentNode->getBoard().boardFull() || currentNode->getBoard().hasWinner()) {
+	Stack<Board> winningPath;
+	winningPath.push(currentNode->getBoard());
     while(currentNode->getParent() != NULL) {
       currentNode = currentNode->getParent();
       winningPath.push(currentNode->getBoard());
