@@ -96,7 +96,7 @@ int main(){
 
 	Board test=Board();
 	test.addPiece(user, 0);
-	treeNode bfsTest = treeNode(test);
-	bfsTest.BFS(user);
+	//treeNode bfsTest = treeNode(test);
+	//bfsTest.BFS(user);
 
 }
