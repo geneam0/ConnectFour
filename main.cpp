@@ -98,5 +98,5 @@ int main(){
 	test.addPiece(user, 0);
 	//treeNode bfsTest = treeNode(test);
 	//bfsTest.BFS(user);
-
+	return 0;
 }
