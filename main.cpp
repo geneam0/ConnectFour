@@ -49,7 +49,7 @@ int main(){
 	// initalize the board again
 	Board initMM = new Board();
 	// test MiniMax
-	init.addPiece(user,1); 
+	initMM.addPiece(user,1); 
 	/* Should look liek dis:
 	Before		     Mid		  Second Mid		Final
 	- - - - - - -        - - - - - - -	  - - - - - - -        - - - - - - -
@@ -61,7 +61,7 @@ int main(){
 	highkey not sure if this will work tho
 	*/
 	treeNode mini = new treeNode(initMM);
-	MiniMax(init,4,'X');
+	MiniMax(initMM,4,comp);
 	/*
 	// initalize the board again
 	Board initID = new Board();
