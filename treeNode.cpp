@@ -103,7 +103,7 @@ void Node::DFS(const treeNode* b, char turn, Stack<treeNode>& childrenStack){
 // computerTurn = 'X; userTurn = 'O'
 void generateScore(treeNode* b, size_t level, char turn){
   // initalize the board and score
-  Board in=b.possibleBoard;
+  Board in=*b.possibleBoard;
   int score=0; level++; size_t consecutive=0; int tempScore=0;
   // adds score based on how many consecutives each board has
 	for(size_t i=0; i<rows-3; i++){
@@ -116,13 +116,13 @@ void generateScore(treeNode* b, size_t level, char turn){
 	}
 	for(size_t i=0; i<rows; i++){
 		for(size_t j=0; j<columns-3; j++){
-			if(turn==arr[i][j]==arr[i][j+1]==arr[i+2][j+2]==arr[i][j+3]){ consecutive=4; }
-      else if (turn==arr[i][j]==arr[i][j+1]==arr[i+2][j+2]){ consecutive=3; }
+			if(turn==arr[i][j]==arr[i][j+1]==arr[i][j+2]==arr[i][j+3]){ consecutive=4; }
+      else if (turn==arr[i][j]==arr[i][j+1]==arr[i][j+2]){ consecutive=3; }
       else if (turn==arr[i][j]==arr[i][j+1]){ consecutive=2; }
       score+=pow(level,consecutive);
 		}
 	}
-	for(size_t i=0; i<rows-3; i++){
+	for(size_t i=3; i<rows; i++){
 		for(size_t j=0; j<columns-3;j++){
       if(turn==arr[i][j]==arr[i+1][j+1]==arr[i+2][j+2]==arr[i+3][j+3]){ consecutive=4; }
       else if (turn==arr[i][j]==arr[i+1][j+1]==arr[i+2][j+2]){ consecutive=3; }
@@ -130,12 +130,19 @@ void generateScore(treeNode* b, size_t level, char turn){
       score+=pow(level,consecutive);
 		}
 	}
-  // sets the board score based on whether the turn is from the computer or user
-  if(turn=='O'){ score*-1; }
+	for(size_t i=3; i<rows; i++){
+		for(size_t j=3; j<columns;j++){
+			if(turn==arr[i][j]==arr[i-1][j-1]==arr[i-2][j-2]==arr[i-3][j-3]){ consecutive=4; }
+    		  else if (turn==arr[i][j]==arr[i-1][j-1]==arr[i-2][j-2]){ consecutive=3; }
+      else if (turn==arr[i][j]==arr[i-1][j-1]){ consecutive=2; }
+      score+=pow(level,consecutive);
+		}
+	}
   in.setScore(score);
 }
 
 void evaluateUp(treeNode* b, char turn){
+	// while your current subtree isn't the root, you compare yourself to your siblings and based on the turn, you minimize or maximize
 	while(b->getParent()!= NULL){
 		b=b->getParent(); 
 		if(b->getChild(0)!=NULL && b->getChild(1)!=NULL && b->getChild(2)!=NULL && b->getChild(3)!=NULL
@@ -145,19 +152,23 @@ void evaluateUp(treeNode* b, char turn){
 			else { minMax=-100000000; }
 			for(size_t i=0; i<7; i++){
 				int temp=b->getChild(i).possibleBoard->getScore();
+				// if the current turn is the user, you try to minimize
 				if(turn=='O' && temp<minMax){ minMax=temp; } 
+				// otherwise, you're maximizing
 				else if (temp>minMax) { minMax=temp; }
 			}
 			b->setScore(minMax);
 		}
+		// if one of your sibling is NULL, you return the function and wait until it gets a score
 		else { return; }
 	}
+	// for printing the possible board combinations out
 	while(b->getChildren()!=NULL){
 		for(size_t i=0; i<7;i++){
     	if(b->getChild(i)==NULL) { continue; }
-			if(b->getChild(i)==minMax){
+			else if(b->getChild(i)==minMax){
 				b=b->getChild(i);
-				cout<<b;
+				cout<<*b.possibleBoard;
 			}
 		}
 	}
