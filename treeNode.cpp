@@ -209,7 +209,7 @@ void treeNode::BFS(turn) {
   } else { thisTurn == user; }
   queue<treeNode *> gameTree;
   stack<Board> winningPath;
-  gameTree.push(getBoard());
+  gameTree.push(this);			// queue is a queue of pointers, not boards sooo push this pointer 
   while(!gameTree.empty()) {	
 	if(thisTurn == user) {
 		thisTurn = comp;
@@ -234,7 +234,7 @@ void treeNode::BFS(turn) {
   treeNode *rootParent;
   rootParent = winner.getParent();
   while(rootParent != NULL) {
-    winningPath.push(rootParent.Board);
+    winningPath.push(rootParent.getBoard());
     rootParent = rootParent->getParent();
   }
   while(!winningPath.empty()) {
