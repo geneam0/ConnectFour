@@ -199,6 +199,8 @@ void MiniMax(const treeNode* b, size_t level, char turn){
 // meriselle search algorithms 
 void treeNode::BFS(turn) {
   char first, second;
+  queue<*treeNode> gameTree;
+  stack<Board> winningPath;
   if(turn == user) {
     first = user;
     second = comp;
@@ -207,28 +209,20 @@ void treeNode::BFS(turn) {
     second = user;
   treeNode currentNode;
   currentNode // SET CURRENTNODE TO THE NODE THAT IS CALLING THIS FUNCTION (necessary for simpler while loop)
-  while(!getBoard().hasWinner()) {
-    currentNode.generateChildren(first);
-    for(int i = 0; i < 7; i++) {
-      if(children[i] == nullptr) { continue; }
-      gameTree.push(children[i]);
-      if(children[i]->getBoard().hasWinner()) {
-        winningPath.push(children[i]->getBoard());
-        break;
-      }
-    }
-    treeNode next = gameTree.front();
-    gameTree.pop();
-    next.generateChildren(second);
-    for(int i = 0; i < 7; i++) {
-      if(children[i] == nullptr) { continue; }
-      gameTree.push(children[i]);
-      if(children[i]->getBoard().hasWinner()) {
-        winningPath.push(children[i]->getBoard());
-        break;
-      }
-    }
-    next.BFS(first);
+  while(!getboard().hasWinner()) {	
+	if(!gameTree.empty()) {
+		currentNode = gameTree.front();
+		gameTree.pop();
+	}
+	currentNode.generateChildren(first);
+	for(int i = 0; i < 7; i++) {
+		if(children[i] == nullptr) { continue; }
+		gameTree.push(children[i]);
+		if(children[i]->getBoard().hasWinner()) {
+			winningPath.push(children[i]->getBoard());
+			break;
+		}
+	}
   }
   treeNode winner = winningPath.top();
   cout << "Winning Board: " << winner.getBoard();
@@ -241,8 +235,8 @@ void treeNode::BFS(turn) {
   while(!winningPath.empty()) {
     Board path = winningPath.top();
     cout << "->" << path;
-    winningPath.pop();    
-}
+    winningPath.pop();    */
+} 
   
 void IT(turn) {
     char first, second;
