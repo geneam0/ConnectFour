@@ -16,7 +16,7 @@ treeNode::treeNode(size_t col, char user) {        // initial user input board
     Board root;
     root.addPiece(col, user);
     possibleBoard = root;
-		setParent(NULL);
+    setParent(NULL);
     new *children[7]; 
 }
 
@@ -44,7 +44,7 @@ void treeNode::addChild(treeNode* newChildPtr, size_t i) {
 - postconditions: have the list of pointers (children array) pointing to 7 children with full columns pointing to NULL */
 void treeNode::generateChildren(char turn) {
   for(int i = 0; i < 7; i++) {
-    treeNode *childPtr;
+    treeNode* childPtr;
     childPtr = new treeNode;
     childPtr->setBoard(possibleBoard);
     if(!childPtr->getBoard().fullColumn(i)) {
