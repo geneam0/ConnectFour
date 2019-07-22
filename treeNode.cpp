@@ -239,42 +239,34 @@ void treeNode::BFS(char turn) {
     winningPath.pop();    
 } 
   
-void treeNode::iterativeDFS(char turn, size_t initialLevel, size_t maxLevel, Stack<treeNode*> dfsStack) {	
-	treeNode* currentNode;
-	currentNode = this;
-	// baseCase:
-	if(currentNode->getBoard().hasWinner() || currentNode->getBoard().boardFull()) {
-		cout << "Winning Board: " << currentNode->getBoard();
-		Stack<Board> winningPath;
-		winningPath.push(currentNode->getBoard());
-		while(currentNode->getParent() != nullptr) {
-			winningPath.push(currentNode->getParent());
-			currentNode = currentNode->getParent();
-		}
-		Board nextBoard;
-		while(!winningPath.empty()) {
-			cout << "->" << winningPath.top();
-			winningPath.pop();
-		}
-	} currentNode->generateChildren(thisTurn);
-	for(int = 0; i < 7; i++) {
-		if(currentNode->getChild(i) == nullptr) { continue; }
-		else { dfsStack.push(currentNode->getChild(i)); }
+bool treeNode::itdfs(char turn, treeNode* currentNode, Stack<TreeNode*>& nodeStack,int level, int maxLevel) {
+	if(currentNode->getBoard().boardFull() || currentNode->getBoard().hasWinner()) {
+		//print boards
+		return true;
 	}
-	treeNode* nextNode;
-	nextNode = dfsStack.top();
-	dfsStack.pop();
-	if(thisTurn == 'X') { thisTurn == 'O'; }
-	else { thisTurn == 'X';
-	nextNode.iterativeDFS(thisTurn, initialLevel + 1, maxLevel, dfsStack); 
-}
 	
+	nodeStack.push(currentNode);
 	
-	
-	
+	if(level < maxLevel) {
+		for (int i = 0; i < 7; i++) {
+			if ( currentNode->getChild(i) != nullptr) {
+				if(itdfs(turn, currentNode->getChild(i), nodeStack, level + 1; maxLevel)) {
+					return true;
+				}
+			}
+		}
+	}
+	nodeStack.pop();
+	return false;
 }
 	  
 void treeNode::IT(char turn) {
+	treeNode* currentNode;
+	currentNode = this;
+	for(int = 0; i < 10; i++) {
+		Stack<treeNode*> nodeStack;
+		dfs(turn, currentNode, nodeStack, 0, i);
+	}
 }
     
 #endif
