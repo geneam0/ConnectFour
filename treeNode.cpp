@@ -62,7 +62,7 @@ treeNode operator=(treeNode source) {
   possibleBoard = source.possibleBoard;
   parent = source.parent;
   for(int i = 0; i < 7; i++) {
-    children[i]  = source.chilren[i];
+    children[i]  = source.children[i];
   }
   // copy over parentStack
   // copy over childrenStack
@@ -157,7 +157,7 @@ void evaluateUp(treeNode* b, char turn){
 				// otherwise, you're maximizing
 				else if (temp>minMax) { minMax=temp; }
 			}
-			b->setScore(minMax);
+			b->setScore(minMax);                                                              //***** SETSCORE is only defined in generate score, so you have to define it again here
 		}
 		// if one of your sibling is NULL, you return the function and wait until it gets a score
 		else { return; }
@@ -166,7 +166,7 @@ void evaluateUp(treeNode* b, char turn){
 	while(b->getChildren()!=NULL){
 		for(size_t i=0; i<7;i++){
     	if(b->getChild(i)==NULL) { continue; }
-			else if(b->getChild(i)==minMax){
+			else if(b->getChild(i)==minMax){                          //***** define minMax again cus its outside of scope
 				b=b->getChild(i);
 				cout<<b->getBoard();
 			}
@@ -196,7 +196,7 @@ void MiniMax(const treeNode* b, size_t level, char turn){
   // Otherwise, the MiniMax function continues to generate child nodes
   b->generateChildren(turn);
   for(size_t i=0; i<7;i++){
-    if(b->getChild(i)==NULL) { continue; }
+    if(b->getChild(i) == NULL) { continue; }
     if(turn=='O') { turn='X'; }
     else { turn='O'; }
     // for each level, the minimax function will recursively call upon itself to create more children nodes
@@ -218,23 +218,24 @@ void treeNode::BFS(char turn) {
   gameTree.push(this);			// queue is a queue of pointers, not boards sooo push this pointer 
   treeNode* currentNode;
   while(!gameTree.empty()) {	
-	if(thisTurn == 'O') {
-		thisTurn = 'X';
-	} else {
-		thisTurn = 'O';
-	currentNode = gameTree.front();
-	gameTree.pop();
-	currentNode->generateChildren(thisTurn);
-	for(int i = 0; i < 7; i++) {
-		if(currentNode->getChild(i) == nullptr) { continue; }
-		gameTree.push(currentNode->getChild(i));
-		if(currentNode->getChild(i).getBoard().hasWinner()) {
-			winningPath.push(currentNode->getChild(i).getBoard());
-			isWinner = true;
-			break;
-		}
-	}
-	if(isWinner) { break; }
+    if(thisTurn == 'O') {
+      thisTurn = 'X';
+    } else {
+      thisTurn = 'O';
+      currentNode = gameTree.front();
+      gameTree.pop();
+      currentNode->generateChildren(thisTurn);
+      for(int i = 0; i < 7; i++) {
+        if(currentNode->getChild(i) == nullptr) { continue; }
+        gameTree.push(currentNode->getChild(i));                  // const
+        if(currentNode->getChild(i).getBoard().hasWinner()) {
+          winningPath.push(currentNode->getChild(i).getBoard());
+          isWinner = true;
+          break;
+        }
+      }
+    }
+	  if(isWinner) { break; }
   }
   treeNode winner = winningPath.top();
   cout << "Winning Board: " << winner.getBoard();		// PRINT BOARD FUNCTION OR COUT OVERLOADED
@@ -248,6 +249,7 @@ void treeNode::BFS(char turn) {
     Board path = winningPath.top();
     cout << "->" << path;
     winningPath.pop();    
+  }
 } 
   
 bool treeNode::itdfs(char turn, treeNode* currentNode, Stack<treeNode*>& nodeStack,int level, int maxLevel) { // USER PART
@@ -255,12 +257,11 @@ bool treeNode::itdfs(char turn, treeNode* currentNode, Stack<treeNode*>& nodeSta
 		//print boards
 		return true;
 	}
-	
 	nodeStack.push(currentNode);
 	
 	if(level < maxLevel) {
 		for (int i = 0; i < 7; i++) {
-			if ( currentNode->getChild(i) != nullptr) {
+			if (currentNode->getChild(i) != nullptr) {
 				if(itdfs(turn, currentNode->getChild(i), nodeStack, level + 1; maxLevel)) {
 					return true;
 				}
