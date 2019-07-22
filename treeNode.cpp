@@ -72,6 +72,7 @@ void treeNode::operator=(treeNode source) {
     children[i] = source.getChild(i);
   }
 }
+/*
 // Searching Algorithms
 void DFS(treeNode* b, char turn, Stack<treeNode>& childrenStack){
   // Base Case: returns the winning board or tied board if no other solution possible
@@ -83,11 +84,11 @@ void DFS(treeNode* b, char turn, Stack<treeNode>& childrenStack){
 	// return statement here maybeeeee
     }
   }
-  /*
+  
    * If the board isn't full, DFS will push in the child nodes into the childrenStack.
    * Then it will perform DFS on the most leftest child node. If the board is full, it will use the 
    * childrenStack to find the next node to perform DFS on.
-   */
+   
   else if(!b->getBoard().boardFull()){
     b->generateChildren(turn);
     for(size_t i=6; i>=0;i--){
@@ -101,6 +102,7 @@ void DFS(treeNode* b, char turn, Stack<treeNode>& childrenStack){
   else turn='X';
   DFS(onTop,turn,childrenStack);   // pointer error
 }
+*/
 /*
 // computerTurn = 'X; userTurn = 'O'
 void generateScore(treeNode* b, size_t level, char turn){
