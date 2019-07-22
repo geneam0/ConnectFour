@@ -227,7 +227,7 @@ void treeNode::BFS(turn) {
 	if(isWinner) { break; }
   }
   treeNode winner = winningPath.top();
-  cout << "Winning Board: " << winner.getBoard();
+  cout << "Winning Board: " << winner.getBoard();		// PRINT BOARD FUNCTION OR COUT OVERLOADED
   treeNode *rootParent;
   rootParent = winner.getParent();
   while(rootParent != NULL) {
