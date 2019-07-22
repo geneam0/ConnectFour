@@ -201,20 +201,21 @@ void MiniMax(const treeNode* b, size_t level, char turn){
 // meriselle search algorithms 
 void treeNode::BFS(turn) {
   bool isWinner = false;
-  char first, second;
+  char thisTurn;
+  if (turn == user) {
+	  thisTurn == comp;
+  } else { thisTurn == user; }
   queue<treeNode *> gameTree;
   stack<Board> winningPath;
-  if(turn == user) {
-    first = user;
-    second = comp;
-  } else {
-    first = comp;
-    second = user;
   gameTree.push(getBoard());
   while(!gameTree.empty()) {	
+	if(thisTurn == user) {
+		thisTurn = comp;
+	} else {
+		thisTurn = user;
 	currentNode = gameTree.front();
 	gameTree.pop();
-	currentNode.generateChildren(first);
+	currentNode.generateChildren(thisTurn);
 	for(int i = 0; i < 7; i++) {
 		if(children[i] == nullptr) { continue; }
 		gameTree.push(children[i]);
