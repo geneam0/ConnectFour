@@ -3,6 +3,7 @@
 
 #include "treeNode.h"
 
+
 // CONSTRUCTORS 
 
 // default constructor ->>> ??? what else for this
@@ -228,7 +229,7 @@ void treeNode::BFS(char turn) {
       gameTree.pop();
       currentNode->generateChildren(thisTurn);
       for(int i = 0; i < 7; i++) {
-        if(currentNode->getChild(i) == nullptr) { continue; }
+        if(currentNode->getChild(i) == NULL) { continue; }
         gameTree.push(currentNode->getChild(i));                  // const
         if(currentNode->getChild(i).getBoard().hasWinner()) {
           winningPath.push(currentNode->getChild(i).getBoard());
@@ -254,7 +255,7 @@ void treeNode::BFS(char turn) {
   }
 } 
   
-bool treeNode::itdfs(char turn, treeNode* currentNode, Stack<treeNode*>& nodeStack,int level, int maxLevel) { // USER PART
+bool treeNode::itdfs(char turn, treeNode* currentNode, Stack<treeNode*>& nodeStack,int level, int maxLevel) { // USER PART && CURRENTNODE
 	if(currentNode->getBoard().boardFull() || currentNode->getBoard().hasWinner()) {
     Stack<Board> winningPath;
     winningPath.push(currentNode->getBoard());
@@ -272,8 +273,8 @@ bool treeNode::itdfs(char turn, treeNode* currentNode, Stack<treeNode*>& nodeSta
 	
 	if(level < maxLevel) {
 		for (int i = 0; i < 7; i++) {
-			if (currentNode->getChild(i) != nullptr) {
-				if(itdfs(turn, currentNode->getChild(i), nodeStack, level + 1; maxLevel)) {
+			if (currentNode->getChild(i) != NULL) {                                         //ERRORS
+				if(itdfs(turn, currentNode->getChild(i), nodeStack, level + 1, maxLevel)) {
 					return true;
 				}
 			}
