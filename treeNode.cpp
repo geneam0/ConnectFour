@@ -64,7 +64,7 @@ void treeNode::generateChildren(char turn) {
   }
 }
 
-// OVERLOADED OPERATORS                                             // FIXXXXXXXX
+// OVERLOADED OPERATORS                                            // FIXXXXXXXX
 treeNode::operator=(treeNode source) {
   possibleBoard = source.getBoard();
   parent = source.getParent();
