@@ -6,7 +6,7 @@
    (X) DFS <br/>
    (X) BFS <br/>
    (X) MiniMax <br/>
-   ( ) Iterative Deepening <br/>
+   (X) Iterative Deepening <br/>
    (X) Stack and Queue <br/>
    
 # Debugging:
