@@ -21,7 +21,7 @@ class treeNode {
   
     // get data
     treeNode* getChild(size_t i)                              { return children[i]; }
-    treeNode* getChildren()                                    { return **children; }
+   //git treeNode* getChildren()                                    { return **children; }
     Board getBoard()                                          { return possibleBoard; }
     treeNode* getParent()                                     { return parent; }
   
