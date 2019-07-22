@@ -207,13 +207,10 @@ void treeNode::BFS(turn) {
   } else {
     first = comp;
     second = user;
-  treeNode currentNode;
-  currentNode // SET CURRENTNODE TO THE NODE THAT IS CALLING THIS FUNCTION (necessary for simpler while loop)
-  while(!getboard().hasWinner()) {	
-	if(!gameTree.empty()) {
-		currentNode = gameTree.front();
-		gameTree.pop();
-	}
+  gameTree.push(getBoard());
+  while(!gameTree.empty()) {	
+	currentNode = gameTree.front();
+	gameTree.pop();
 	currentNode.generateChildren(first);
 	for(int i = 0; i < 7; i++) {
 		if(children[i] == nullptr) { continue; }
