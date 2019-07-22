@@ -1,11 +1,11 @@
 #ifndef __BOARD_H__
 #define __BOARD_H__
-
+/*
 #include <iostream>
 using std::cout;
 using std::cin;
 using std::ostream;
-
+*/
 class Board{
 	private:
 		static const size_t rows=6;
