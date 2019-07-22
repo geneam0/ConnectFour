@@ -1,9 +1,9 @@
 #include "board.h"
-#include "treeNode.h"
-#include "Stack.h"
-#include <iostream>
-#include "Queue.h"
-using std::cout;
+//#include "treeNode.h"
+//#include "Stack.h"
+//#include <iostream>
+//#include "Queue.h"
+//using std::cout;
 
 // for when we want to make a Player vs AI Connect Four Game
 /*
