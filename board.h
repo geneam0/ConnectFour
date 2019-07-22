@@ -1,7 +1,7 @@
 #ifndef __BOARD_H__
 #define __BOARD_H__
 
-#include <cstlib>
+#include <cstdlib>
 #include <iostream>
 using std::cout;
 using std::cin;
