@@ -75,9 +75,9 @@ bool Board::fullColumn(size_t c) const {
 void Board::addPiece(char entry, size_t c) {
   if(fullColumn(c)) { /* invalid message and reprompt */ return; }
   if(boardFull()) { return; }
-  size_t i=0;
+  size_t i=6;
   while(!spaceEmpty(i, c)) {
-    i++;
+    i--;
   }
   arr[i][c] = entry;
 }
