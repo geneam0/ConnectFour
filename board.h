@@ -19,9 +19,11 @@ class Board{
 		Board();
 		~Board();
 		// get and set functions
+		char getRows() const { return rows; }
+		char getCols() const { return columns; }
 		char getUser() const { return user; }
 		char getComp() const { return comp; }
-		char getPiece(size_t r, size_t c) { return arr[r][c]; }
+		char getPiece(size_t r, size_t c) const { return arr[r][c]; }
 		int getScore() const { return score; }
 		void setScore(int targetScore) { score=targetScore; }
 		// other helpful functions 
