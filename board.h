@@ -25,6 +25,7 @@ class Board{
 		char getComp() const { return comp; }
 		char getPiece(size_t r, size_t c) const { return arr[r][c]; }
 		int getScore() const { return score; }
+		void setPiece(size_t r, size_t c, char piece) { arr[r][c]=piece; }
 		void setScore(int targetScore) { score=targetScore; }
 		// other helpful functions 
 		bool boardFull() const; // returns true if the board is completed
