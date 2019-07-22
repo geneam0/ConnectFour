@@ -69,7 +69,8 @@ int main(){
 	- O X O X O -        - O X O X O -        - O X O X O -        - O X O X O -
 	highkey not sure if this will work tho
 	*/
-	AI.MiniMax(init,4,'X');
+	treeNode mini = new treeNode(initMM);
+	MiniMax(init,4,'X');
 	delete initMM;
 	
 	// initalize the board again
