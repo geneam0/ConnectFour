@@ -1,4 +1,4 @@
-//#include "board.h"
+#include "board.h"
 //#include "treeNode.h"
 //#include "Stack.h"
 //#include <iostream>
