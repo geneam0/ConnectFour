@@ -247,6 +247,7 @@ void IT(turn) {
 	int itChild = 0;
 	while(!gameTree.empty() && isWinner == false) {
 		currentNode = gameTree.front()
+		gameTree.pop();
 		currentNode.generateChildren(thisTurn);
 		for(int i = 0; i < 7; i++) {
 			gameTree.push(children[i]);
@@ -254,6 +255,7 @@ void IT(turn) {
 		children[itChild]->generateChildren(thisTurn);
 		for(int i = 0; i < 7; i++) {
 			if(children[i] == nullptr) { continue; }
+			gameTree.push(children[i]);
 			if(children[i]->getBoard().hasWinner()) {
 				winningPath.push(children[i]->getBoard());
 				isWinner = true;
