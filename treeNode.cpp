@@ -101,7 +101,7 @@ void DFS(treeNode* b, char turn, Stack<treeNode>& childrenStack){
   else turn='X';
   DFS(onTop,turn,childrenStack);   // pointer error
 }
-
+/*
 // computerTurn = 'X; userTurn = 'O'
 void generateScore(treeNode* b, size_t level, char turn){
   // initalize the board and score
@@ -176,12 +176,12 @@ void evaluateUp(treeNode* b, char turn){
 	}
 }
 
-/*
+
  * Precondition: A root containing board b that can still be filled
  * Postcondition: A tree from that board b with 4 levels of possible board choices. Each node has 7 children.
  * 		When the program finishes, each leaf score is calculated with generateScore. At the end,  
  *		evaluateUp takes each leaf score and "miniMaxes" it upward.
- */
+ 
 void MiniMax(treeNode* b, size_t level, char turn){
   // If the node is null, we generate the score for the parent and stop generating null children
   if(b==NULL){
@@ -207,7 +207,7 @@ void MiniMax(treeNode* b, size_t level, char turn){
     else { level--; generateScore(b->getChild(i),level,turn); }
   }
 }
-
+*/
 // meriselle search algorithms 
 void treeNode::BFS(char turn) {
   bool isWinner = false;
