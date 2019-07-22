@@ -22,7 +22,6 @@ void makeMove(char Player, Board& b){
 int main(){
 	// initialize the board and AI
 	Board initDFS = new Board(); 
-	treeNode depth = new treeNode(initDFS);
 	// test DFS
 	initDFS.addPiece('X',0); initDFS.addPiece('O',0);
 	initDFS.addPiece('X',0); initDFS.addPiece('O',0);
@@ -42,6 +41,7 @@ int main(){
 	O O O - - - -        O O O - - - -	  O O O - - - -
 	X X X - - - -        X X X - - - -	  X X X X - - - (wow, that glo' up tho)
 	*/
+	treeNode depth = new treeNode(initDFS);
 	DFS(depth,'O'); 
 	delete initDFS;
 	
