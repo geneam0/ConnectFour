@@ -160,7 +160,7 @@ void evaluateUp(treeNode* b, char turn){
 				// otherwise, you're maximizing
 				else if (temp>minMax) { minMax=temp; }
 			}
-			b->setScore(minMax);                                                              //***** SETSCORE is only defined in generate score, so you have to define it again here
+			b->getBoard()->setScore(minMax);                                                              //***** SETSCORE is only defined in generate score, so you have to define it again here
 		}
 		// if one of your sibling is NULL, you return the function and wait until it gets a score
 		else { return; }
