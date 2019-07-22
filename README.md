@@ -14,6 +14,7 @@
       (X) Stack and Queue <br/>
       (X) Board <br/>
       ( ) Tree <br/>
+      ( ) Main <br/>
    Running: <br/>
       ( ) DFS <br/>
       ( ) BFS <br/>
