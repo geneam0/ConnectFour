@@ -2,7 +2,7 @@
 #include "treeNode.h"
 #include "Stack.h"
 #include <iostream>
-using namespace std::cout;
+using std::cout;
 
 // for when we want to make a Player vs AI Connect Four Game
 /*
@@ -22,7 +22,7 @@ void makeMove(char Player, Board& b){
 
 int main(){
 	// initialize the board and stack
-	Board initDFS = new Board(); 
+	Board initDFS; 
 	Stack<treeNode> s;
 	// test DFS
 	initDFS.addPiece('X',0); initDFS.addPiece('O',0);
@@ -43,7 +43,7 @@ int main(){
 	O O O - - - -        O O O - - - -	  O O O - - - -
 	X X X - - - -        X X X - - - -	  X X X X - - - (wow, that glo' up tho)
 	*/
-	treeNode depth = new treeNode(initDFS);
+	treeNode depth(initDFS);
 	DFS(*depth,'O',s); 
 	delete initDFS;
 	
