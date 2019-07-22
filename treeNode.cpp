@@ -69,7 +69,7 @@ treeNode::operator=(treeNode source) {
   possibleBoard = source.getBoard();
   parent = source.getParent();
   for(int i = 0; i < 7; i++) {
-    *children[i]  = source.getChild(i);
+    *children[i] = source.getChild(i);
   }
 }
 
@@ -93,7 +93,7 @@ void DFS(treeNode* b, char turn, Stack<treeNode>& childrenStack){
     b->generateChildren(turn);
     for(size_t i=6; i>=0;i--){
       if((b->getChild(i)) == NULL) { continue; }
-      else { childrenStack.push(b->getChild(i)); }
+      else { childrenStack.push(*b->getChild(i)); }
     }
   } 
   treeNode* onTop = &childrenStack.top();
@@ -154,13 +154,13 @@ void evaluateUp(treeNode* b, char turn){
 		if(b->getChild(0)!=NULL && b->getChild(1)!=NULL && b->getChild(2)!=NULL && b->getChild(3)!=NULL
 			 && b->getChild(4)!=NULL && b->getChild(5)!=NULL && b->getChild(6)!=NULL){
 			for(size_t i=0; i<7; i++){
-				int temp=b->getChild(i)->getBoard()->getScore();
+				int temp=(b->getChild(i)->getBoard().getScore());
 				// if the current turn is the user, you try to minimize
 				if(turn=='O' && temp<minMax){ minMax=temp; } 
 				// otherwise, you're maximizing
 				else if (temp>minMax) { minMax=temp; }
 			}
-			b->getBoard()->setScore(minMax);                                                              //***** SETSCORE is only defined in generate score, so you have to define it again here
+			b->getBoard().setScore(minMax);                                                              //***** SETSCORE is only defined in generate score, so you have to define it again here
 		}
 		// if one of your sibling is NULL, you return the function and wait until it gets a score
 		else { return; }
@@ -169,7 +169,7 @@ void evaluateUp(treeNode* b, char turn){
 	while(b->getChildren()!=NULL){
 		for(size_t i=0; i<7;i++){
     	if(b->getChild(i)==NULL) { continue; }
-			else if(b->getChild(i)->getBoard()->getScore()==minMax){                          //***** define minMax again cus its outside of scope
+			else if(b->getChild(i)->getBoard().getScore()==minMax){                          //***** define minMax again cus its outside of scope
 				b=b->getChild(i);
 				cout<<b->getBoard();
 			}
