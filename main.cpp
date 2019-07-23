@@ -41,7 +41,7 @@ int main(){
 	*/
 	//test DFS
 	treeNode dFirst(initDFS);
-	DFS(depth,'O',s); 
+	DFS(dFirst,'O',s); 
 	
 	// Breadth First Search
 	// initialize the board again
