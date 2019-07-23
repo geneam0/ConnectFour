@@ -30,9 +30,6 @@ int main(){
 	initDFS.addPiece(user,1); initDFS.addPiece(comp,1); initDFS.addPiece(user,1);
 	initDFS.addPiece(comp,2); initDFS.addPiece(user,2); initDFS.addPiece(comp,2); 
 	initDFS.addPiece(user,2); initDFS.addPiece(comp,2); 
-	cout<<initDFS;
-	initDFS.~Board();
-	cout<<initDFS;
 	/*
 	Before               Mid		  After
 	O O - - - - -        O O O - - - -	  O O O - - - -
@@ -42,10 +39,11 @@ int main(){
 	O O O - - - -        O O O - - - -	  O O O - - - -
 	X X X - - - -        X X X - - - -	  X X X X - - - (wow, that glo' up tho)
 	*/
-	// test DFS
-	//treeNode* depth(initDFS);
-	//DFS(depth,'O',s); 
+	//test DFS
+	treeNode depth(initDFS);
+	DFS(depth,'O',s); 
 	
+	// Breadth First Search
 	// initialize the board again
 	//Board initBFS = new Board();
 	// test BFS
