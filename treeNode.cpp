@@ -75,14 +75,14 @@ void treeNode::BFS(char turn) {
   bool isWinner = false;
   char thisTurn;
   if (turn == 'O') {
-	  thisTurn == 'X';
-  } else { thisTurn == 'O'; }
+	  thisTurn = 'X';
+  } else { thisTurn = 'O'; }
   Queue<treeNode*> gameTree;
   Stack<Board> winningPath;
   gameTree.push(this);			// queue is a queue of pointers, not boards sooo push this pointer 
   treeNode* currentNode;
   while(!gameTree.empty()) {	
-    if(thisTurn == 'O') {
+    if(thisTurn = 'O') {
       thisTurn = 'X';
     } else {
       thisTurn = 'O';
