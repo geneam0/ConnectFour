@@ -19,17 +19,17 @@ class treeNode {
     treeNode(size_t col, char user);
     treeNode(Board bo);
   
-    // get data
+    // get/set functions
     treeNode* getChild(size_t i)                              { return children[i]; }
-   //git treeNode* getChildren()                                    { return **children; }
+    treeNode** getChildren()                                    { return **children; }
     Board getBoard()                                          { return possibleBoard; }
     treeNode* getParent()                                     { return parent; }
-  
-    // add/set data
-    void addChild(treeNode* newChildPtr, size_t i);   
-    void generateChildren(char turn); // given a node, what are the next possible moves
     void setBoard(Board b)                                    { possibleBoard = b; }
     void setParent(treeNode* p)                               { parent = p; }
+  
+    // add functions
+    void addChild(treeNode* newChildPtr, size_t i);   
+    void generateChildren(char turn); // given a node, what are the next possible moves
 
     // overloaded operators
     void operator=(treeNode source);
