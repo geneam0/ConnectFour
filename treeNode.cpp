@@ -4,17 +4,13 @@
 #include "treeNode.h"
 
 // CONSTRUCTORS 
-
-// default constructor ->>> ??? what else for this
 treeNode::treeNode() {
   setParent(NULL);
   for(int i = 0; i < 7; i++) {
     children[i] = NULL;
   }
 }
-
-// root treeNode constructor
-treeNode::treeNode(size_t col, char user) {        // initial user input board 
+treeNode::treeNode(size_t col, char user) {        
   Board root;
   root.addPiece(col, user);
   possibleBoard = root;
@@ -23,7 +19,6 @@ treeNode::treeNode(size_t col, char user) {        // initial user input board
     children[i] = NULL;
   }
 }
-
 treeNode::treeNode(Board bo){
 	for(size_t i=0; i<bo.getRows(); i++){
 		for(size_t j=0; i<bo.getCols(); j++){
@@ -35,8 +30,9 @@ treeNode::treeNode(Board bo){
     children[i] = NULL;
   }
 }
+
 // ADD/SET DATA
-/*addChild: fills designated slot in children array with pointer to new child
+/* addChild: fills designated slot in children array with pointer to new child
   preconditions: pointer to new child and the column in which the new piece was added */
 void treeNode::addChild(treeNode* newChildPtr, size_t i) {
   children[i] = newChildPtr;
@@ -57,13 +53,15 @@ void treeNode::generateChildren(char turn) {
       childPtr->getBoard().addPiece(turn, i);
       addChild(childPtr, i);
     } else {
-      addChild(nullptr, i);         // later, when accessing children, check whether its null pointer first to avoid accessing error
+	    // later, when accessing children, check whether its null pointer first to avoid accessing error
+      addChild(nullptr, i);         
     }
-    childPtr->setParent(this);      // this is a special pointer function
+		// this is a special pointer function
+    childPtr->setParent(this);      
   }
 }
 
-// OVERLOADED OPERATORS                                            // FIXXXXXXXX
+// OVERLOADED OPERATORS                                            
 void treeNode::operator=(treeNode source) {
   possibleBoard = source.getBoard();
   parent = source.getParent();
@@ -71,7 +69,7 @@ void treeNode::operator=(treeNode source) {
     children[i] = source.getChild(i);
   }
 }
-/*
+
 // Searching Algorithms
 void DFS(treeNode* b, char turn, Stack<treeNode>& childrenStack){
   // Base Case: returns the winning board or tied board if no other solution possible
@@ -83,11 +81,11 @@ void DFS(treeNode* b, char turn, Stack<treeNode>& childrenStack){
 	// return statement here maybeeeee
     }
   }
-  
+  /*
    * If the board isn't full, DFS will push in the child nodes into the childrenStack.
    * Then it will perform DFS on the most leftest child node. If the board is full, it will use the 
    * childrenStack to find the next node to perform DFS on.
-   
+   */
   else if(!b->getBoard().boardFull()){
     b->generateChildren(turn);
     for(size_t i=6; i>=0;i--){
@@ -101,8 +99,7 @@ void DFS(treeNode* b, char turn, Stack<treeNode>& childrenStack){
   else turn='X';
   DFS(onTop,turn,childrenStack);   // pointer error
 }
-*/
-/*
+
 // computerTurn = 'X; userTurn = 'O'
 void generateScore(treeNode* b, size_t level, char turn){
   // initalize the board and score
@@ -160,7 +157,7 @@ void evaluateUp(treeNode* b, char turn){
 				// otherwise, you're maximizing
 				else if (temp>minMax) { minMax=temp; }
 			}
-			b->getBoard().setScore(minMax);                                                              //***** SETSCORE is only defined in generate score, so you have to define it again here
+			b->getBoard().setScore(minMax);                                                            
 		}
 		// if one of your sibling is NULL, you return the function and wait until it gets a score
 		else { return; }
@@ -169,20 +166,19 @@ void evaluateUp(treeNode* b, char turn){
 	while(b->getChildren()!=NULL){
 		for(size_t i=0; i<7;i++){
     	if(b->getChild(i)==NULL) { continue; }
-			else if(b->getChild(i)->getBoard().getScore()==minMax){                          //***** define minMax again cus its outside of scope
+			else if(b->getChild(i)->getBoard().getScore()==minMax){                         
 				b=b->getChild(i);
 				cout<<b->getBoard();
 			}
 		}
 	}
 }
-
-
+/*
  * Precondition: A root containing board b that can still be filled
  * Postcondition: A tree from that board b with 4 levels of possible board choices. Each node has 7 children.
  * 		When the program finishes, each leaf score is calculated with generateScore. At the end,  
  *		evaluateUp takes each leaf score and "miniMaxes" it upward.
- 
+ */
 void MiniMax(treeNode* b, size_t level, char turn){
   // If the node is null, we generate the score for the parent and stop generating null children
   if(b==NULL){
@@ -208,8 +204,8 @@ void MiniMax(treeNode* b, size_t level, char turn){
     else { level--; generateScore(b->getChild(i),level,turn); }
   }
 }
-*/
-// meriselle search algorithms 
+
+// BFS
 void treeNode::BFS(char turn) {
   bool isWinner = false;
   char thisTurn;
