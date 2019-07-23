@@ -26,7 +26,7 @@ int main(){
 	char comp = 'X';
 	// initialize the board and stack
 	Board initDFS; 
-	Stack<treeNode> s;
+	//Stack<treeNode> s;
 	// test DFS
 	initDFS.addPiece(comp,0); initDFS.addPiece(user,0); initDFS.addPiece(comp,0); 
 	initDFS.addPiece(user,0); initDFS.addPiece(comp,0); initDFS.addPiece(user,0);
