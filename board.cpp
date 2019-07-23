@@ -16,9 +16,10 @@ Board::Board(){
 // deletes each column in the 2d array and the deletes the row array. sets score to 0./
 Board::~Board(){
 	for (size_t i = 0; i < rows; i++) {
-        	delete[] arr[i];
+        	for (size_t j=0; j < columns; j++){
+			delete arr[i][j];
+		}
     	}
-	delete[] arr;
 	score=0;
 }
 
