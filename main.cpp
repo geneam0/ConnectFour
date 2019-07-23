@@ -31,7 +31,7 @@ int main(){
 	initDFS.addPiece(comp,2); initDFS.addPiece(user,2); initDFS.addPiece(comp,2); 
 	initDFS.addPiece(user,2); initDFS.addPiece(comp,2); 
 	cout<<initDFS;
-	delete initDFS;
+	initDFS.~Board();
 	cout<<initDFS;
 	/*
 	Before               Mid		  After
