@@ -45,8 +45,8 @@ int main(){
 	X X X - - - -        X X X - - - -	  X X X X - - - (wow, that glo' up tho)
 	*/
 	// test DFS
-	treeNode depth(initDFS);
-	DFS(*depth,'O',s); 
+	treeNode* depth(initDFS);
+	DFS(depth,'O',s); 
 	
 	// initialize the board again
 	//Board initBFS = new Board();
