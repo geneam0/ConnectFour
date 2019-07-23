@@ -1,6 +1,7 @@
 #ifndef __TREENODE_H__
 #define __TREENODE_H__
 
+#include <cstdlib>
 #include "board.h"
 #include "Stack.h"
 #include "Queue.h"
