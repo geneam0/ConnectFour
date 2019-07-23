@@ -21,7 +21,7 @@ class treeNode {
   
     // get/set functions
     treeNode* getChild(size_t i)                              { return children[i]; }
-    treeNode** getChildren()                                    { return **children; }
+    treeNode** getChildren()                                    { return children; }
     Board getBoard()                                          { return possibleBoard; }
     treeNode* getParent()                                     { return parent; }
     void setBoard(Board b)                                    { possibleBoard = b; }
