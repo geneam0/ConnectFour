@@ -178,7 +178,7 @@ void DFS(treeNode* b, char turn, Stack<treeNode>& childrenStack){
       else { childrenStack.push(*b->getChild(i)); }
     }
   } 
-  treeNode* onTop = &childrenStack.top();
+  treeNode* onTop = childrenStack.top();
   childrenStack.pop();
   if(turn=='X') turn='O';
   else turn='X';
