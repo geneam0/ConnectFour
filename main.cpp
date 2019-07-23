@@ -1,6 +1,6 @@
 #include "board.h"
-//#include "treeNode.h"
-//#include "Stack.h"
+#include "treeNode.h"
+#include "Stack.h"
 //#include "Queue.h"
 #include <iostream>
 using std::cout;
@@ -24,18 +24,17 @@ void makeMove(char Player, Board& b){
 int main(){
 	char user = 'O';
 	char comp = 'X';
+	
+	// Depth First Search
 	// initialize the board and stack
 	Board initDFS; 
-	//Stack<treeNode> s;
-	// test DFS
+	Stack<treeNode> s;
 	initDFS.addPiece(comp,0); initDFS.addPiece(user,0); initDFS.addPiece(comp,0); 
 	initDFS.addPiece(user,0); initDFS.addPiece(comp,0); initDFS.addPiece(user,0);
 	initDFS.addPiece(comp,1); initDFS.addPiece(user,1); initDFS.addPiece(comp,1); 
 	initDFS.addPiece(user,1); initDFS.addPiece(comp,1); initDFS.addPiece(user,1);
 	initDFS.addPiece(comp,2); initDFS.addPiece(user,2); initDFS.addPiece(comp,2); 
 	initDFS.addPiece(user,2); initDFS.addPiece(comp,2); 
-	cout<<initDFS;
-	// Should look like dis:
 	/*
 	Before               Mid		  After
 	O O - - - - -        O O O - - - -	  O O O - - - -
@@ -45,20 +44,22 @@ int main(){
 	O O O - - - -        O O O - - - -	  O O O - - - -
 	X X X - - - -        X X X - - - -	  X X X X - - - (wow, that glo' up tho)
 	*/
-	//treeNode depth(initDFS);
-	//DFS(*depth,'O',s); 
+	// test DFS
+	treeNode depth(initDFS);
+	DFS(*depth,'O',s); 
 	
 	// initialize the board again
 	//Board initBFS = new Board();
 	// test BFS
 	
 	//delete initBFS;
-	
+	/*
 	Board initMM;
 	initMM.addPiece(user,1); initMM.addPiece(user,3); initMM.addPiece(user,5);
 	initMM.addPiece(comp,2); initMM.addPiece(comp,4); initMM.addPiece(user,2);
 	initMM.addPiece(comp,3); initMM.addPiece(comp,4); initMM.addPiece(user,3); 
 	cout<<initMM;
+	*/
 	/* Should look liek dis:
 	Before		     Mid		  Second Mid		Final
 	- - - - - - -        - - - - - - -	  - - - - - - -        - - - - - - -
