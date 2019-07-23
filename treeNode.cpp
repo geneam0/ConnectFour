@@ -178,11 +178,12 @@ void DFS(treeNode* b, char turn, Stack<treeNode>& childrenStack){
       else { childrenStack.push(*b->getChild(i)); }
     }
   } 
-  treeNode* onTop = childrenStack.top();
+  treeNode onTop=childrenStack.top();
   childrenStack.pop();
+treeNode* front=&onTop;
   if(turn=='X') turn='O';
   else turn='X';
-  DFS(onTop,turn,childrenStack);   // pointer error
+  DFS(front,turn,childrenStack);   // pointer error
 }
 
 // computerTurn = 'X; userTurn = 'O'
