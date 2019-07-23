@@ -11,7 +11,7 @@ class treeNode {
   private: 
     Board possibleBoard;   // data part of node (board)
     treeNode* parent;
-    treeNode** children;        // link part of node (array of pointers) 
+    treeNode* children[7];        // link part of node (array of pointers) 
  
   public:
 
