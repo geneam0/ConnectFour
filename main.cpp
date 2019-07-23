@@ -25,6 +25,7 @@ int main(){
 	
 	// Depth First Search
 	// initialize the board and stack
+	/*
 	Board initDFS; 
 	Stack<treeNode> s;
 	initDFS.addPiece(comp,0); initDFS.addPiece(user,0); initDFS.addPiece(comp,0); 
@@ -33,6 +34,10 @@ int main(){
 	initDFS.addPiece(user,1); initDFS.addPiece(comp,1); initDFS.addPiece(user,1);
 	initDFS.addPiece(comp,2); initDFS.addPiece(user,2); initDFS.addPiece(comp,2); 
 	initDFS.addPiece(user,2); initDFS.addPiece(comp,2); 
+	treeNode dFirst(initDFS);
+	treeNode* depth=&dFirst;
+	DFS(depth,user,s);
+	*/
 	/*
 	Before               Mid		  After
 	O O - - - - -        O O O - - - -	  O O O - - - -
@@ -41,11 +46,7 @@ int main(){
 	X X X - - - -      / X X X - - - -      / X X X - - - -
 	O O O - - - -        O O O - - - -	  O O O - - - -
 	X X X - - - -        X X X - - - -	  X X X X - - - (wow, that glo' up tho)
-	*/
-	//test DFS
-	treeNode dFirst(initDFS);
-	treeNode* depth=&dFirst;
-	DFS(depth,user,s); 
+	*/ 
 	
 	// Breadth First Search
 	// initialize the board again
@@ -53,13 +54,14 @@ int main(){
 	// test BFS
 	
 	//delete initBFS;
-	/*
+	
 	Board initMM;
 	initMM.addPiece(user,1); initMM.addPiece(user,3); initMM.addPiece(user,5);
 	initMM.addPiece(comp,2); initMM.addPiece(comp,4); initMM.addPiece(user,2);
 	initMM.addPiece(comp,3); initMM.addPiece(comp,4); initMM.addPiece(user,3); 
-	cout<<initMM;
-	*/
+	treeNode mini(initMM);
+	treeNode* max=&mini;
+	MiniMax(max,4,comp);
 	/* Should look liek dis:
 	Before		     Mid		  Second Mid		Final
 	- - - - - - -        - - - - - - -	  - - - - - - -        - - - - - - -
@@ -69,8 +71,7 @@ int main(){
 	- - O X X - -        - - O X X - -        - - O X X - -        - - O X X X -
 	- O X O X O -        - O X O X O -        - O X O X O -        - O X O X O -
 	*/
-	//treeNode mini = new treeNode(initMM);
-	//MiniMax(initMM,4,comp);
+	
 	/*
 	// initalize the board again
 	Board initID = new Board();
