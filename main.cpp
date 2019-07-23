@@ -1,9 +1,9 @@
 #include "board.h"
 //#include "treeNode.h"
 //#include "Stack.h"
-//#include <iostream>
 //#include "Queue.h"
-//using std::cout;
+#include <iostream>
+using std::cout;
 
 // for when we want to make a Player vs AI Connect Four Game
 /*
@@ -22,15 +22,21 @@ void makeMove(char Player, Board& b){
 */
 
 int main(){
-	/* 
+	char user = 'O';
+	char comp = 'X';
 	// initialize the board and stack
 	Board initDFS; 
 	Stack<treeNode> s;
-	char user = 'O';
-	char comp = 'X';
 	// test DFS
-	initDFS.addPiece(user,0); 
+	initDFS.addPiece(comp,0); initDFS.addPiece(user,0); initDFS.addPiece(comp,0); 
+	initDFS.addPiece(user,0); initDFS.addPiece(comp,0); initDFS.addPiece(user,0);
+	initDFS.addPiece(comp,1); initDFS.addPiece(user,1); initDFS.addPiece(comp,1); 
+	initDFS.addPiece(user,1); initDFS.addPiece(comp,1); initDFS.addPiece(user,1);
+	initDFS.addPiece(comp,2); initDFS.addPiece(user,2); initDFS.addPiece(comp,2); 
+	initDFS.addPiece(user,2); initDFS.addPiece(comp,2); 
+	cout<<initDFS;
 	// Should look like dis:
+	/*
 	Before               Mid		  After
 	O O - - - - -        O O O - - - -	  O O O - - - -
 	X X X - - - -        X X X - - - -	  X X X - - - -
@@ -38,20 +44,20 @@ int main(){
 	X X X - - - -      / X X X - - - -      / X X X - - - -
 	O O O - - - -        O O O - - - -	  O O O - - - -
 	X X X - - - -        X X X - - - -	  X X X X - - - (wow, that glo' up tho)
-	
-	treeNode depth(initDFS);
-	DFS(*depth,'O',s); 
+	*/
+	//treeNode depth(initDFS);
+	//DFS(*depth,'O',s); 
 	
 	// initialize the board again
-	Board initBFS = new Board();
+	//Board initBFS = new Board();
 	// test BFS
 	
-	delete initBFS;
+	//delete initBFS;
 	
 	// initalize the board again
-	Board initMM;
+	//Board initMM;
 	// test MiniMax
-	initMM.addPiece(user,1); 
+	//initMM.addPiece(user,1); 
 	/* Should look liek dis:
 	Before		     Mid		  Second Mid		Final
 	- - - - - - -        - - - - - - -	  - - - - - - -        - - - - - - -
@@ -94,8 +100,8 @@ int main(){
 	//char user = 'X';
 	//char comp = 'O';
 
-	Board test=Board();
-	test.addPiece('X', 0);
+	//Board test=Board();
+	//test.addPiece('X', 0);
 	//treeNode bfsTest = treeNode(test);
 	//bfsTest.BFS(user);
 	return 0;
