@@ -40,8 +40,7 @@ int main(){
 	X X X - - - -        X X X - - - -	  X X X X - - - (wow, that glo' up tho)
 	*/
 	//test DFS
-	treeNode dFirst;
-	dFirst.treeNode(initDFS);
+	treeNode dFirst(initDFS);
 	DFS(depth,'O',s); 
 	
 	// Breadth First Search
