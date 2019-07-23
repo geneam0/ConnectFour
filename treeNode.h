@@ -1,5 +1,5 @@
-#ifndef __TREENODE_H__
-#define __TREENODE_H__
+#ifndef TREENODE_H
+#define TREENODE_H
 
 #include <cstdlib>
 #include "board.h"
