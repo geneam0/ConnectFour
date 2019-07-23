@@ -1,5 +1,5 @@
-#ifndef __TREENODE_CPP__
-#define __TREENODE_CPP__
+#ifndef TREENODE_CPP
+#define TREENODE_CPP
 
 #include "treeNode.h"
 
