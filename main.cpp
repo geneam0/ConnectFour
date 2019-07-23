@@ -54,10 +54,11 @@ int main(){
 	
 	//delete initBFS;
 	
-	// initalize the board again
-	//Board initMM;
-	// test MiniMax
-	//initMM.addPiece(user,1); 
+	Board initMM;
+	initMM.addPiece(user,1); initMM.addPiece(user,3); initMM.addPiece(user,5);
+	initMM.addPiece(comp,2); initMM.addPiece(comp,4); initMM.addPiece(user,2);
+	initMM.addPiece(comp,3); initMM.addPiece(comp,4); initMM.addPiece(user,3); 
+	cout<<initMM;
 	/* Should look liek dis:
 	Before		     Mid		  Second Mid		Final
 	- - - - - - -        - - - - - - -	  - - - - - - -        - - - - - - -
@@ -66,10 +67,9 @@ int main(){
 	- - - O - - -      / - - X O - - -      / - - X O O - -      / - - X O O - -
 	- - O X X - -        - - O X X - -        - - O X X - -        - - O X X X -
 	- O X O X O -        - O X O X O -        - O X O X O -        - O X O X O -
-	highkey not sure if this will work tho
-	
-	treeNode mini = new treeNode(initMM);
-	MiniMax(initMM,4,comp);
+	*/
+	//treeNode mini = new treeNode(initMM);
+	//MiniMax(initMM,4,comp);
 	/*
 	// initalize the board again
 	Board initID = new Board();
