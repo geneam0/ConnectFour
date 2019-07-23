@@ -1,3 +1,6 @@
+#include "Stack.h"
+#include "Queue.h"
+#include "board.h"
 #include "treeNode.h"
 
 // for when we want to make a Player vs AI Connect Four Game
