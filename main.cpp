@@ -1,5 +1,5 @@
 //#include "board.h"
-//#include "treeNode.h"
+#include "treeNode.h"
 //#include "Stack.h"
 //#include "Queue.h"
 //#include <iostream>
