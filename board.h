@@ -18,7 +18,6 @@ class Board{
 	public:
 		// constructors
 		Board();
-		~Board();
 		// get and set functions
 		char getRows() const { return rows; }
 		char getCols() const { return columns; }
