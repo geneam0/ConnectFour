@@ -2,6 +2,8 @@
 #define __BOARD_CPP__
 
 #include "board.h"
+#include <iostream>
+using std::cout;
 
 // Constructors
 // fills the 2D array with - and sets score to 0
@@ -39,6 +41,7 @@ bool Board::hasWinner() const{
 	for(size_t i=0; i<rows-3; i++){
 		for(size_t j=0; j<columns; j++){
 		  if(arr[i][j]==arr[i+1][j]==arr[i+2][j]==arr[i+3][j]){
+		  		cout<<"column";
 				return true;
 			}
 		}
@@ -47,14 +50,16 @@ bool Board::hasWinner() const{
 	for(size_t i=0; i<rows; i++){
 		for(size_t j=0; j<columns-3; j++){
 			if(arr[i][j]==arr[i][j+1]==arr[i][j+2]==arr[i][j+3]){
+				cout<<"row";
 				return true;
 			}
 		}
 	}
 	// check up-right diagonals
-	for(size_t i=3; i<rows; i++){
+	for(size_t i=0; i<rows-3; i++){
 		for(size_t j=0; j<columns-3;j++){
 			if(arr[i][j]==arr[i+1][j+1]==arr[i+2][j+2]==arr[i+3][j+3]){
+				cout<<i<<j<<arr[i][j]<<arr[i+1][j+1]<<arr[i+2][j+2]<<arr[i+3][j+3];
 				return true;
 			}
 		}
@@ -63,6 +68,7 @@ bool Board::hasWinner() const{
 	for(size_t i=3; i<rows; i++){
 		for(size_t j=3; j<columns;j++){
 			if(arr[i][j]==arr[i-1][j-1]==arr[i-2][j-2]==arr[i-3][j-3]){
+				cout<<"diagonal2";
 				return true;
 			}
 		}

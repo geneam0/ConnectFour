@@ -74,25 +74,38 @@ void treeNode::operator=(treeNode source) {
 // BFS
 
 void treeNode::BFS(char turn) {
+  char thisTurn = turn;
+  if(thisTurn == 'O') {
+    thisTurn = 'X';
+  } else {
+    thisTurn = 'O';
+  }
   bool isWinner = false;
-  char thisTurn;
-  if (turn == 'O') {
-	  thisTurn = 'X';
-  } else { thisTurn = 'O'; }
   Queue<treeNode*> gameTree;          // QUEUE
   Stack<Board> winningPath;
   gameTree.push(this);			// queue is a queue of pointers, not boards sooo push this pointer 
   treeNode* currentNode;
   cout << "before generate children: " << gameTree.front()->getBoard();       //TEST
   while(!gameTree.empty()) {
+    cout << "BEFORE THE SWITCH THE TURN IS: " << thisTurn << endl;
+    if(thisTurn == 'O') {
+      thisTurn = 'X';
+    } else {
+      thisTurn = 'O';
+    }
+    cout << "NOW THIS TURN IS: " << thisTurn << endl;
     currentNode = gameTree.front();
     gameTree.pop(); 
     currentNode->generateChildren(thisTurn);
+    // TESTING:
+    for(int i = 0; i < 7; i++) {
+      cout << currentNode->getChild(i)->getBoard() << endl;
+    }
     for(int i = 0; i < 7; i++) {
       gameTree.push(currentNode->getChild(i)); 
-      cout << "current child: " << endl << currentNode->getChild(i)->getBoard() << endl; 
-      cout << "after generate children, the front should be the next child" << endl << gameTree.front()->getBoard() << endl;      // TEST
-      if(currentNode->getChild(i) == NULL) {
+      //cout << "CURRENT PARENT: " << endl << currentNode->getBoard();
+      //cout << "current child: " << endl << currentNode->getChild(i)->getBoard() << endl; 
+      if(currentNode->getChild(i) == nullptr) {
         continue;
       }      
       if(currentNode->getChild(i)->getBoard().hasWinner()) {
@@ -104,12 +117,8 @@ void treeNode::BFS(char turn) {
 	  if(isWinner) { 
       break; 
     }
-    if(thisTurn = 'X') {
-      thisTurn = 'O';
-    } else {
-      thisTurn = 'X';
-    }
-    cout << "END LOOP" << endl;
+    cout << "====== END TURN ========" << endl;
+    cout << "CURRENT TURN IS: " << thisTurn << endl;
   }
   cout << "BFS: got out of while loop !!" << endl;
   treeNode winner = winningPath.top();
@@ -126,9 +135,10 @@ void treeNode::BFS(char turn) {
     winningPath.pop();    
   }
 } 
-
+// NO GENERATE CHILDREN
 bool treeNode::itdfs(char turn, treeNode* currentNode, Stack<treeNode*>& nodeStack,int level, int maxLevel) { // USER PART && CURRENTNODE
   if(currentNode->getBoard().boardFull() || currentNode->getBoard().hasWinner()) {
+    cout << "if statement for winner has been triggered" << endl;
   	Stack<Board> winningPath;
 	  winningPath.push(currentNode->getBoard());
 	  while(currentNode->getParent() != NULL) {
@@ -139,16 +149,24 @@ bool treeNode::itdfs(char turn, treeNode* currentNode, Stack<treeNode*>& nodeSta
     nextBoard = winningPath.top();
     cout << "->" << nextBoard;
     winningPath.pop();
+    cout << "winner has been found" << endl;
     return true;
   }
+  cout << "winner if statement not triggered" << endl;
   nodeStack.push(currentNode);
   if(level < maxLevel) {
+    cout << "level if statement triggered" << endl;
 	  for (int i = 0; i < 7; i++) {
-		  if (currentNode->getChild(i) != NULL) {                                         //ERRORS
-			  if(itdfs(turn, currentNode->getChild(i), nodeStack, level + 1, maxLevel)) {
-				  return true;
-			  }
+      cout << "for loop is working" << endl;
+		  if (currentNode->getChild(i) == nullptr) {     
+        cout << "if statement null triggered" << endl;
+        continue;
+      }
+      if(itdfs(turn, currentNode->getChild(i), nodeStack, level + 1, maxLevel)) {
+        cout << "leaves after it" << endl;
+			  return true;
 		  }
+      cout << " no if statements triggered" << endl;
 	  }
   }
   nodeStack.pop();
@@ -158,9 +176,11 @@ bool treeNode::itdfs(char turn, treeNode* currentNode, Stack<treeNode*>& nodeSta
 void treeNode::IT(char turn) { // USER PART
 	treeNode* currentNode;
 	currentNode = this;
-	for(int i= 0; i < 10; i++) {
+  cout << "before for loop reached" << endl;
+	for(int i= 0; i < 15; i++) {
 		Stack<treeNode*> nodeStack;
-		if(itdfs(turn, currentNode, nodeStack, 0, i)) {
+    cout << "before itdfs called" << endl;
+		if(itdfs(turn, currentNode, nodeStack, 0, i)== true) {
 			break;
 		}
 	}
@@ -168,11 +188,12 @@ void treeNode::IT(char turn) { // USER PART
 
 // Searching Algorithms
 void DFS(treeNode*& b, char turn, Stack<treeNode*>& childrenStack){
-cout<<b->getBoard();
+cout<<" board one \n" << b->getBoard();
   // Base Case: returns the winning board or tied board if no other solution possible
   if(b->getBoard().hasWinner()||(b->getBoard().boardFull()&&childrenStack.empty())){ // onlytime you want to print is if board has winner or if full, childrenstack empty isnt necessary
-    cout<<b->getBoard();
+    cout<<"board two \n" << b->getBoard();
     while(b->getParent()!=NULL){
+      cout << "while loop triggered" << endl;
       cout<<b->getParent()->getBoard();
       b=b->getParent();
 	// return statement here maybeeeee

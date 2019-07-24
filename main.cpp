@@ -9,37 +9,35 @@
 int main(){
 	char user = 'O';
 	char comp = 'X';
-
-	cout << "before depth first seaarch" << endl;
 	
 	// Depth First Search
 	Board initDFS; 
 	Stack<treeNode*> s;
-	cout << "after declaration" << endl;
-	initDFS.addPiece(comp,0); initDFS.addPiece(user,0); initDFS.addPiece(comp,0); 
-	//initDFS.addPiece(user,0); initDFS.addPiece(comp,0); initDFS.addPiece(user,0);
-	initDFS.addPiece(comp,1); initDFS.addPiece(user,1); initDFS.addPiece(comp,1); 
+	initDFS.addPiece(comp,0); // initDFS.addPiece(user,0); initDFS.addPiece(comp,0); 
+	// initDFS.addPiece(user,0); initDFS.addPiece(comp,0); initDFS.addPiece(user,0);
+	//initDFS.addPiece(comp,1); initDFS.addPiece(user,1); initDFS.addPiece(comp,1); 
 	//initDFS.addPiece(user,1); initDFS.addPiece(comp,1); initDFS.addPiece(user,1);
 	//initDFS.addPiece(comp,2); initDFS.addPiece(user,2); initDFS.addPiece(comp,2); 
 	//initDFS.addPiece(user,2); initDFS.addPiece(comp,2);
-	//initDFS.addPiece(user, 6); 
-	cout << "filled board" << endl;
 	treeNode dFirst;							
 	dFirst.setBoard(initDFS);
-	cout << "declared treeNode" << endl;
 	treeNode* depth=&dFirst;
 	cout << "pointer defined" << endl;
 	// DFS(depth,user,s);		// DFS PRINTS IFINITELY
-	//dFirst.BFS(user);
-	dFirst.IT(user);
+	dFirst.BFS(user);
+	//dFirst.IT(comp);
+	cout << "IT was called" << endl;
+
+	// DFS(depth,user,s);		
+	// dFirst.BFS(user);
 	/*
-	Before               Mid		  After
-	O O - - - - -        O O O - - - -	  O O O - - - -
-	X X X - - - -        X X X - - - -	  X X X - - - -
+	Before               Mid		  		  After
+	O O - - - - -        O O O - - - -	  	  O O O - - - -
+	X X X - - - -        X X X - - - -	 	  X X X - - - -
 	O O O - - - - _____\ O O O - - - - _____\ O O O - - - -
 	X X X - - - -      / X X X - - - -      / X X X - - - -
-	O O O - - - -        O O O - - - -	  O O O - - - -
-	X X X - - - -        X X X - - - -	  X X X X - - - (wow, that glo' up tho)
+	O O O - - - -        O O O - - - -	  	  O O O - - - -
+	X X X - - - -        X X X - - - -	 	  X X X X - - - 
 	*/ 
 	
 	/* 
