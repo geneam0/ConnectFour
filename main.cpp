@@ -9,18 +9,24 @@
 int main(){
 	char user = 'O';
 	char comp = 'X';
+
+	cout << "before depth first seaarch" << endl;
 	
 	// Depth First Search
 	Board initDFS; 
 	Stack<treeNode> s;
+	cout << "after declaration" << endl;
 	initDFS.addPiece(comp,0); initDFS.addPiece(user,0); initDFS.addPiece(comp,0); 
 	initDFS.addPiece(user,0); initDFS.addPiece(comp,0); initDFS.addPiece(user,0);
 	initDFS.addPiece(comp,1); initDFS.addPiece(user,1); initDFS.addPiece(comp,1); 
 	initDFS.addPiece(user,1); initDFS.addPiece(comp,1); initDFS.addPiece(user,1);
 	initDFS.addPiece(comp,2); initDFS.addPiece(user,2); initDFS.addPiece(comp,2); 
 	initDFS.addPiece(user,2); initDFS.addPiece(comp,2); 
-	treeNode dFirst(initDFS);
+	cout << "filled board" << endl;
+	treeNode dFirst(initDFS);							// SEGMENTATION FAULT STARTS HERE, so something wrong with treeNode constructor
+	cout << "declared treeNode" << endl;
 	treeNode* depth=&dFirst;
+	cout << "pointer defined" << endl;
 	DFS(depth,user,s);
 	/*
 	Before               Mid		  After
@@ -32,7 +38,7 @@ int main(){
 	X X X - - - -        X X X - - - -	  X X X X - - - (wow, that glo' up tho)
 	*/ 
 	
-	/*
+	/* 
 	Board initMM;
 	initMM.addPiece(user,1); initMM.addPiece(user,3); initMM.addPiece(user,5);
 	initMM.addPiece(comp,2); initMM.addPiece(comp,4); initMM.addPiece(user,2);
