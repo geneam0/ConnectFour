@@ -2,7 +2,6 @@
 #define __TREENODE__CPP
 
 #include "treeNode.h"
-#include <unistd.h>
 
 // CONSTRUCTORS 
 treeNode::treeNode() {
@@ -140,7 +139,11 @@ void treeNode::BFS(char turn) {
 
 // the depth first search FOR iterative deepening
 // not our actual depth first search
+<<<<<<< HEAD
 // by meri~
+=======
+// by meriselle~
+>>>>>>> 2e99a8545415a69d400e2b85103e7f7682556877
 bool treeNode::itdfs(char turn, treeNode* currentNode, Stack<treeNode*>& nodeStack,int level, int maxLevel) { 
   char thisTurn = turn;                   // going between X and O (currently doesnt work :((    )
   if(thisTurn == 'X') { 
@@ -198,6 +201,7 @@ void treeNode::IT(char turn) {
 	}
 }
 
+
 // Searching Algorithms
 // by gene
 void DFS(treeNode*& b, char turn, Stack<treeNode*>& childrenStack){
@@ -228,7 +232,7 @@ void DFS(treeNode*& b, char turn, Stack<treeNode*>& childrenStack){
   else turn='X';
   DFS(onTop,turn,childrenStack);  
 }
-
+// by gene
 // computerTurn = 'X; userTurn = 'O'
 // by gene
 void generateScore(treeNode* b, size_t level, char turn){
@@ -271,7 +275,10 @@ void generateScore(treeNode* b, size_t level, char turn){
   in.setScore(score);
 }
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 2e99a8545415a69d400e2b85103e7f7682556877
 // by gene
 void evaluateUp(treeNode* b, char turn){
 	int minMax; 
@@ -305,7 +312,7 @@ void evaluateUp(treeNode* b, char turn){
 		}
 	}
 }
-/*
+/* by gene
  * Precondition: A root containing board b that can still be filled
  * Postcondition: A tree from that board b with 4 levels of possible board choices. Each node has 7 children.
  * 		When the program finishes, each leaf score is calculated with generateScore. At the end,  

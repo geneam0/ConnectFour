@@ -39,7 +39,6 @@ bool Board::boardFull() const {
 }
 // returns true if the board has a winner by checking 4 cases
 bool Board::hasWinner() const{
-  // check by column
 	for(size_t i=0; i<rows-3; i++){
 		for(size_t j=0; j<columns; j++){
 			//cout << i << j << " " << arr[i][j] << arr[i+1][j] << arr[i+2][j] << arr[i+3][j] << endl;
@@ -51,7 +50,6 @@ bool Board::hasWinner() const{
 		 	}
 		}
 	}
-	// check by row
 	for(size_t i=0; i<rows; i++){
 		for(size_t j=0; j<columns-3; j++){
 			if((arr[i][j]!='-')&&
@@ -122,7 +120,5 @@ ostream& operator<<(ostream &os, const Board& source) {
 	}
     return os;
 }
-
-
 
 #endif
