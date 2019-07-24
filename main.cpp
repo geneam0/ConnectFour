@@ -9,29 +9,21 @@
 int main(){
 	char user = 'O';
 	char comp = 'X';
-
-	cout << "before depth first seaarch" << endl;
 	
 	// Depth First Search
 	Board initDFS; 
 	Stack<treeNode*> s;
-	cout << "after declaration" << endl;
 	initDFS.addPiece(comp,0); initDFS.addPiece(user,0); initDFS.addPiece(comp,0); 
-	//initDFS.addPiece(user,0); initDFS.addPiece(comp,0); initDFS.addPiece(user,0);
+	initDFS.addPiece(user,0); initDFS.addPiece(comp,0); initDFS.addPiece(user,0);
 	initDFS.addPiece(comp,1); initDFS.addPiece(user,1); initDFS.addPiece(comp,1); 
-	//initDFS.addPiece(user,1); initDFS.addPiece(comp,1); initDFS.addPiece(user,1);
-	//initDFS.addPiece(comp,2); initDFS.addPiece(user,2); initDFS.addPiece(comp,2); 
-	//initDFS.addPiece(user,2); initDFS.addPiece(comp,2);
-	//initDFS.addPiece(user, 6); 
-	cout << "filled board" << endl;
+	initDFS.addPiece(user,1); initDFS.addPiece(comp,1); initDFS.addPiece(user,1);
+	initDFS.addPiece(comp,2); initDFS.addPiece(user,2); initDFS.addPiece(comp,2); 
+	initDFS.addPiece(user,2); initDFS.addPiece(comp,2);
 	treeNode dFirst;							
 	dFirst.setBoard(initDFS);
-	cout << "declared treeNode" << endl;
 	treeNode* depth=&dFirst;
-	cout << "pointer defined" << endl;
-	// DFS(depth,user,s);		// DFS PRINTS IFINITELY
+	DFS(depth,user,s);		// DFS PRINTS IFINITELY
 	// dFirst.BFS(user);
-	dFirst.generateChildren(user);
 	/*
 	Before               Mid		  After
 	O O - - - - -        O O O - - - -	  O O O - - - -
