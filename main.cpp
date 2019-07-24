@@ -18,11 +18,11 @@ int main(){
 	initDFS.addPiece(comp,1); initDFS.addPiece(user,1); initDFS.addPiece(comp,1); 
 	initDFS.addPiece(user,1); initDFS.addPiece(comp,1); initDFS.addPiece(user,1);
 	initDFS.addPiece(comp,2); initDFS.addPiece(user,2); initDFS.addPiece(comp,2); 
-	initDFS.addPiece(user,2); initDFS.addPiece(comp,2);
+	initDFS.addPiece(user,2); initDFS.addPiece(comp,2); 
 	treeNode dFirst;							
 	dFirst.setBoard(initDFS);
 	treeNode* depth=&dFirst;
-	DFS(depth,user,s);		
+	DFS(depth,user,s);	
 	// dFirst.BFS(user);
 	/*
 	Before               Mid		  		  After

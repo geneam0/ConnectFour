@@ -170,13 +170,15 @@ void treeNode::IT(char turn) { // USER PART
 
 // Searching Algorithms
 void DFS(treeNode*& b, char turn, Stack<treeNode*>& childrenStack){
-cout<<" board one \n" << b->getBoard();
+//cout<<"board start: \n" << b->getBoard();
   // Base Case: returns the winning board or tied board if no other solution possible
+//cout<<b->getBoard().hasWinner();
   if(b->getBoard().hasWinner()||(b->getBoard().boardFull()&&childrenStack.empty())){ // onlytime you want to print is if board has winner or if full, childrenstack empty isnt necessary
-    cout<<"board two \n" << b->getBoard();
+    //cout<< "has win& tie triggered: \n" << b->getBoard();
     while(b->getParent()!=NULL){
-      cout << "while loop triggered" << endl;
-      cout<<b->getParent()->getBoard();
+
+      //cout << "has win& tie: while loop triggered" << endl;
+      //cout<<b->getParent()->getBoard();
       b=b->getParent();
 	// return statement here maybeeeee
     }
@@ -187,12 +189,16 @@ cout<<" board one \n" << b->getBoard();
    * childrenStack to find the next node to perform DFS on.
    */
   else if(!b->getBoard().boardFull()){
+    //cout<< "board not full triggered: \n" << b->getBoard();
     b->generateChildren(turn);
-    for(size_t i=6; i>=0;i--){
-      if((b->getChild(i)) == NULL) { continue; }
-      else { childrenStack.push(b->getChild(i)); }
+    //cout<< "children generated. for loop initiating";
+    for(int i=6; i>=0;i--){
+      //cout << i<<endl;
+      if((b->getChild(i)) == nullptr) { cout<< "if statement started"; continue; }
+      else { cout<< "else started" ; childrenStack.push(b->getChild(i)); }
     }
   } 
+  //cout<< "out of board full else if";
   treeNode* onTop=childrenStack.top();
   childrenStack.pop();
   if(turn=='X') turn='O';
