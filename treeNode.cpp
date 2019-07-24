@@ -2,7 +2,7 @@
 #define __TREENODE__CPP
 
 #include "treeNode.h"
-
+#include <unistd.h>
 
 // CONSTRUCTORS 
 treeNode::treeNode() {
@@ -197,17 +197,13 @@ void treeNode::IT(char turn) { // USER PART
 
 // Searching Algorithms
 void DFS(treeNode*& b, char turn, Stack<treeNode*>& childrenStack){
-//cout<<"board start: \n" << b->getBoard();
   // Base Case: returns the winning board or tied board if no other solution possible
-//cout<<b->getBoard().hasWinner();
   if(b->getBoard().hasWinner()||(b->getBoard().boardFull()&&childrenStack.empty())){ // onlytime you want to print is if board has winner or if full, childrenstack empty isnt necessary
-    //cout<< "has win& tie triggered: \n" << b->getBoard();
-    while(b->getParent()!=NULL){
-
-      //cout << "has win& tie: while loop triggered" << endl;
-      //cout<<b->getParent()->getBoard();
+    cout<<b->getBoard(); // winning board
+    while(b->getParent()!=nullptr){
+      cout<<b->getParent()->getBoard();
       b=b->getParent();
-	// return statement here maybeeeee
+	    return;
     }
   }
   /*
@@ -216,21 +212,17 @@ void DFS(treeNode*& b, char turn, Stack<treeNode*>& childrenStack){
    * childrenStack to find the next node to perform DFS on.
    */
   else if(!b->getBoard().boardFull()){
-    //cout<< "board not full triggered: \n" << b->getBoard();
     b->generateChildren(turn);
-    //cout<< "children generated. for loop initiating";
     for(int i=6; i>=0;i--){
-      //cout << i<<endl;
-      if((b->getChild(i)) == nullptr) { cout<< "if statement started"; continue; }
-      else { cout<< "else started" ; childrenStack.push(b->getChild(i)); }
+      if((b->getChild(i)) == nullptr) { continue; }
+      else { childrenStack.push(b->getChild(i)); }
     }
   } 
-  //cout<< "out of board full else if";
   treeNode* onTop=childrenStack.top();
   childrenStack.pop();
   if(turn=='X') turn='O';
   else turn='X';
-  DFS(onTop,turn,childrenStack);   // pointer error
+  DFS(onTop,turn,childrenStack);  
 }
 
 // computerTurn = 'X; userTurn = 'O'
