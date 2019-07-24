@@ -49,7 +49,7 @@ void treeNode::generateChildren(char turn) {
   for(int i = 0; i < 7; i++) {
     treeNode* childPtr;
     childPtr = new treeNode;
-    Board childBoard()
+    Board childBoard;
     // childPtr->setBoard(possibleBoard); // create a board, add a piece to it , then set child ptr
     childPtr->setParent(this); 
     cout << "childPtr " << i << " BEFORE adding a new Piece: " << endl << childPtr->getBoard();         // BEFORE IF
