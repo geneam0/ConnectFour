@@ -10,7 +10,7 @@ using namespace std;
 template <class Item>
 class Queue {
     public:
-        const size_t DEF_CAP = 30;
+        const size_t DEF_CAP = 100;
 
         Queue();
         Queue(const Queue<Item>& source);

@@ -5,7 +5,7 @@
 
 template <class Item>
 Queue<Item>::Queue() {
-	capacity = 30;
+	capacity = 100;
 	used = 0;
 	first = 0;
 	last = -1;
@@ -31,7 +31,7 @@ Queue<Item>::~Queue() {
 
 template <class Item>
 void Queue<Item>::push(const Item& entry) {
-	assert(used < capacity);
+	//assert(used < capacity);
 	data[nextIndex(last)] = entry;
 	used++;
 	last = nextIndex(last);

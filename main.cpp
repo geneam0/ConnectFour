@@ -30,8 +30,8 @@ int main(){
 	treeNode* depth=&dFirst;
 	cout << "pointer defined" << endl;
 	// DFS(depth,user,s);		// DFS PRINTS IFINITELY
-	// dFirst.BFS(user);
-	dFirst.generateChildren(user);
+	//dFirst.BFS(user);
+	dFirst.IT(user);
 	/*
 	Before               Mid		  After
 	O O - - - - -        O O O - - - -	  O O O - - - -

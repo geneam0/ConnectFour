@@ -83,22 +83,15 @@ void treeNode::BFS(char turn) {
   Stack<Board> winningPath;
   gameTree.push(this);			// queue is a queue of pointers, not boards sooo push this pointer 
   treeNode* currentNode;
-  cout << gameTree.front()->getBoard();       //TEST
+  cout << "before generate children: " << gameTree.front()->getBoard();       //TEST
   while(!gameTree.empty()) {
-    // TESTING 
-   // cout << "working" << endl;
-    // cout << getBoard();         // TEST
-    if(thisTurn = 'O') {
-      thisTurn = 'X';
-    } else {
-      thisTurn = 'O';
-    }
     currentNode = gameTree.front();
     gameTree.pop(); 
     currentNode->generateChildren(thisTurn);
     for(int i = 0; i < 7; i++) {
-      gameTree.push(currentNode->getChild(i));  
-      cout << "after generate children, the front should be the next child"<< endl << gameTree.front()->getBoard();       // TEST
+      gameTree.push(currentNode->getChild(i)); 
+      cout << "current child: " << endl << currentNode->getChild(i)->getBoard() << endl; 
+      cout << "after generate children, the front should be the next child" << endl << gameTree.front()->getBoard() << endl;      // TEST
       if(currentNode->getChild(i) == NULL) {
         continue;
       }      
@@ -111,7 +104,12 @@ void treeNode::BFS(char turn) {
 	  if(isWinner) { 
       break; 
     }
-    
+    if(thisTurn = 'X') {
+      thisTurn = 'O';
+    } else {
+      thisTurn = 'X';
+    }
+    cout << "END LOOP" << endl;
   }
   cout << "BFS: got out of while loop !!" << endl;
   treeNode winner = winningPath.top();
@@ -130,31 +128,31 @@ void treeNode::BFS(char turn) {
 } 
 
 bool treeNode::itdfs(char turn, treeNode* currentNode, Stack<treeNode*>& nodeStack,int level, int maxLevel) { // USER PART && CURRENTNODE
-    if(currentNode->getBoard().boardFull() || currentNode->getBoard().hasWinner()) {
-	Stack<Board> winningPath;
-	winningPath.push(currentNode->getBoard());
-	while(currentNode->getParent() != NULL) {
-	      currentNode = currentNode->getParent();
-	      winningPath.push(currentNode->getBoard());
-	    }
-	Board nextBoard;
-	nextBoard = winningPath.top();
-	cout << "->" << nextBoard;
-	winningPath.pop();
-	return true;
-    }
-    nodeStack.push(currentNode);
-    if(level < maxLevel) {
-	for (int i = 0; i < 7; i++) {
-		if (currentNode->getChild(i) != NULL) {                                         //ERRORS
-			if(itdfs(turn, currentNode->getChild(i), nodeStack, level + 1, maxLevel)) {
-				return true;
-			}
-		}
-	}
-      }
-    nodeStack.pop();
-    return false;
+  if(currentNode->getBoard().boardFull() || currentNode->getBoard().hasWinner()) {
+  	Stack<Board> winningPath;
+	  winningPath.push(currentNode->getBoard());
+	  while(currentNode->getParent() != NULL) {
+	    currentNode = currentNode->getParent();
+	    winningPath.push(currentNode->getBoard());
+	  }
+    Board nextBoard;
+    nextBoard = winningPath.top();
+    cout << "->" << nextBoard;
+    winningPath.pop();
+    return true;
+  }
+  nodeStack.push(currentNode);
+  if(level < maxLevel) {
+	  for (int i = 0; i < 7; i++) {
+		  if (currentNode->getChild(i) != NULL) {                                         //ERRORS
+			  if(itdfs(turn, currentNode->getChild(i), nodeStack, level + 1, maxLevel)) {
+				  return true;
+			  }
+		  }
+	  }
+  }
+  nodeStack.pop();
+  return false;
 }
 	  
 void treeNode::IT(char turn) { // USER PART
