@@ -38,4 +38,5 @@ class Board{
 		friend ostream& operator<<(ostream& os, const Board& source); 
 };
 
+// #include "board.cpp" // UNCOMMENT ME IF I DONT RUN
 #endif
