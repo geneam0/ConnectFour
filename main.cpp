@@ -23,11 +23,12 @@ int main(){
 	initDFS.addPiece(comp,2); initDFS.addPiece(user,2); initDFS.addPiece(comp,2); 
 	initDFS.addPiece(user,2); initDFS.addPiece(comp,2); 
 	cout << "filled board" << endl;
-	treeNode dFirst(initDFS);							// SEGMENTATION FAULT STARTS HERE, so something wrong with treeNode constructor
+	treeNode dFirst;							
+	dFirst.setBoard(initDFS);
 	cout << "declared treeNode" << endl;
 	treeNode* depth=&dFirst;
 	cout << "pointer defined" << endl;
-	DFS(depth,user,s);
+	// DFS(depth,user,s);		// DFS PRINTS IFINITELY
 	/*
 	Before               Mid		  After
 	O O - - - - -        O O O - - - -	  O O O - - - -
