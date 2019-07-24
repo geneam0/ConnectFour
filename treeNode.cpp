@@ -330,6 +330,8 @@ void MiniMax(treeNode* b, size_t level, char turn){
     return;
   }
   if(level==0){
+    cout<<b->getBoard().getScore()<<endl;
+    cout<<b->getBoard();    
     evaluateUp(b, turn); 
     return;
   }
