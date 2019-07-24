@@ -199,6 +199,7 @@ void treeNode::IT(char turn) {
 
 
 // Searching Algorithms
+// by gene
 void DFS(treeNode*& b, char turn, Stack<treeNode*>& childrenStack){
   // Base Case: returns the winning board or tied board if no other solution possible
   if(b->getBoard().hasWinner()||(b->getBoard().boardFull()&&childrenStack.empty())){ // onlytime you want to print is if board has winner or if full, childrenstack empty isnt necessary
@@ -227,7 +228,7 @@ void DFS(treeNode*& b, char turn, Stack<treeNode*>& childrenStack){
   else turn='X';
   DFS(onTop,turn,childrenStack);  
 }
-
+// by gene
 // computerTurn = 'X; userTurn = 'O'
 void generateScore(treeNode* b, size_t level, char turn){
   // initalize the board and score
@@ -269,6 +270,7 @@ void generateScore(treeNode* b, size_t level, char turn){
   in.setScore(score);
 }
 
+// by gene
 void evaluateUp(treeNode* b, char turn){
 	int minMax; 
 	if(turn=='O') { minMax=100000000; }	
@@ -301,7 +303,7 @@ void evaluateUp(treeNode* b, char turn){
 		}
 	}
 }
-/*
+/* by gene
  * Precondition: A root containing board b that can still be filled
  * Postcondition: A tree from that board b with 4 levels of possible board choices. Each node has 7 children.
  * 		When the program finishes, each leaf score is calculated with generateScore. At the end,  
