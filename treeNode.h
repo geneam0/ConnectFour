@@ -21,7 +21,7 @@ class treeNode {
     treeNode(Board bo);
   
     // get/set functions
-    treeNode* getChild(size_t i)                              { return children[i]; }
+    treeNode* getChild(int i)                              { return children[i]; }
     treeNode** getChildren()                                    { return children; }
     Board getBoard()                                          { return possibleBoard; }
     treeNode* getParent()                                     { return parent; }
@@ -29,7 +29,7 @@ class treeNode {
     void setParent(treeNode* p)                               { parent = p; }
   
     // add functions
-    void addChild(treeNode* newChildPtr, size_t i);   
+    void addChild(treeNode* newChildPtr, int i);   
     void generateChildren(char turn); // given a node, what are the next possible moves
 
     // overloaded operators

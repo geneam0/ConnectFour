@@ -17,11 +17,11 @@ int main(){
 	Stack<treeNode> s;
 	cout << "after declaration" << endl;
 	initDFS.addPiece(comp,0); initDFS.addPiece(user,0); initDFS.addPiece(comp,0); 
-	initDFS.addPiece(user,0); initDFS.addPiece(comp,0); initDFS.addPiece(user,0);
+	//initDFS.addPiece(user,0); initDFS.addPiece(comp,0); initDFS.addPiece(user,0);
 	initDFS.addPiece(comp,1); initDFS.addPiece(user,1); initDFS.addPiece(comp,1); 
-	initDFS.addPiece(user,1); initDFS.addPiece(comp,1); initDFS.addPiece(user,1);
-	initDFS.addPiece(comp,2); initDFS.addPiece(user,2); initDFS.addPiece(comp,2); 
-	initDFS.addPiece(user,2); initDFS.addPiece(comp,2); 
+	//initDFS.addPiece(user,1); initDFS.addPiece(comp,1); initDFS.addPiece(user,1);
+	//initDFS.addPiece(comp,2); initDFS.addPiece(user,2); initDFS.addPiece(comp,2); 
+	//initDFS.addPiece(user,2); initDFS.addPiece(comp,2); 
 	cout << "filled board" << endl;
 	treeNode dFirst;							
 	dFirst.setBoard(initDFS);
@@ -29,6 +29,7 @@ int main(){
 	treeNode* depth=&dFirst;
 	cout << "pointer defined" << endl;
 	// DFS(depth,user,s);		// DFS PRINTS IFINITELY
+	dFirst.BFS(user);
 	/*
 	Before               Mid		  After
 	O O - - - - -        O O O - - - -	  O O O - - - -

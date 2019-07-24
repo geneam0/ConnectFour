@@ -35,7 +35,7 @@ treeNode::treeNode(Board bo){
 // ADD/SET DATA
 /* addChild: fills designated slot in children array with pointer to new child
   preconditions: pointer to new child and the column in which the new piece was added */
-void treeNode::addChild(treeNode* newChildPtr, size_t i) {
+void treeNode::addChild(treeNode* newChildPtr, int i) {
   children[i] = newChildPtr;
 }
 
@@ -49,17 +49,21 @@ void treeNode::generateChildren(char turn) {
   for(int i = 0; i < 7; i++) {
     treeNode* childPtr;
     childPtr = new treeNode;
-    childPtr->setBoard(possibleBoard);
-    if(!childPtr->getBoard().fullColumn(i)) {
-      childPtr->getBoard().addPiece(turn, i);
+    Board childBoard()
+    // childPtr->setBoard(possibleBoard); // create a board, add a piece to it , then set child ptr
+    childPtr->setParent(this); 
+    cout << "childPtr " << i << " BEFORE adding a new Piece: " << endl << childPtr->getBoard();         // BEFORE IF
+    if(!childBoard.fullColumn(i)) {           // error is somewhere here in the if statement
+      childBoard.addPiece(turn, i);            // addPiece error
+      cout << turn << " childPtr " << i << " AFTER adding a new Piece: " << endl << childBoard;                 // AFTER IF
       addChild(childPtr, i);
     } else {
-	    // later, when accessing children, check whether its null pointer first to avoid accessing error
       addChild(nullptr, i);         
-    }
-		// this is a special pointer function
-    childPtr->setParent(this);      
+    }  
+    childPtr->setBoard(childBoard);
   }
+  cout << "zeroth chiid: " << endl << getChild(0)->getBoard();
+  cout << "first child: " << endl << getChild(1)->getBoard();
 }
 
 // OVERLOADED OPERATORS                                            
@@ -83,26 +87,37 @@ void treeNode::BFS(char turn) {
   Stack<Board> winningPath;
   gameTree.push(this);			// queue is a queue of pointers, not boards sooo push this pointer 
   treeNode* currentNode;
-  while(!gameTree.empty()) {	
+  cout << gameTree.front()->getBoard();       //TEST
+  while(!gameTree.empty()) {
+    // TESTING 
+   // cout << "working" << endl;
+    // cout << getBoard();         // TEST
     if(thisTurn = 'O') {
       thisTurn = 'X';
     } else {
       thisTurn = 'O';
-      currentNode = gameTree.front();
-      gameTree.pop();
-      currentNode->generateChildren(thisTurn);
-      for(int i = 0; i < 7; i++) {
-        if(currentNode->getChild(i) == NULL) { continue; }
-        gameTree.push(currentNode->getChild(i));                  // const
-        if(currentNode->getChild(i)->getBoard().hasWinner()) {
-          winningPath.push(currentNode->getChild(i)->getBoard());
-          isWinner = true;
-          break;
-        }
+    }
+    currentNode = gameTree.front();
+    gameTree.pop(); 
+    currentNode->generateChildren(thisTurn);
+    for(int i = 0; i < 7; i++) {
+      gameTree.push(currentNode->getChild(i));  
+      cout << "after generate children, the front should be the next child"<< endl << gameTree.front()->getBoard();       // TEST
+      if(currentNode->getChild(i) == NULL) {
+        continue;
+      }      
+      if(currentNode->getChild(i)->getBoard().hasWinner()) {
+        winningPath.push(currentNode->getChild(i)->getBoard());
+        isWinner = true;
+        break;
       }
     }
-	  if(isWinner) { break; }
+	  if(isWinner) { 
+      break; 
+    }
+    
   }
+  cout << "BFS: got out of while loop !!" << endl;
   treeNode winner = winningPath.top();
   cout << "Winning Board: " << winner.getBoard();		// PRINT BOARD FUNCTION OR COUT OVERLOADED
   treeNode *rootParent;
