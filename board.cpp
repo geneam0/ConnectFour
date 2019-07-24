@@ -13,6 +13,14 @@ Board::Board(){
 	}
 	score=0;
 }
+Board::Board(const Board& source) {
+	for(size_t i = 0; i < rows; i++) {
+		for(size_t j = 0; j < columns; j++) {
+			arr[i][j] = source.arr[i][j];
+		}
+	}
+
+}
 
 // returns true if the board is full by seeing if there's an empty space anywhere on the board
 bool Board::boardFull() const {

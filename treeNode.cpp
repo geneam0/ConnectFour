@@ -50,6 +50,7 @@ void treeNode::generateChildren(char turn) {
     treeNode* childPtr;
     childPtr = new treeNode;
     Board childBoard;
+    childBoard = possibleBoard;
     // childPtr->setBoard(possibleBoard); // create a board, add a piece to it , then set child ptr
     childPtr->setParent(this); 
     cout << "childPtr " << i << " BEFORE adding a new Piece: " << endl << childPtr->getBoard();         // BEFORE IF
@@ -58,6 +59,7 @@ void treeNode::generateChildren(char turn) {
       cout << turn << " childPtr " << i << " AFTER adding a new Piece: " << endl << childBoard;                 // AFTER IF
       addChild(childPtr, i);
     } else {
+      cout << "null child " << i << endl;
       addChild(nullptr, i);         
     }  
     childPtr->setBoard(childBoard);
