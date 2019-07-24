@@ -3,6 +3,7 @@
 
 #include "treeNode.h"
 
+
 // CONSTRUCTORS 
 treeNode::treeNode() {
   setParent(NULL);

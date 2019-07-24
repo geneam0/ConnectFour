@@ -1,9 +1,9 @@
-#ifndef __QUEUE_CPP__
-#define __QUEUE_CPP__
+#ifndef __QUEUE_MERI_CPP__
+#define __QUEUE_MERI_CPP__
 
 #include "Queue.h"
 
-template <typename Item>
+template <class Item>
 Queue<Item>::Queue() {
 	capacity = 30;
 	used = 0;
@@ -11,7 +11,8 @@ Queue<Item>::Queue() {
 	last = -1;
 	data = new Item[capacity];
 }
-template <typename Item>
+
+template <class Item>
 Queue<Item>::Queue(const Queue<Item>& source) {
 	used = source.used;
 	first = source.first;
@@ -22,12 +23,13 @@ Queue<Item>::Queue(const Queue<Item>& source) {
 		data[i] = source.data[i];
 	}
 }
-template <typename Item>
+
+template <class Item>
 Queue<Item>::~Queue() {
 	delete[] data;
 }
 
-template <typename Item>
+template <class Item>
 void Queue<Item>::push(const Item& entry) {
 	assert(used < capacity);
 	data[nextIndex(last)] = entry;
@@ -35,14 +37,14 @@ void Queue<Item>::push(const Item& entry) {
 	last = nextIndex(last);
 }
 
-template <typename Item>
+template <class Item>
 void Queue<Item>::pop() {
 	if(empty()) { return; }
 	first = nextIndex(first);
 	used--;
 }	
 
-template <typename Item>
+template <class Item>
 void Queue<Item>::operator=(const Queue<Item>& source) {
 	delete[] data;
 	used = source.used;
@@ -54,17 +56,17 @@ void Queue<Item>::operator=(const Queue<Item>& source) {
 	}
 }
 
-template <typename Item>
+template <class Item>
 size_t Queue<Item>::size() const {
 	return used;
 }
 
-template <typename Item>
+template <class Item>
 bool Queue<Item>::empty() const {
 	return (size() == 0);
 }
 
-template <typename Item>
+template <class Item>
 Item Queue<Item>::front() const {
 	assert(!empty());
 	return(data[first]);

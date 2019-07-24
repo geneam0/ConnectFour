@@ -1,5 +1,5 @@
-#ifndef __QUEUE_H__
-#define __QUEUE_H__
+#ifndef __QUEUE_MERI_H__
+#define __QUEUE_MERI_H__
 
 #include <iostream>
 #include <cstdlib>
@@ -7,7 +7,7 @@
 
 using namespace std;
 
-template <typename Item>
+template <class Item>
 class Queue {
     public:
         const size_t DEF_CAP = 30;
