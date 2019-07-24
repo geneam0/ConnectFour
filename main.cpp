@@ -11,24 +11,23 @@ int main(){
 	char comp = 'X';
 	
 	// Depth First Search
-	Board initDFS; 
+	Board bfsBoard; 
 	Stack<treeNode*> s;
-	initDFS.addPiece(comp,0); // initDFS.addPiece(user,0); initDFS.addPiece(comp,0); 
+	bfsBoard.addPiece(comp,0); // initDFS.addPiece(user,0); initDFS.addPiece(comp,0); 
 	// initDFS.addPiece(user,0); initDFS.addPiece(comp,0); initDFS.addPiece(user,0);
 	//initDFS.addPiece(comp,1); initDFS.addPiece(user,1); initDFS.addPiece(comp,1); 
 	//initDFS.addPiece(user,1); initDFS.addPiece(comp,1); initDFS.addPiece(user,1);
 	//initDFS.addPiece(comp,2); initDFS.addPiece(user,2); initDFS.addPiece(comp,2); 
 	//initDFS.addPiece(user,2); initDFS.addPiece(comp,2);
-	treeNode dFirst;							
-	dFirst.setBoard(initDFS);
-	treeNode* depth=&dFirst;
-	cout << "pointer defined" << endl;
+	treeNode bfsnode;							
+	bfsnode.setBoard(bfsBoard);
+	treeNode* depth=&bfsnode;
 	// DFS(depth,user,s);		// DFS PRINTS IFINITELY
-	dFirst.BFS(user);
+	bfsnode.BFS(user);
 	//dFirst.IT(comp);
-	cout << "IT was called" << endl;
 
 	// DFS(depth,user,s);		
+
 	// dFirst.BFS(user);
 	/*
 	Before               Mid		  		  After

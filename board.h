@@ -39,4 +39,5 @@ class Board{
 };
 
 #include "board.cpp"
+
 #endif
