@@ -63,7 +63,6 @@ bool Board::hasWinner() const{
 		}
 	}
 	// check up-right diagonals
-	cout<<"hasWinner: diagonal \n";
 	for(size_t i=3; i<rows; i++){
 		for(size_t j=3; j<columns;j++){
 			if((arr[i][j]!='-')&&
@@ -75,7 +74,6 @@ bool Board::hasWinner() const{
 		}
 	}
 	// check down-right diagonals
-	cout<<"hasWinner: diagonal 2 \n";
 	for(size_t i=3; i<rows; i++){
 		for(size_t j=0; j<columns-3;j++){
 			if((arr[i][j]!='-')&&

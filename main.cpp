@@ -10,24 +10,29 @@ int main(){
 	char user = 'O';
 	char comp = 'X';
 	
-	// Depth First Search
-
+	// BFS AND ITERATIVE DEEPENING BOARD IS CREATED HERE
 	Board bfsBoard; 
 	Stack<treeNode*> s;
-	bfsBoard.addPiece(comp,0); // initDFS.addPiece(user,0); initDFS.addPiece(comp,0); 
-	// initDFS.addPiece(user,0); initDFS.addPiece(comp,0); initDFS.addPiece(user,0);
-	//initDFS.addPiece(comp,1); initDFS.addPiece(user,1); initDFS.addPiece(comp,1); 
-	//initDFS.addPiece(user,1); initDFS.addPiece(comp,1); initDFS.addPiece(user,1);
-	//initDFS.addPiece(comp,2); initDFS.addPiece(user,2); initDFS.addPiece(comp,2); 
-	//initDFS.addPiece(user,2); initDFS.addPiece(comp,2);
+	bfsBoard.addPiece(comp,0); 
+	
 	treeNode bfsnode;							
 	bfsnode.setBoard(bfsBoard);
 	treeNode* depth=&bfsnode;
-	// DFS(depth,user,s);		
-	//bfsnode.BFS(user);
-	bfsnode.IT(comp);
+		
+	// ---------UNCOMMENT FOR BFS SEARCH-----------
 
-	// DFS(depth,user,s);		
+	bfsnode.BFS(user);
+
+	/*STATUS: as of right now, BFS >>DOES<< compile and run and return a winning board
+	however it doesnt switch between X and O turns properly */
+
+	// ---------UNCOMMENT FOR ITERATIVE DEEPENING-----------
+
+	//bfsnode.IT(user);
+
+	/*STATUS: as of right now, IT >>WORKS<< but it does not switch between X and O
+	it compiles AND runs and returns a winning board */
+		
 
 
 	/*
