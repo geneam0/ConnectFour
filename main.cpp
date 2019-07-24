@@ -11,8 +11,8 @@ int main(){
 	char comp = 'X';
 	
 	// Depth First Search
-	Board initDFS;
 	/*
+	Board initDFS;
 	Stack<treeNode*> s;
 	initDFS.addPiece(comp,0); initDFS.addPiece(user,0); initDFS.addPiece(comp,0); 
 	initDFS.addPiece(user,0); initDFS.addPiece(comp,0); initDFS.addPiece(user,0);
@@ -26,6 +26,7 @@ int main(){
 	DFS(depth,user,s); // prints the children
 	cout<<initDFS; // prints the root
 	*/
+	
 	// dFirst.BFS(user);
 	/*
 	Before               Mid		  		  After
