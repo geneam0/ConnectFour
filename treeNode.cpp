@@ -51,21 +51,15 @@ void treeNode::generateChildren(char turn) {
     childPtr = new treeNode;
     Board childBoard;
     childBoard = possibleBoard;
-    // childPtr->setBoard(possibleBoard); // create a board, add a piece to it , then set child ptr
     childPtr->setParent(this); 
-    cout << "childPtr " << i << " BEFORE adding a new Piece: " << endl << childPtr->getBoard();         // BEFORE IF
-    if(!childBoard.fullColumn(i)) {           // error is somewhere here in the if statement
-      childBoard.addPiece(turn, i);            // addPiece error
-      cout << turn << " childPtr " << i << " AFTER adding a new Piece: " << endl << childBoard;                 // AFTER IF
+    if(!childBoard.fullColumn(i)) {           
+      childBoard.addPiece(turn, i);            
       addChild(childPtr, i);
     } else {
-      cout << "null child " << i << endl;
       addChild(nullptr, i);         
     }  
     childPtr->setBoard(childBoard);
   }
-  cout << "zeroth chiid: " << endl << getChild(0)->getBoard();
-  cout << "first child: " << endl << getChild(1)->getBoard();
 }
 
 // OVERLOADED OPERATORS                                            

@@ -21,7 +21,8 @@ int main(){
 	initDFS.addPiece(comp,1); initDFS.addPiece(user,1); initDFS.addPiece(comp,1); 
 	//initDFS.addPiece(user,1); initDFS.addPiece(comp,1); initDFS.addPiece(user,1);
 	//initDFS.addPiece(comp,2); initDFS.addPiece(user,2); initDFS.addPiece(comp,2); 
-	//initDFS.addPiece(user,2); initDFS.addPiece(comp,2); 
+	//initDFS.addPiece(user,2); initDFS.addPiece(comp,2);
+	//initDFS.addPiece(user, 6); 
 	cout << "filled board" << endl;
 	treeNode dFirst;							
 	dFirst.setBoard(initDFS);

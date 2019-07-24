@@ -86,21 +86,14 @@ bool Board::fullColumn(size_t c) const {
 // Precondition: the board column has a space to put the chip
 // Postcondition: the chip is "dropped" in the board column and placed where the next available row is
 void Board::addPiece(char entry, size_t c) {
-  if(fullColumn(c)) { /* invalid message and reprompt */ cout << "ADD RETURN" << endl; return; }
-  size_t i=6;
+  if(fullColumn(c)) { 
+	return; 
+  }
+  size_t i=5;
   while(!spaceEmpty(i, c)) {
     i--;
   }
   arr[i][c] = entry;
-
-	cout << "======== INSIDE ADD PIECE" << endl;
-  for(size_t x=0; x<rows; x++){
-		for(size_t j=0; j<columns; j++){
-			cout << arr[x][j]<< " ";
-		}	
-		cout<<"\n";
-	}
-	cout << "========== FINISHED ADD PIECE" << endl;
 }
 // prints the board
 ostream& operator<<(ostream &os, const Board& source) {
