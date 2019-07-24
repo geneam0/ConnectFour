@@ -171,7 +171,7 @@ void treeNode::IT(char turn) { // USER PART
 // Searching Algorithms
 void DFS(treeNode*& b, char turn, Stack<treeNode*>& childrenStack){
   // Base Case: returns the winning board or tied board if no other solution possible
-  "1";
+  cout<<"1";
   if(b->getBoard().hasWinner()||(b->getBoard().boardFull()&&childrenStack.empty())){ // onlytime you want to print is if board has winner or if full, childrenstack empty isnt necessary
     cout<<"2";
     while(b->getParent()!=NULL){
