@@ -22,16 +22,16 @@ int main(){
 	treeNode dFirst;							
 	dFirst.setBoard(initDFS);
 	treeNode* depth=&dFirst;
-	DFS(depth,user,s);		// DFS PRINTS IFINITELY
+	DFS(depth,user,s);		
 	// dFirst.BFS(user);
 	/*
-	Before               Mid		  After
-	O O - - - - -        O O O - - - -	  O O O - - - -
-	X X X - - - -        X X X - - - -	  X X X - - - -
+	Before               Mid		  		  After
+	O O - - - - -        O O O - - - -	  	  O O O - - - -
+	X X X - - - -        X X X - - - -	 	  X X X - - - -
 	O O O - - - - _____\ O O O - - - - _____\ O O O - - - -
 	X X X - - - -      / X X X - - - -      / X X X - - - -
-	O O O - - - -        O O O - - - -	  O O O - - - -
-	X X X - - - -        X X X - - - -	  X X X X - - - (wow, that glo' up tho)
+	O O O - - - -        O O O - - - -	  	  O O O - - - -
+	X X X - - - -        X X X - - - -	 	  X X X X - - - 
 	*/ 
 	
 	/* 
