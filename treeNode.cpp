@@ -178,7 +178,7 @@ cout<<b->getBoard();
     b->generateChildren(turn);
     for(size_t i=6; i>=0;i--){
       if((b->getChild(i)) == NULL) { continue; }
-      else { childrenStack.push(*b->getChild(i)); }
+      else { childrenStack.push(b->getChild(i)); }
     }
   } 
   treeNode onTop=childrenStack.top();
