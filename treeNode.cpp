@@ -2,7 +2,6 @@
 #define __TREENODE__CPP
 
 #include "treeNode.h"
-#include <unistd.h>
 
 // CONSTRUCTORS 
 treeNode::treeNode() {
