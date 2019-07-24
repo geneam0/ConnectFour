@@ -14,7 +14,7 @@ int main(){
 	
 	// Depth First Search
 	Board initDFS; 
-	Stack<treeNode> s;
+	Stack<treeNode*> s;
 	cout << "after declaration" << endl;
 	initDFS.addPiece(comp,0); initDFS.addPiece(user,0); initDFS.addPiece(comp,0); 
 	initDFS.addPiece(user,0); initDFS.addPiece(comp,0); initDFS.addPiece(user,0);
