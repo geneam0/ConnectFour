@@ -36,6 +36,8 @@ int main(){
 	X X X - - - -        X X X - - - -	 	  X X X X - - - 
 	*/ 
 
+	
+// BFS AND ITERATIVE DEEPENING BOARD IS CREATED HERE
 	Board bfsBoard; 
 	Stack<treeNode*> s;
 	bfsBoard.addPiece(comp,0); // initDFS.addPiece(user,0); initDFS.addPiece(comp,0); 
@@ -47,10 +49,19 @@ int main(){
 	treeNode bfsnode;							
 	bfsnode.setBoard(bfsBoard);
 	treeNode* depth=&bfsnode;
-	// DFS(depth,user,s);		
+		
+// ---------UNCOMMENT FOR BFS SEARCH-----------
 	//bfsnode.BFS(user);
-	bfsnode.IT(comp);
 
+	 		/*STATUS: as of right now, BFS >>DOES<< compile and run and return a winning board
+			however it doesnt switch between X and O turns properly */
+
+// ---------UNCOMMENT FOR ITERATIVE DEEPENING-----------
+	//bfsnode.IT(user);
+
+			/*STATUS: as of right now, IT >>WORKS<< but it does not switch between X and O
+			it compiles AND runs and returns a winning board */
+		
 	//MiniMax (does not work)
 	/*
 	Board initMM;
