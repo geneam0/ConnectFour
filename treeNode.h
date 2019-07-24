@@ -2,7 +2,7 @@
 #define __TREENODE__H
 
 #include <cstdlib>
-#include "Board.h"
+#include "board.h"
 #include "Stack.h"
 #include "Queue.h"
 #include <math.h>       /* pow */
