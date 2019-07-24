@@ -173,7 +173,7 @@ void treeNode::IT(char turn) { // USER PART
 }
 
 // Searching Algorithms
-void DFS(treeNode*& b, char turn, Stack<treeNode>& childrenStack){
+void DFS(treeNode*& b, char turn, Stack<treeNode*>& childrenStack){
 cout<<b->getBoard();
   // Base Case: returns the winning board or tied board if no other solution possible
   if(b->getBoard().hasWinner()||(b->getBoard().boardFull()&&childrenStack.empty())){ // onlytime you want to print is if board has winner or if full, childrenstack empty isnt necessary
@@ -193,15 +193,14 @@ cout<<b->getBoard();
     b->generateChildren(turn);
     for(size_t i=6; i>=0;i--){
       if((b->getChild(i)) == NULL) { continue; }
-      else { childrenStack.push(*b->getChild(i)); }
+      else { childrenStack.push(b->getChild(i)); }
     }
   } 
-  treeNode onTop=childrenStack.top();
+  treeNode* onTop=childrenStack.top();
   childrenStack.pop();
-treeNode* front=&onTop;
   if(turn=='X') turn='O';
   else turn='X';
-  DFS(front,turn,childrenStack);   // pointer error
+  DFS(onTop,turn,childrenStack);   // pointer error
 }
 
 // computerTurn = 'X; userTurn = 'O'
