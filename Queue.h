@@ -34,5 +34,5 @@ class Queue {
 };
 
 
-
+#include "Queue.cpp"
 #endif 

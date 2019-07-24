@@ -45,4 +45,5 @@ void generateScore(treeNode* b, size_t level, char turn);
 void evaluateUp(treeNode* b, char turn);
 void MiniMax(treeNode* b, size_t level, char turn);
 
+#include "treeNode.cpp"
 #endif
