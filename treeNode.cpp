@@ -71,7 +71,7 @@ void treeNode::operator=(treeNode source) {
 }
 
 // BFS
-/*
+
 void treeNode::BFS(char turn) {
   bool isWinner = false;
   char thisTurn;
@@ -116,7 +116,7 @@ void treeNode::BFS(char turn) {
     winningPath.pop();    
   }
 } 
-*/
+
 bool treeNode::itdfs(char turn, treeNode* currentNode, Stack<treeNode*>& nodeStack,int level, int maxLevel) { // USER PART && CURRENTNODE
     if(currentNode->getBoard().boardFull() || currentNode->getBoard().hasWinner()) {
 	Stack<Board> winningPath;
