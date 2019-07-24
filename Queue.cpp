@@ -3,7 +3,7 @@
 
 #include "Queue.h"
 
-template <class Item>
+template <typename Item>
 Queue<Item>::Queue() {
 	capacity = 30;
 	used = 0;
@@ -11,7 +11,7 @@ Queue<Item>::Queue() {
 	last = -1;
 	data = new Item[capacity];
 }
-template <class Item>
+template <typename Item>
 Queue<Item>::Queue(const Queue<Item>& source) {
 	used = source.used;
 	first = source.first;
@@ -22,12 +22,12 @@ Queue<Item>::Queue(const Queue<Item>& source) {
 		data[i] = source.data[i];
 	}
 }
-template <class Item>
+template <typename Item>
 Queue<Item>::~Queue() {
 	delete[] data;
 }
 
-template <class Item>
+template <typename Item>
 void Queue<Item>::push(const Item& entry) {
 	assert(used < capacity);
 	data[nextIndex(last)] = entry;
@@ -35,14 +35,14 @@ void Queue<Item>::push(const Item& entry) {
 	last = nextIndex(last);
 }
 
-template <class Item>
+template <typename Item>
 void Queue<Item>::pop() {
 	if(empty()) { return; }
 	first = nextIndex(first);
 	used--;
 }	
 
-template <class Item>
+template <typename Item>
 void Queue<Item>::operator=(const Queue<Item>& source) {
 	delete[] data;
 	used = source.used;
@@ -54,17 +54,17 @@ void Queue<Item>::operator=(const Queue<Item>& source) {
 	}
 }
 
-template <class Item>
+template <typename Item>
 size_t Queue<Item>::size() const {
 	return used;
 }
 
-template <class Item>
+template <typename Item>
 bool Queue<Item>::empty() const {
 	return (size() == 0);
 }
 
-template <class Item>
+template <typename Item>
 Item Queue<Item>::front() const {
 	assert(!empty());
 	return(data[first]);

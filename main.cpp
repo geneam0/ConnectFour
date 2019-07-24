@@ -1,3 +1,6 @@
+#ifndef __MAIN_CPP__
+#define __MAIN_CPP__
+
 #include "Stack.h"
 #include "Queue.h"
 #include "board.h"
@@ -48,3 +51,5 @@ int main(){
 	- O X O X O -        - O X O X O -        - O X O X O -        - O X O X O -
 	*/
 }
+
+#endif 

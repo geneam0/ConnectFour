@@ -7,7 +7,7 @@
 
 using namespace std;
 
-template <class Item>
+template <typename Item>
 class Queue {
     public:
         const size_t DEF_CAP = 30;

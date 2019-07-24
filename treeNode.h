@@ -2,7 +2,7 @@
 #define __TREENODE__H
 
 #include <cstdlib>
-#include "board.h"
+#include "Board.h"
 #include "Stack.h"
 #include "Queue.h"
 #include <math.h>       /* pow */
@@ -36,7 +36,7 @@ class treeNode {
     void operator=(treeNode source);
 
     // search algorithms
-    //void BFS(char turn);
+    void BFS(char turn);
     bool itdfs(char turn, treeNode* currentNode, Stack<treeNode*>& nodeStack,int level, int maxLevel);
     void IT(char turn);
 };
