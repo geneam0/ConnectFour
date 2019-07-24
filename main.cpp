@@ -22,9 +22,9 @@ int main(){
 	treeNode bfsnode;							
 	bfsnode.setBoard(bfsBoard);
 	treeNode* depth=&bfsnode;
-	// DFS(depth,user,s);		// DFS PRINTS IFINITELY
-	bfsnode.BFS(user);
-	//dFirst.IT(comp);
+	// DFS(depth,user,s);		
+	//bfsnode.BFS(user);
+	bfsnode.IT(comp);
 
 	// DFS(depth,user,s);		
 

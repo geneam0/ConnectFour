@@ -24,9 +24,10 @@ Stack<Item>::~Stack(){
 }
 template <class Item>
 void Stack<Item>::push(const Item& entry){
-	assert(used<=capacity);
+	if(used<=capacity) {
 	data[used]=entry;
 	used++;
+	}
 }
 template <class Item>
 void Stack<Item>::pop(){

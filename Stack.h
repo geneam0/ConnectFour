@@ -16,7 +16,7 @@ using namespace std;
 template <class Item>
 class Stack {
     public:
-        const size_t DEF_CAP = 60;
+        const size_t DEF_CAP = 100;
 
         Stack();
         Stack(const Stack& source);

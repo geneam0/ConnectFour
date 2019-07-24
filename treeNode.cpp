@@ -142,7 +142,6 @@ void treeNode::BFS(char turn) {
 // NO GENERATE CHILDREN
 bool treeNode::itdfs(char turn, treeNode* currentNode, Stack<treeNode*>& nodeStack,int level, int maxLevel) { // USER PART && CURRENTNODE
   char thisTurn = turn;
-  cout << "THIS TURN IS CURRENTLY AT: " << thisTurn << endl;
   if(thisTurn == 'X') { 
     thisTurn = 'O'; 
   } else {
@@ -150,18 +149,18 @@ bool treeNode::itdfs(char turn, treeNode* currentNode, Stack<treeNode*>& nodeSta
   }
   if(currentNode->getBoard().hasWinner()) {
     cout << "-----A WINNING BOARD HAS BEEN FOUND-----" << endl;
-  	Stack<Board> winningPath;
-	  winningPath.push(currentNode->getBoard());
+  	Stack<treeNode*> winningPath;
+	  winningPath.push(currentNode);
     cout << "WINNING BOARD: " << endl << currentNode->getBoard() <<endl;
 	  while(currentNode->getParent() != NULL) {
 	    currentNode = currentNode->getParent();
-	    winningPath.push(currentNode->getBoard());
+	    winningPath.push(currentNode);
     }
-    Board nextBoard;
+    treeNode* nextBoard;
     cout << "From the given board, make this following move: " << endl;
     while(!winningPath.empty()) {
       nextBoard = winningPath.top();
-      cout << nextBoard << endl << "Then:" << endl;
+      cout << nextBoard->getBoard() << endl << "Then:" << endl;
       winningPath.pop(); 
     }
     cout << "You're done! You've reached the winning Board!" << endl << "End of Search." << endl;
@@ -170,12 +169,13 @@ bool treeNode::itdfs(char turn, treeNode* currentNode, Stack<treeNode*>& nodeSta
   nodeStack.push(currentNode);
   if(level < maxLevel) {
 	  for (int i = 0; i < 7; i++) {
+      cout << currentNode->getBoard() << endl;
       currentNode->generateChildren(thisTurn);
       nodeStack.push(currentNode->getChild(i));
 		  if (currentNode->getChild(i) == nullptr) {     
         continue;
       }
-      if(itdfs(turn, currentNode->getChild(i), nodeStack, level + 1, maxLevel)) {
+      if(itdfs(turn, currentNode->getChild(i), nodeStack, level + 1, maxLevel)) {  // WORST CASE, turn thisTurn back to turn
 			  return true;
 		  }
 	  }
