@@ -28,5 +28,5 @@ The AI goes first and then you choose which column you'd like to drop the chip i
 - IF IT DOESNT RUN, comment the #include <file>.cpp  at the bottom of each header file
   (it works without #include <file.cpp> at the bottom for gene's compiler but works only with it for meriselle's compiler)
 
-# PLEASE refer to presentation to see demos of the code:
+# Please refer to presentation to see demos of the code:
 - we were able to compile and run, and so we inserted screenshots of the searches working in our presentation
