@@ -1,6 +1,13 @@
 # ConnectFour
 This is for a project from my Data Structures class. I added a terminal ConnectFour game with basic AI in Java I did in high school.
 
+# Java
+To play, 
+1. Clone or Download this repo
+2. Open the terminal and navigate to the Java directory
+3. Type `javac ConnectFour.java` and then `java ConnectFour` to start the game.
+The AI goes first and then you choose which column you'd like to drop the chip in. I included a demo.mp4 for support.
+
 # C++
 # run different searches:
 - in the main.cpp we have commented parts of our function calls:
