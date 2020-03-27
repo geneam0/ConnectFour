@@ -1,6 +1,7 @@
 # ConnectFour
-# compiling:
--  works with a make file
+This is for a project from my Data Structures class. I added a terminal ConnectFour game with basic AI in Java I did in high school.
+
+# C++
 # run different searches:
 - in the main.cpp we have commented parts of our function calls:
 - for example //bfsnode.BFS(user)
