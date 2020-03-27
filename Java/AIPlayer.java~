@@ -1,0 +1,30 @@
+public class AIPlayer extends Player{
+  
+  public AIPlayer(){
+    symbol = "X";
+  }
+  
+  public int nextMove(Board b, Player opp){
+    for(int i = 0; i<7; i++){
+      b.move(i, this);
+      if(b.winner()=="X"){
+        b.undo(i);
+        return i;
+      }
+      else{
+        b.undo(i);
+      }
+    }
+    for(int i = 0; i<7; i++){
+      b.move(i, opp);
+      if(b.winner()=="O"){
+        b.undo(i);
+        return i;
+      }
+      else{
+        b.undo(i);
+      }
+    }
+    return (int)(Math.random()*7);
+  }
+}
