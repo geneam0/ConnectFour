@@ -1,5 +1,5 @@
 # ConnectFour
-This is for a project from my Data Structures class. I added a terminal ConnectFour game with basic AI in Java I did in high school.
+This is for a project from my Data Structures class. I added a ConnectFour game with basic AI in Java I did in high school.
 
 # Java
 To play, 
@@ -24,7 +24,7 @@ The AI goes first and then you choose which column you'd like to drop the chip i
 # NOTES:
 - minimax doesn't work, it can make scores for the children, but cant evaluate them
 - bfs and IT work, but it only makes one type of move (only user or only comp)
-- DFS works !!!!!!
+- DFS works !
 - IF IT DOESNT RUN, comment the #include <file>.cpp  at the bottom of each header file
   (it works without #include <file.cpp> at the bottom for gene's compiler but works only with it for meriselle's compiler)
 
